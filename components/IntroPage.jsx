@@ -59,13 +59,13 @@ export function Intro() {
       <div
         className="absolute top-20 left-20 w-72 h-72 rounded-full opacity-20"
         style={{
-          background: "radial-gradient(circle, rgba(139,44,64,0.6) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--gradient-blob-1) 0%, transparent 70%)",
         }}
       />
       <div
         className="absolute bottom-20 right-20 w-96 h-96 rounded-full opacity-20"
         style={{
-          background: "radial-gradient(circle, rgba(114,54,62,0.6) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--gradient-blob-2) 0%, transparent 70%)",
         }}
       />
 

@@ -122,7 +122,7 @@ const jsonLd = {
       },
       jobTitle: "Software & Hardware Developer",
       sameAs: [
-        "https://github.com/simp6969",
+        "https://github.com/ariunbold-bo",
         "https://www.linkedin.com/in/ariunbold-bold-60058b30a/",
         "https://www.instagram.com/ariuka_69/",
         "https://www.facebook.com/profile.php?id=61553207489957",
