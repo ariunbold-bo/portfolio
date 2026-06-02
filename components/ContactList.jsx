@@ -1,3 +1,4 @@
+"use client";
 // Page3.jsx
 "use client";
 

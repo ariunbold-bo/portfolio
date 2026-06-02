@@ -1,3 +1,4 @@
+"use client";
 // AboutMe.jsx
 "use client";
 import { useEffect, useRef } from "react";

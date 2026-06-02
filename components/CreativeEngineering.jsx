@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 
@@ -77,7 +78,7 @@ export function CreativeEngineering() {
                   loop
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   poster="/esp32-poster.webp"
                   aria-label="ESP32 OLED animation demo"
                   className={videoClasses}
@@ -132,7 +133,7 @@ export function CreativeEngineering() {
                   loop
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   poster="/mobile-poster.webp"
                   aria-label="Project CryoCell phone mod demo"
                   className={videoClasses}
