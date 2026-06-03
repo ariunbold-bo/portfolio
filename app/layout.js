@@ -1,11 +1,12 @@
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import MouseFollower from "../components/MouseFollower";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
-const poppins = Poppins({
+const poppins = Inter({
   variable: "--font-Poppins",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   weight: ["400", "600", "700"],
   display: "swap",
 });
@@ -184,8 +185,10 @@ export default function RootLayout({ children }) {
         <link rel="canonical" href="https://ariunbold.dev/" />
       </head>
       <body className={`${poppins.variable} antialiased`}>
-        <MouseFollower />
-        {children}
+        <LanguageProvider>
+          <MouseFollower />
+          {children}
+        </LanguageProvider>
         <Analytics />
       </body>
     </html>

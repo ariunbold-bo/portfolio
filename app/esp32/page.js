@@ -30,7 +30,7 @@ export default function ESP32Page() {
       <ESP32Hero />
 
       {/* ── Content Sections ── */}
-      <section className="relative z-10 max-w-6xl mx-auto px-6 py-24 md:py-32 flex flex-col gap-32">
+      <section className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-24 md:py-32 flex flex-col gap-16 sm:gap-24 md:gap-32">
         {/* Section 1 — The Setup */}
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
           <div className="w-full md:w-1/2 order-2 md:order-1">
@@ -81,10 +81,10 @@ export default function ESP32Page() {
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-3 uppercase">
                 The Environment
               </h2>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6">
+              <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
                 Built on Arch Linux
               </h3>
-              <p className="text-[var(--text-muted)] text-lg leading-relaxed">
+              <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed">
                 Setting up the Arduino development environment on Arch Linux was
                 a journey in itself. From wrestling with drivers that refused to
                 cooperate to configuring the toolchain for ESP32 compilation —
@@ -104,10 +104,10 @@ export default function ESP32Page() {
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-3 uppercase">
                 The Engineering
               </h2>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6">
+              <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
                 Optimized for Constraints
               </h3>
-              <p className="text-[var(--text-muted)] text-lg leading-relaxed">
+              <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed">
                 The real challenge was fitting animation onto a 128x64 pixel
                 OLED display. Color had to go entirely — every frame was
                 converted to monochrome binary data. Resolution was deliberately
@@ -253,10 +253,10 @@ export default function ESP32Page() {
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-3 uppercase">
                 The Wiring
               </h2>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6">
+              <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
                 Simple but Effective
               </h3>
-              <p className="text-[var(--text-muted)] text-lg leading-relaxed">
+              <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed">
                 Despite the software complexity, the hardware side was
                 refreshingly straightforward. The ESP32 connects to the SSD1306
                 OLED via I2C — just four wires: VCC, GND, SDA, and SCL. Clean

@@ -85,16 +85,16 @@ export function ESP32Hero() {
             : "opacity-0 translate-y-8 scale-95"
         }`}
       >
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-[var(--glass-border)] bg-[var(--bg-glass)] backdrop-blur-md text-sm font-medium tracking-wider text-[var(--text-body)]">
+        <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-[var(--glass-border)] bg-[var(--bg-glass)] backdrop-blur-md text-xs sm:text-sm font-medium tracking-wider text-[var(--text-body)]">
           EMBEDDED SYSTEMS
         </div>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight">
           ESP32{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-accent-color)] to-[#8B2C40]">
             OLED DISPLAY
           </span>
         </h1>
-        <p className="text-xl md:text-2xl text-[var(--text-muted)] max-w-2xl font-light">
+        <p className="text-base sm:text-xl md:text-2xl text-[var(--text-muted)] max-w-2xl font-light">
           Binary-encoded GIF playback on a 128x64 OLED. Pushing
           microcontroller limits with creative firmware.
         </p>
@@ -149,16 +149,16 @@ export function S21Hero() {
           mounted ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
         }`}
       >
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-[var(--glass-border)] bg-[var(--bg-glass)] backdrop-blur-md text-sm font-medium tracking-wider text-[var(--text-body)]">
+        <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-[var(--glass-border)] bg-[var(--bg-glass)] backdrop-blur-md text-xs sm:text-sm font-medium tracking-wider text-[var(--text-body)]">
           HARDWARE ENGINEERING
         </div>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight text-[var(--text-heading)]">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight text-[var(--text-heading)]">
           PROJECT{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d6d] to-[#8B2C40]">
             CRYOCELL
           </span>
         </h1>
-        <p className="text-xl md:text-2xl text-[var(--text-muted)] max-w-2xl font-light">
+        <p className="text-base sm:text-xl md:text-2xl text-[var(--text-muted)] max-w-2xl font-light">
           Active cooling meets unlimited power. Re-engineering the smartphone thermal and power delivery systems to bypass hardware limitations for sustained peak performance.
         </p>
       </div>
