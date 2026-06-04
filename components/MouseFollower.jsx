@@ -1,5 +1,17 @@
 "use client";
 import { useEffect, useRef, useCallback } from "react";
+import { usePathname } from "next/navigation";
+
+/**
+ * Wrapper that hides MouseFollower on /canu (drawing board) routes
+ * where it interferes with the canvas cursor.
+ */
+export function PortfolioMouseFollower() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/canu")) return null;
+  return <MouseFollower />;
+}
+
 
 export default function MouseFollower() {
   const followerRef = useRef(null);

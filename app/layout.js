@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import MouseFollower from "../components/MouseFollower";
+import { PortfolioMouseFollower } from "../components/MouseFollower";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const poppins = Inter({
@@ -186,7 +186,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${poppins.variable} antialiased`}>
         <LanguageProvider>
-          <MouseFollower />
+          <PortfolioMouseFollower />
           {children}
         </LanguageProvider>
         <Analytics />
