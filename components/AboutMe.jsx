@@ -64,12 +64,12 @@ export function AboutMePage() {
   const t = translations[lang].about;
 
   return (
-    <div id="page2" className="page2 relative py-8 sm:py-16 md:py-24">
+    <section id="page2" aria-labelledby="about-me-title" className="page2 relative py-8 sm:py-16 md:py-24">
       <div className="flex flex-col gap-6 sm:gap-12 items-center w-full px-3 sm:px-4 md:px-8 max-w-7xl mx-auto z-10">
         {/* Section header */}
         <div className="flex items-center gap-4 w-full">
           <div className="h-1 w-12 bg-gradient-to-r from-[#8B2C40] to-[#72363E] rounded-full flex-shrink-0" />
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-[var(--primary-text)]">{t.sectionTitle}</h2>
+          <h2 id="about-me-title" className="text-xl sm:text-3xl md:text-4xl font-bold text-[var(--primary-text)]">{t.sectionTitle}</h2>
         </div>
 
         {/* Two-column layout */}
@@ -93,6 +93,6 @@ export function AboutMePage() {
           </section>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

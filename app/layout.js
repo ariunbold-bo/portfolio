@@ -35,6 +35,13 @@ export const metadata = {
     "ariunbold.dev",
     "Bold Ariunbold Portfolio",
     "Ariunbold Bold Portfolio",
+    "software engineer Mongolia",
+    "software engineer America",
+    "software engineer Japan",
+    "software engineer Philippines",
+    "remote developer",
+    "frontend developer",
+    "IoT developer"
   ],
   authors: [{ name: "Ariunbold Bold", url: SITE_URL }],
   creator: "Ariunbold Bold",
@@ -175,7 +182,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html data-scroll-behavior="smooth" lang="en">
       <head>
         {/* JSON-LD Structured Data */}
         <script

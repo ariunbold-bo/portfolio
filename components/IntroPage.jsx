@@ -36,7 +36,7 @@ export function Intro() {
     };
 
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => {
@@ -47,7 +47,7 @@ export function Intro() {
   }, []);
 
   return (
-    <div
+    <header
       id="page1"
       ref={containerRef}
       className="introPage min-h-[92dvh] z-5 w-full overflow-hidden relative px-0 pt-20 lg:pt-0"
@@ -105,6 +105,6 @@ export function Intro() {
           />
         </div>
       </div>
-    </div>
+    </header>
   );
 }

@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/canu/:path*",
+      "destination": "https://canu.vercel.app/:path*"
+    }
+  ]
+}

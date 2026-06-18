@@ -69,8 +69,8 @@ export function ProjectShowcase() {
   };
 
   return (
-    <div id="page3" ref={containerRef} className="page3 w-full flex flex-col gap-12 p-4 md:p-8 justify-center items-center relative">
-      <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8 text-gradient">{t.sectionTitle}</h2>
+    <section id="page3" ref={containerRef} aria-labelledby="projects-title" className="page3 w-full flex flex-col gap-12 p-4 md:p-8 justify-center items-center relative">
+      <h2 id="projects-title" className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8 text-gradient">{t.sectionTitle}</h2>
 
       <div className="flex flex-wrap gap-8 justify-center max-w-7xl">
         {projects.map((project) => {
@@ -129,6 +129,6 @@ export function ProjectShowcase() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
