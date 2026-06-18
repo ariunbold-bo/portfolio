@@ -5,6 +5,7 @@ const nextConfig = {
   compress: true,
   trailingSlash: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
     qualities: [25, 50, 60],
   },
   async headers() {

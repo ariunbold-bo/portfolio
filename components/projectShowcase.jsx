@@ -76,7 +76,7 @@ export function ProjectShowcase() {
         {projects.map((project) => {
           const isActive = activeCard === project.id;
           return (
-            <article
+            <div
               key={project.id}
               role="button"
               tabIndex={0}
@@ -98,8 +98,7 @@ export function ProjectShowcase() {
 
               {/* Preview overlay */}
               <div
-                className={`absolute inset-0 bg-black/80 flex flex-col justify-center items-center gap-6 backdrop-blur-sm p-6 transition-all duration-500 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
-                aria-hidden={!isActive}
+                className={`absolute inset-0 bg-black/80 flex flex-col justify-center items-center gap-6 backdrop-blur-sm p-6 transition-all duration-500 ${isActive ? "opacity-100 visible" : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"}`}
               >
                 <div className="relative w-full h-32 rounded-lg overflow-hidden shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
                   <Image src={project.thumbnail} alt={`${project.name} screenshot`} fill sizes="350px" quality={50} loading="lazy" className="object-cover" />
@@ -125,7 +124,7 @@ export function ProjectShowcase() {
                   )}
                 </div>
               </div>
-            </article>
+            </div>
           );
         })}
       </div>
