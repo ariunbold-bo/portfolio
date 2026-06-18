@@ -1,9 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { Header } from "@/components/Header";
 import { FadeIn, ESP32Hero } from "@/components/ClientIslands";
+import { useLang } from "@/contexts/LanguageContext";
+import { translations } from "@/locales/translations";
 
 /* ─── Main Page ─── */
 export default function ESP32Page() {
+  const { lang } = useLang();
+  const t = translations[lang].esp32_page;
 
   return (
     <main className="overflow-x-hidden min-h-screen bg-[var(--primary-bg-color)] text-[var(--text-heading)] selection:bg-[var(--primary-accent-color)] selection:text-[var(--text-heading)] pb-20">
@@ -79,19 +85,13 @@ export default function ESP32Page() {
           <div className="w-full md:w-1/2 order-1 md:order-2">
             <FadeIn direction="left" delay={200}>
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-3 uppercase">
-                The Environment
+                {t.section1.subtitle}
               </h2>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                Built on Arch Linux
+                {t.section1.title}
               </h3>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed">
-                Setting up the Arduino development environment on Arch Linux was
-                a journey in itself. From wrestling with drivers that refused to
-                cooperate to configuring the toolchain for ESP32 compilation —
-                every step was a battle against Linux&apos;s &ldquo;do it
-                yourself&rdquo; philosophy. The driver issues alone consumed
-                hours of debugging, but the payoff was a lean, powerful dev
-                setup that worked exactly how I wanted.
+                {t.section1.p1}
               </p>
             </FadeIn>
           </div>
@@ -102,21 +102,13 @@ export default function ESP32Page() {
           <div className="w-full md:w-1/2">
             <FadeIn direction="right">
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-3 uppercase">
-                The Engineering
+                {t.section2.subtitle}
               </h2>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                Optimized for Constraints
+                {t.section2.title}
               </h3>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed">
-                The real challenge was fitting animation onto a 128x64 pixel
-                OLED display. Color had to go entirely — every frame was
-                converted to monochrome binary data. Resolution was deliberately
-                reduced to keep frame data small enough for the ESP32&apos;s
-                limited memory. Using the U8g2 library in C++, I built a custom
-                rendering pipeline that decodes binary-encoded GIF frames and
-                pushes them to the display at smooth framerates. The result
-                caught attention — a demo posted on Instagram pulled in solid
-                views.
+                {t.section2.p1}
               </p>
             </FadeIn>
           </div>
@@ -251,17 +243,13 @@ export default function ESP32Page() {
           <div className="w-full md:w-1/2 order-1 md:order-2">
             <FadeIn direction="left" delay={200}>
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-3 uppercase">
-                The Wiring
+                {t.section3.subtitle}
               </h2>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                Simple but Effective
+                {t.section3.title}
               </h3>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed">
-                Despite the software complexity, the hardware side was
-                refreshingly straightforward. The ESP32 connects to the SSD1306
-                OLED via I2C — just four wires: VCC, GND, SDA, and SCL. Clean
-                wiring, solid connections, and the display comes alive with
-                custom animations.
+                {t.section3.p1}
               </p>
             </FadeIn>
           </div>

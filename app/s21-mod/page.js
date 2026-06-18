@@ -1,7 +1,13 @@
+"use client";
+
 import { Header } from "@/components/Header";
 import { FadeIn, S21Hero } from "@/components/ClientIslands";
+import { useLang } from "@/contexts/LanguageContext";
+import { translations } from "@/locales/translations";
 
 export default function S21ModPage() {
+  const { lang } = useLang();
+  const t = translations[lang].s21;
 
   return (
     <main className="overflow-x-hidden min-h-screen bg-[var(--primary-bg-color)] text-[var(--text-heading)] selection:bg-[var(--primary-accent-color)] selection:text-[var(--text-heading)] pb-20">
@@ -145,16 +151,16 @@ export default function S21ModPage() {
           <div className="w-full md:w-1/2 order-1 md:order-2">
             <FadeIn direction="left" delay={200}>
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-4 uppercase">
-                Thermal Dissipation
+                {t.section1.subtitle}
               </h2>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-[var(--text-heading)]">
-                Active Cooling Architecture
+                {t.section1.title}
               </h3>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed mt-1">
-                It started with a simple idea: extreme cooling. Standard passive cooling wasn't enough to sustain peak performance during intensive tasks. I took a standard S21 case, mapped out the thermal hotspots on the chassis, and carefully carved a precise circular mount.
+                {t.section1.p1}
               </p>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed mt-4">
-                This allowed a custom cooling fan assembly to sit flush against the device. This active cooling setup pulls heat directly away from the chassis, lowering the temperature of the device by whole 10 degrees Celsius and maintaining hardware stability under maximum load.
+                {t.section1.p2}
               </p>
             </FadeIn>
           </div>
@@ -165,16 +171,16 @@ export default function S21ModPage() {
           <div className="w-full md:w-1/2">
             <FadeIn direction="right">
               <h2 className="text-sm font-bold tracking-widest text-[#ff4d6d] mb-4 uppercase">
-                Power Delivery
+                {t.section2.subtitle}
               </h2>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-[var(--text-heading)]">
-                Bypassing Limitations
+                {t.section2.title}
               </h3>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed mt-1">
-                Cooling is nothing without the power to sustain it. I integrated a massive 10,000mAh external power bank directly into the S21's internal circuitry.
+                {t.section2.p1}
               </p>
               <p className="text-[var(--text-muted)] text-sm sm:text-base md:text-lg leading-relaxed mt-4">
-                By soldering the custom fan assembly to a dedicated controller, I created dual operational modes: Power Save and Performance. This direct wiring bypasses standard hardware limitations, feeding raw power directly to the cells and the cooling system for unprecedented, uninterrupted battery life.
+                {t.section2.p2}
               </p>
             </FadeIn>
           </div>
