@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F3D9DF"/>
+      <stop offset="100%" stop-color="#EECDD4"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7D574F"/>
+      <stop offset="100%" stop-color="#9A6A5F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="60" y="60" width="1080" height="510" rx="28" fill="rgba(255,251,252,0.55)" stroke="rgba(125,87,79,0.16)" stroke-width="1"/>
+  <rect x="80" y="80" width="1040" height="2" rx="1" fill="url(#accentLine)"/>
+  <text x="600" y="280" font-family="system-ui, sans-serif" font-weight="700" font-size="72" letter-spacing="-1" fill="#3C231D" text-anchor="middle">Ariunbold Bold</text>
+  <text x="600" y="360" font-family="system-ui, sans-serif" font-weight="500" font-size="36" letter-spacing="-0.3" fill="#6D4A42" text-anchor="middle">Systems Developer & Multidisciplinary Learner</text>
+  <circle cx="600" cy="440" r="6" fill="#7D574F"/>
+  <rect x="576" y="438" width="48" height="4" rx="2" fill="#7D574F"/>
+  <text x="600" y="510" font-family="system-ui, sans-serif" font-weight="400" font-size="20" fill="#8B6259" text-anchor="middle">ariunbold.dev</text>
+</svg>
