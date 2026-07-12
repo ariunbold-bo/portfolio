@@ -52,14 +52,28 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: identity.name,
-  url: identity.site,
-  jobTitle: identity.seoTitle,
-  description: identity.tagline,
-  address: { "@type": "PostalAddress", addressCountry: identity.location },
-  knowsAbout: [...knowsAbout],
-  sameAs: contact.filter((c) => c.external).map((c) => c.href),
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${identity.site}/#website`,
+      url: identity.site,
+      name: identity.siteName,
+      description: identity.tagline,
+      publisher: { "@id": `${identity.site}/#person` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${identity.site}/#person`,
+      name: identity.name,
+      url: identity.site,
+      image: `${identity.site}/og-image.png`,
+      jobTitle: identity.seoTitle,
+      description: identity.tagline,
+      address: { "@type": "PostalAddress", addressCountry: identity.location },
+      knowsAbout: [...knowsAbout],
+      sameAs: contact.filter((c) => c.external).map((c) => c.href),
+    },
+  ],
 };
 
 // Flash-free theme init — runs during HTML parse, before first paint.
@@ -78,6 +92,12 @@ export default function RootLayout({
       className={`${poppins.variable} h-full antialiased`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full">

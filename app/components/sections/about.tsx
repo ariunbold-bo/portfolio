@@ -19,9 +19,9 @@ export function About() {
             <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-xl font-bold text-on-accent shadow-lg shadow-[rgba(var(--accent-rgb),0.3)] sm:h-16 sm:w-16 sm:text-2xl">
               {identity.initials}
             </div>
-            <h3 className="mb-3 text-xl font-semibold text-ink-strong sm:text-2xl">
+            <h2 className="mb-3 text-xl font-semibold text-ink-strong sm:text-2xl">
               {identity.role}
-            </h3>
+            </h2>
             <p className="text-base leading-relaxed text-muted sm:text-lg">
               {identity.tagline}
             </p>
@@ -30,9 +30,9 @@ export function About() {
 
         <Reveal variant="right" delay={200}>
           <GlassCard className="flex h-full flex-col p-6 bg-[var(--surface-2)] glow-hover sm:p-8 lg:p-10">
-            <h3 className="mb-4 text-xs font-bold tracking-widest text-accent uppercase sm:mb-6">
+            <h2 className="mb-4 text-xs font-bold tracking-widest text-accent uppercase sm:mb-6">
               Core Technologies
-            </h3>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {knowsAbout.map((tech) => (
                 <span key={tech} className="chip text-xs sm:text-sm">

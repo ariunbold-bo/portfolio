@@ -19,9 +19,9 @@ export function Beyond() {
         {/* Disciplines */}
         <div className="space-y-4 sm:space-y-6">
           <Reveal variant="up" delay={100}>
-            <h3 className="mb-4 text-xl font-semibold text-ink-strong sm:mb-6 sm:text-2xl">
+            <h2 className="mb-4 text-xl font-semibold text-ink-strong sm:mb-6 sm:text-2xl">
               Personal Disciplines
-            </h3>
+            </h2>
           </Reveal>
           {disciplines.map((item, i) => (
             <Reveal key={item.title} variant="up" delay={(i + 1) * 100}>
@@ -50,9 +50,9 @@ export function Beyond() {
         {/* Growth Targets */}
         <div className="space-y-4 sm:space-y-6">
           <Reveal variant="up" delay={100}>
-            <h3 className="mb-4 text-xl font-semibold text-ink-strong sm:mb-6 sm:text-2xl">
+            <h2 className="mb-4 text-xl font-semibold text-ink-strong sm:mb-6 sm:text-2xl">
               Current Growth Targets
-            </h3>
+            </h2>
           </Reveal>
           <div className="grid gap-3 sm:gap-4">
             {growth.map((item, i) => (

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { hardware, type HardwareProject } from "@/app/lib/content";
+import { identity, hardware, type HardwareProject } from "@/app/lib/content";
 import { SiteBackground } from "@/app/components/site-background";
 import { ScrollProgress } from "@/app/components/scroll-progress";
 import { NavRail } from "@/app/components/nav-rail";
@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${proj.name} — Hardware Project`,
     description: proj.summary,
+    alternates: { canonical: `${identity.site}/work/${slug}` },
     openGraph: {
       title: proj.name,
       description: proj.summary,
@@ -86,6 +87,34 @@ export default async function WorkPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: identity.site,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: proj.kicker,
+                item: `${identity.site}/#hardware`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: proj.name,
+              },
+            ],
+          }),
+        }}
+      />
       <SiteBackground />
       <ScrollProgress />
       <NavRail />
