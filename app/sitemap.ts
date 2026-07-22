@@ -1,4 +1,5 @@
-import { identity, hardware } from "@/app/lib/content";
+import en from "@/app/lib/dictionaries/en";
+const { identity, hardware } = en;
 import type { MetadataRoute } from "next";
 
 function entry(

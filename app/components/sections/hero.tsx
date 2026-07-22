@@ -1,8 +1,8 @@
-import { identity } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { Typewriter } from "../typewriter";
 
-export function Hero() {
+export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="home"
@@ -19,9 +19,9 @@ export function Hero() {
           </span>
         </div>
         <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-ink-strong sm:text-5xl md:text-[5.5rem] md:leading-[1.1]">
-          {identity.name}
+          {dict.identity.name}
           <br />
-          <span className="gradient-text">{identity.role}</span>
+          <span className="gradient-text">{dict.identity.role}</span>
         </h1>
       </Reveal>
       <Reveal variant="up" delay={300} className="mt-8 max-w-2xl">

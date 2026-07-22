@@ -1,10 +1,10 @@
-import { stack } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
 
-export function Stack() {
+export function Stack({ dict }: { dict: Dictionary }) {
   return (
     <section id="stack" className="scroll-mt-32">
       <Reveal variant="up">
@@ -12,7 +12,7 @@ export function Stack() {
       </Reveal>
 
       <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-3">
-        {stack.map((item, i) => (
+        {dict.stack.map((item, i) => (
           <Reveal key={item.no} variant="up" delay={i * 100}>
             <GlassCard className="flex h-full flex-col p-8 glow-hover hover-lift">
               <div className="mb-6 flex items-center justify-between">

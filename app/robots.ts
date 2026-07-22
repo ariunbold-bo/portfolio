@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { identity } from "@/app/lib/content";
+import en from "@/app/lib/dictionaries/en";
+const { identity } = en;
 
 export default function robots(): MetadataRoute.Robots {
   return {

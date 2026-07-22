@@ -1,9 +1,10 @@
-import { identity, knowsAbout } from "@/app/lib/content";
+import Image from "next/image";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 
-export function About() {
+export function About({ dict }: { dict: Dictionary }) {
   return (
     <section id="about" className="scroll-mt-32">
       <Reveal variant="up">
@@ -13,17 +14,23 @@ export function About() {
         />
       </Reveal>
 
-      <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 lg:mt-16 lg:grid-cols-[1fr_400px]">
+      <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_400px]">
         <Reveal variant="left" delay={100}>
-          <GlassCard className="flex h-full flex-col justify-center p-6 glow-hover sm:p-8 lg:p-10">
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-xl font-bold text-on-accent shadow-lg shadow-[rgba(var(--accent-rgb),0.3)] sm:h-16 sm:w-16 sm:text-2xl">
-              {identity.initials}
-            </div>
+          <GlassCard className="flex h-full flex-col justify-center p-8 glow-hover sm:p-10">
+            {/* <div className="mb-8 grid h-24 w-24 place-items-center rounded-[2rem] bg-accent/20 text-4xl font-bold text-accent sm:h-32 sm:w-32 sm:text-5xl shadow-[0_0_40px_rgba(var(--accent-rgb),0.3)] relative overflow-hidden">
+              <Image 
+                src="/profile.png" 
+                alt="Ariunbold Bold" 
+                fill 
+                className="object-cover"
+                sizes="(max-width: 640px) 96px, 128px"
+              />
+            </div> */}
             <h2 className="mb-3 text-xl font-semibold text-ink-strong sm:text-2xl">
-              {identity.role}
+              {dict.identity.role}
             </h2>
             <p className="text-base leading-relaxed text-muted sm:text-lg">
-              {identity.tagline}
+              {dict.identity.tagline}
             </p>
           </GlassCard>
         </Reveal>
@@ -34,7 +41,7 @@ export function About() {
               Core Technologies
             </h2>
             <div className="flex flex-wrap gap-2">
-              {knowsAbout.map((tech) => (
+              {dict.knowsAbout.map((tech) => (
                 <span key={tech} className="chip text-xs sm:text-sm">
                   {tech}
                 </span>

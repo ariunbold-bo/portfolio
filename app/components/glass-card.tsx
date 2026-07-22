@@ -1,11 +1,15 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 export function GlassCard({
   children,
   className = "",
-}: {
+  ...props
+}: HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
-  className?: string;
 }) {
-  return <div className={`glass card ${className}`}>{children}</div>;
+  return (
+    <div className={`glass card ${className}`} {...props}>
+      {children}
+    </div>
+  );
 }

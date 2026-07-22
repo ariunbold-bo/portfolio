@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { hardware } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
+import Image from "next/image";
 
-export function Hardware() {
+export function Hardware({ dict }: { dict: Dictionary }) {
   return (
     <section id="hardware" className="scroll-mt-32">
       <Reveal variant="up">
@@ -17,7 +18,7 @@ export function Hardware() {
       </Reveal>
 
       <div className="mt-10 grid gap-8 sm:mt-12 sm:gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-12">
-        {hardware.map((hw, i) => (
+        {dict.hardware.map((hw, i) => (
           <Reveal key={hw.slug} variant="up" delay={i * 200}>
             <GlassCard className="flex h-full flex-col overflow-hidden glow-hover hover-lift">
               <div className="p-6 sm:p-8 lg:p-10 flex-grow">
@@ -35,16 +36,6 @@ export function Hardware() {
                 <p className="mb-6 text-base leading-relaxed text-muted sm:text-lg">
                   {hw.summary}
                 </p>
-                {/* <div className="space-y-6">
-                  {hw.sections.map((section) => (
-                    <div key={section.title}>
-                      <h4 className="mb-2 font-semibold text-ink">
-                        {section.title}
-                      </h4>
-                      <p className="text-sm leading-relaxed text-muted">{section.body}</p>
-                    </div>
-                  ))}
-                </div> */}
                 <div className="relative bottom-0">
                   <Link
                     href={`/work/${hw.slug}`}

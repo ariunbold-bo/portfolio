@@ -28,7 +28,8 @@ type IconName =
   | "piano"
   | "moon"
   | "code"
-  | "mapPin";
+  | "mapPin"
+  | "speaker";
 
 const paths: Record<IconName, React.ReactNode> = {
   mail: (
@@ -146,6 +147,13 @@ const paths: Record<IconName, React.ReactNode> = {
   ),
   moon: <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" />,
   code: <path d="m9 8-5 4 5 4M15 8l5 4-5 4M13 5l-2 14" />,
+  speaker: (
+    <>
+      <rect x="4" y="2" width="16" height="20" rx="2" />
+      <circle cx="12" cy="14" r="4" />
+      <path d="M12 6h.01" />
+    </>
+  ),
   mapPin: (
     <>
       <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" />

@@ -1,10 +1,10 @@
-import { timeline } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { TimelineLine } from "../timeline-line";
 
-export function Journey() {
+export function Journey({ dict }: { dict: Dictionary }) {
   return (
     <section id="journey" className="scroll-mt-32">
       <Reveal variant="up">
@@ -15,7 +15,7 @@ export function Journey() {
         <TimelineLine />
 
         <div className="space-y-8 sm:space-y-10 md:space-y-24">
-          {timeline.map((entry, index) => {
+          {dict.timeline.map((entry, index) => {
             const isLeft = index % 2 === 0;
             return (
               <div

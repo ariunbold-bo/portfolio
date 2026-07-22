@@ -1,9 +1,9 @@
-import { projects } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 
-export function Projects() {
+export function Projects({ dict }: { dict: Dictionary }) {
   return (
     <section id="projects" className="scroll-mt-32">
       <Reveal variant="up">
@@ -14,7 +14,7 @@ export function Projects() {
       </Reveal>
 
       <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-3">
-        {projects.map((proj, i) => (
+        {dict.projects.map((proj, i) => (
           <Reveal key={proj.name} variant="up" delay={(i % 3) * 100}>
             <GlassCard className="flex h-full flex-col p-8 glow-hover hover-lift">
               <h3 className="mb-3 text-xl font-semibold text-ink-strong">

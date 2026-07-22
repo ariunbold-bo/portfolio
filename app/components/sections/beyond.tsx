@@ -1,10 +1,10 @@
-import { disciplines, growth } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
 
-export function Beyond() {
+export function Beyond({ dict }: { dict: Dictionary }) {
   return (
     <section id="beyond" className="scroll-mt-32">
       <Reveal variant="up">
@@ -23,7 +23,7 @@ export function Beyond() {
               Personal Disciplines
             </h2>
           </Reveal>
-          {disciplines.map((item, i) => (
+          {dict.disciplines.map((item, i) => (
             <Reveal key={item.title} variant="up" delay={(i + 1) * 100}>
               <GlassCard className="flex items-start gap-3 p-5 sm:gap-4 sm:p-6 lg:p-8 glow-hover hover-lift">
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--surface-solid)] text-ink sm:h-12 sm:w-12">
@@ -41,6 +41,18 @@ export function Beyond() {
                   <p className="text-xs leading-relaxed text-muted sm:text-sm">
                     {item.body}
                   </p>
+                  {item.youtubeId && (
+                    <div className="mt-4 overflow-hidden rounded-xl bg-[var(--surface-solid)] relative aspect-video w-full">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${item.youtubeId}?si=FjStXGCP8C6gnIzN&rel=0`}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        className="absolute inset-0 h-full w-full border-0"
+                      />
+                    </div>
+                  )}
                 </div>
               </GlassCard>
             </Reveal>
@@ -55,7 +67,7 @@ export function Beyond() {
             </h2>
           </Reveal>
           <div className="grid gap-3 sm:gap-4">
-            {growth.map((item, i) => (
+            {dict.growth.map((item, i) => (
               <Reveal key={item.no} variant="up" delay={(i + 1) * 100}>
                 <div className="group flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-4 transition-colors hover:border-[var(--border-strong)] hover:bg-[var(--surface)] sm:gap-4 sm:p-5">
                   <span className="text-xs font-bold tracking-widest text-accent mt-0.5 sm:mt-1">

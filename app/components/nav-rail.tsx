@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { nav } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Icon } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
 
 const MAX_VISIBLE = 5;
 
-export function NavRail() {
+export function NavRail({ dict }: { dict: Dictionary }) {
   const [active, setActive] = useState<string>("home");
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
@@ -25,7 +25,7 @@ export function NavRail() {
   }, [moreOpen]);
 
   useEffect(() => {
-    const sections = nav
+    const sections = dict.nav
       .map((n) => document.getElementById(n.id))
       .filter((el): el is HTMLElement => Boolean(el));
     if (sections.length === 0) return;
@@ -42,8 +42,8 @@ export function NavRail() {
     return () => io.disconnect();
   }, []);
 
-  const visible = nav.slice(0, MAX_VISIBLE);
-  const overflow = nav.slice(MAX_VISIBLE);
+  const visible = dict.nav.slice(0, MAX_VISIBLE);
+  const overflow = dict.nav.slice(MAX_VISIBLE);
 
   return (
     <>
@@ -52,7 +52,7 @@ export function NavRail() {
         aria-label="Section navigation"
         className="glass overflow-x-hidden animate-rise fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-1 rounded-full p-2 lg:flex"
       >
-        {nav.map((item) => {
+        {dict.nav.map((item) => {
           const isActive = active === item.id;
           return (
             <a

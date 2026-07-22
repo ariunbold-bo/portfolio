@@ -1,9 +1,9 @@
-import { contact } from "@/app/lib/content";
+import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { Icon } from "../icons";
 
-export function Contact() {
+export function Contact({ dict }: { dict: Dictionary }) {
   return (
     <section id="contact" className="scroll-mt-32 pb-32">
       <Reveal variant="up">
@@ -20,7 +20,7 @@ export function Contact() {
           delay={100}
           className="flex flex-wrap gap-3 sm:gap-4"
         >
-          {contact.map((link) => (
+          {dict.contact.map((link) => (
             <a
               key={link.label}
               href={link.href}
