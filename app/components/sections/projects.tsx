@@ -2,14 +2,15 @@ import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
+import { Icon } from "../icons";
 
 export function Projects({ dict }: { dict: Dictionary }) {
   return (
     <section id="projects" className="scroll-mt-32">
       <Reveal variant="up">
         <SectionHeading
-          label="Software Projects"
-          title="Selected web applications."
+          label={dict.ui.softwareLabel}
+          title={dict.ui.softwareTitle}
         />
       </Reveal>
 
@@ -30,22 +31,24 @@ export function Projects({ dict }: { dict: Dictionary }) {
                   </span>
                 ))}
               </div>
-              <div className="flex items-center gap-4 border-t border-[var(--border)] pt-4">
+              <div className="flex items-center gap-6 border-t border-[var(--border)] pt-4 mt-auto">
                 <a
                   href={proj.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline text-sm font-semibold text-accent"
+                  className="btn-link group flex items-center gap-1.5"
                 >
-                  Live Site
+                  {dict.ui.liveSite}
+                  <Icon name="arrowUpRight" className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
                 <a
                   href={proj.source}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline text-sm font-semibold text-accent"
+                  className="btn-link group flex items-center gap-1.5"
                 >
-                  Source
+                  {dict.ui.source}
+                  <Icon name="arrowUpRight" className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
               </div>
             </GlassCard>

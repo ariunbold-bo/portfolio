@@ -4,13 +4,15 @@ const mn: Dictionary = {
   identity: {
     name: "Ариунболд Болд",
     firstName: "Ариунболд",
-    role: "Програм болон техник хангамж хөгжүүлэгч",
-    seoTitle: "Програм болон техник хангамж хөгжүүлэгч",
+    role: "Програм хөгжүүлэгч",
+    seoTitle: "Програм хөгжүүлэгч",
     site: "https://ariunbold.dev",
     siteName: "Ариунболд Болд Портфолио",
     location: "Монгол улс",
     initials: "АБ",
     tagline: "Юм юманд сонирхолтой хүн",
+    dob: "2009-07-01",
+    resumeUrl: "/resume.pdf",
   },
   knowsAbout: [
     "React",
@@ -49,13 +51,7 @@ const mn: Dictionary = {
       icon: "linkedin",
       external: true,
     },
-    {
-      label: "Instagram",
-      value: "@ariuka_69",
-      href: "https://www.instagram.com/ariuka_69/",
-      icon: "instagram",
-      external: true,
-    },
+   
     {
       label: "Facebook",
       value: "Ariunbold Bold",
@@ -315,8 +311,9 @@ const mn: Dictionary = {
     },
   ],
   gallery: [
-    { src: "/arch_ricing.mp4", type: "video", alt: "Arch Linux Ricing", aspectRatio: "aspect-video" },
     { src: "/ble_speaker_mono.mp4", type: "video", alt: "Mono Speaker Version", aspectRatio: "aspect-[9/16]" },
+    { src: "/playing_tts.mp4", type: "video", alt: "Playing TTS", aspectRatio: "aspect-video" },
+    { src: "/tsetseg.webp", type: "image", alt: "Цэцэг", aspectRatio: "aspect-[2/3]" },
   ],
   growth: [
     {
@@ -353,21 +350,55 @@ const mn: Dictionary = {
     { id: "journey", label: "Аялал", icon: "route" },
     { id: "hardware", label: "Техник", icon: "chip" },
     { id: "projects", label: "Төслүүд", icon: "grid" },
-    { id: "beyond", label: "Цаашдаа", icon: "spark" },
     { id: "contact", label: "Холбогдох", icon: "mail" },
   ],
   ui: {
+    // Hero
+    openForOpp: "Шинэ боломжуудад нээлттэй",
+    viewProjects: "Төслүүд Харах",
+    contactMe: "Холбоо Барих",
+
+    // About
+    aboutLabel: "Миний Тухай",
+    aboutTitle: "Программ болон техник хангамжийг холбох нь.",
     coreTechnologies: "Үндсэн Технологиуд",
     activelyMoving: "Доод түвшний санах ой, toolchain болон бусад фреймворкуудын доорх металл руу идэвхтэй шилжиж байна.",
-    viewProject: "Төслийг үзэх",
-    hardwareProjects: "Электроник Төслүүд",
-    hardwareDesc: "Цахилгаан хэлхээ, микроконтроллер болон тооцоолон бодох системийг судалж байна.",
-    softwareProjects: "Програм Хангамжийн Төслүүд",
-    softwareDesc: "Full-stack вэб аппликейшн,самбар болон гүйцэтгэлд чиглэсэн frontend архитектур.",
-    learning: "Суралцах & Сахилга бат",
-    learningDesc: "Дэлгэцнээс гадуурх системийн сэтгэлгээ — механик болон танин мэдэхүйн хэв маягийг эзэмших.",
-    sendMeEmail: "И-мэйл илгээх",
-    connectWithMe: "Надтай холбогдох",
+    personalDisciplines: "Хувь Хүний Сахилга Бат",
+    growthTargets: "Одоогийн Өсөлтийн Зорилтууд",
+    wip: "Хийгдэж буй",
+
+    // Stack
+    stackLabel: "Технологи",
+    stackTitle: "Инженерийн чадавхи.",
+
+    // Journey
+    journeyLabel: "Замнал",
+    journeyTitle: "Миний технологийн замнал.",
+
+    // Hardware
+    hardwareLabel: "Техник Хангамж",
+    hardwareTitle: "Программ болон техник хангамж огтлолцох цэг.",
+    hardwareDesc: "Миний биет инженерийн төслүүдийн сонголт, үүнд микроконтроллер болон техник хангамжийн өөрчлөлт орно.",
+    more: "Дэлгэрэнгүй...",
+
+    // Projects
+    softwareLabel: "Программ Хангамжийн Төслүүд",
+    softwareTitle: "Сонгогдсон вэб аппликейшнүүд.",
+    liveSite: "Шууд Үзэх",
+    source: "Эх Код",
+
+    // Contact
+    contactLabel: "Холбоо Барих",
+    contactTitle: "Хамтдаа нэг зүйл бүтээцгээе.",
+    contactDesc: "Программ хангамжийн төсөл эсвэл техник хангамжийн санаа байсан ч, би шинэ боломжуудыг хэлэлцэхэд үргэлж нээлттэй.",
+    footer: "© {year} Ariunbold Bold. React, Next.js, болон их хэмжээний кофегоор бүтээгдэв.",
+
+    // Gallery / Modal
+    close: "Хаах",
+
+    // Resume
+    downloadResume: "Резюме татанлах",
+    viewResume: "Резюме үзэх",
   },
 };
 

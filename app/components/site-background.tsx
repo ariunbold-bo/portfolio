@@ -17,7 +17,7 @@ export function SiteBackground() {
           top: "-14rem",
           left: "-12rem",
           background:
-            "radial-gradient(circle at 50% 50%, rgba(125,87,79,0.30), transparent 70%)",
+            "radial-gradient(circle at 50% 50%, rgba(42,75,38,0.15), transparent 70%)",
         }}
       />
       <div
@@ -28,7 +28,7 @@ export function SiteBackground() {
           bottom: "-16rem",
           right: "-12rem",
           background:
-            "radial-gradient(circle at 50% 50%, rgba(249,223,228,0.55), transparent 70%)",
+            "radial-gradient(circle at 50% 50%, rgba(140,168,115,0.12), transparent 70%)",
           animationDelay: "-7s",
         }}
       />
@@ -40,7 +40,7 @@ export function SiteBackground() {
           top: "38%",
           left: "42%",
           background:
-            "radial-gradient(circle at 50% 50%, rgba(154,106,95,0.22), transparent 72%)",
+            "radial-gradient(circle at 50% 50%, rgba(63,104,58,0.10), transparent 72%)",
           animationDelay: "-13s",
         }}
       />

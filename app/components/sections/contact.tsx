@@ -8,9 +8,9 @@ export function Contact({ dict }: { dict: Dictionary }) {
     <section id="contact" className="scroll-mt-32 pb-32">
       <Reveal variant="up">
         <SectionHeading
-          label="Contact"
-          title="Let's build something."
-          description="Whether it's a software project or a hardware idea, I'm always open to discussing new opportunities."
+          label={dict.ui.contactLabel}
+          title={dict.ui.contactTitle}
+          description={dict.ui.contactDesc}
         />
       </Reveal>
 
@@ -45,14 +45,47 @@ export function Contact({ dict }: { dict: Dictionary }) {
         </Reveal>
       </div>
 
+      {/* ── Resume ── */}
+      <Reveal variant="up" delay={200} className="mt-10 sm:mt-12">
+        <div className="flex items-center justify-between gap-6 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-2)] p-5 sm:p-6 flex-wrap">
+          <div className="flex items-center gap-4 min-w-0">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[var(--accent)]/10 text-accent">
+              <Icon name="doc" className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-ink-strong">Résumé</p>
+              <p className="text-xs text-muted">resume.pdf · {dict.identity.name}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 flex-wrap">
+            <a
+              href={dict.identity.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost"
+            >
+              <Icon name="external" className="h-4 w-4" />
+              {dict.ui.viewResume}
+            </a>
+            <a
+              href={dict.identity.resumeUrl}
+              download
+              className="btn btn-download"
+            >
+              <Icon name="download" className="h-4 w-4" />
+              {dict.ui.downloadResume}
+            </a>
+          </div>
+        </div>
+      </Reveal>
+
       <Reveal
         variant="fade"
         delay={300}
         className="mt-16 border-t border-[var(--border)] pt-8 text-center text-xs text-muted sm:mt-20 sm:text-sm lg:mt-24"
       >
         <p>
-          © {new Date().getFullYear()} Ariunbold Bold. Built with React,
-          Next.js, and plenty of coffee.
+          {dict.ui.footer.replace("{year}", new Date().getFullYear().toString())}
         </p>
       </Reveal>
     </section>

@@ -8,7 +8,7 @@ export function Journey({ dict }: { dict: Dictionary }) {
   return (
     <section id="journey" className="scroll-mt-32">
       <Reveal variant="up">
-        <SectionHeading label="Journey" title="My path in technology." />
+        <SectionHeading label={dict.ui.journeyLabel} title={dict.ui.journeyTitle} />
       </Reveal>
 
       <div className="relative mt-12 sm:mt-16 md:mt-24">

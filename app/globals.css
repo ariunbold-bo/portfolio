@@ -4,78 +4,72 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ------------------------------------------------------------------ *
- * COLOR SYSTEM — built strictly from two source hues.
- *   Rosewood #7D574F  ·  Blush #F9DFE4  (+ tints / shades only)
+ * COLOR SYSTEM — Navy Blue & Gray
+ *   Light: cool light gray · deep navy blue
+ *   Dark:  deep slate gray · rich navy/blue
  * ------------------------------------------------------------------ */
 :root,
 [data-theme="light"] {
-  --rosewood: #7d574f;
-  --blush: #f9dfe4;
+  --accent: #2563eb;       /* Bright Vivid Blue */
+  --accent-2: #1d4ed8;     
+  --accent-rgb: 37, 99, 235;
+  --status-dot: #2563eb;   
 
-  --bg: #f3d9df;
-  --bg-grad-1: #fceff2;
-  --bg-grad-2: #eecdd4;
+  --bg: #ffffff;           /* Pure White */
+  --bg-grad-1: #f8fafc;
+  --bg-grad-2: #ffffff;
 
-  --ink: #3c231d;
-  --ink-strong: #2a1712;
-  --muted: #6d4a42;
-  --faint: #8b6259;
+  --ink: #475569;          
+  --ink-strong: #0f172a;   
+  --muted: #64748b;        
+  --faint: #e2e8f0;
 
-  --surface: rgba(255, 251, 252, 0.55);
-  --surface-2: rgba(255, 251, 252, 0.34);
-  --surface-solid: #fbf1f3;
-  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --surface: rgba(var(--accent-rgb), 0.04);
+  --surface-2: rgba(var(--accent-rgb), 0.08);
+  --surface-solid: #ffffff;
+  --border: rgba(var(--accent-rgb), 0.12);
+  --border-strong: rgba(var(--accent-rgb), 0.22);
 
-  --border: rgba(125, 87, 79, 0.16);
-  --border-strong: rgba(125, 87, 79, 0.32);
+  --on-accent: #ffffff;
+  --shadow-rgb: 17, 24, 39;
+  --shadow: 0 4px 24px -4px rgba(17, 24, 39, 0.08);
 
-  --accent: #7d574f;
-  --accent-2: #9a6a5f;
-  --on-accent: #fceff2;
-
-  --ring: rgba(125, 87, 79, 0.55);
-  --accent-rgb: 125, 87, 79;
-  --shadow-rgb: 125, 87, 79;
-  --shadow: 0 24px 55px -24px rgba(125, 87, 79, 0.42);
-  --grid-line: rgba(125, 87, 79, 0.07);
+  --ring: var(--accent);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  --grid-line: rgba(17, 24, 39, 0.05);
 }
-
 [data-theme="dark"] {
-  --rosewood: #7d574f;
-  --blush: #f9dfe4;
+  --accent: #1e40af;       /* Navy Blue (Bright enough for dark mode) */
+  --accent-2: #2563eb;     
+  --accent-rgb: 30, 64, 175;
+  --status-dot: #60a5fa;   /* Lighter blue for visibility */
 
-  --bg: #1b100d;
-  --bg-grad-1: #2c1712;
-  --bg-grad-2: #120a08;
+  --bg: #111827;           /* Deep Slate Gray */
+  --bg-grad-1: #1f2937;
+  --bg-grad-2: #030712;
 
-  --ink: #f9dfe4;
-  --ink-strong: #fdeff2;
-  --muted: rgba(249, 223, 228, 0.66);
-  --faint: rgba(249, 223, 228, 0.42);
+  --ink: #9ca3af;          /* Cool gray */
+  --ink-strong: #f3f4f6;   
+  --muted: #6b7280;        
+  --faint: #374151;
 
-  --surface: rgba(249, 223, 228, 0.055);
-  --surface-2: rgba(249, 223, 228, 0.03);
-  --surface-solid: #2a1813;
-  --glass-highlight: rgba(249, 223, 228, 0.08);
+  --surface: rgba(var(--accent-rgb), 0.15);
+  --surface-2: rgba(var(--accent-rgb), 0.25);
+  --surface-solid: #1f2937;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
 
-  --border: rgba(249, 223, 228, 0.12);
-  --border-strong: rgba(249, 223, 228, 0.24);
-
-  --accent: #d79a8d;
-  --accent-2: #ecb9ae;
-  --on-accent: #23120e;
-
-  --ring: rgba(215, 154, 141, 0.6);
-  --accent-rgb: 215, 154, 141;
+  --on-accent: #ffffff;    
   --shadow-rgb: 0, 0, 0;
-  --shadow: 0 28px 60px -22px rgba(0, 0, 0, 0.65);
-  --grid-line: rgba(249, 223, 228, 0.05);
-}
+  --shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5);
 
+  --ring: var(--accent);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+  --grid-line: rgba(255, 255, 255, 0.03);
+}
 /* Expose the runtime tokens to Tailwind utilities (inline = no copy). */
 @theme inline {
-  --color-rosewood: var(--rosewood);
-  --color-blush: var(--blush);
+  /* Legacy aliases removed — rosewood/blush palette retired */
   --color-bg: var(--bg);
   --color-ink: var(--ink);
   --color-ink-strong: var(--ink-strong);
@@ -106,7 +100,8 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior handled by Lenis — do NOT set CSS smooth here,
+       the two systems fight and cause scroll-down jank. */
     scroll-padding-top: 3rem;
     overflow-x: hidden;
   }
@@ -277,37 +272,104 @@
     gap: 0.55rem;
     border-radius: 999px;
     padding: 0.78rem 1.4rem;
-    font-weight: 500;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     line-height: 1;
     white-space: nowrap;
+    text-decoration: none;
     transition:
-      transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
-      box-shadow 0.4s ease,
-      background-color 0.4s ease,
-      color 0.4s ease,
-      border-color 0.4s ease;
+      transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+      box-shadow 0.35s ease,
+      background-color 0.35s ease,
+      color 0.35s ease,
+      border-color 0.35s ease,
+      opacity 0.35s ease;
   }
   .btn:active {
-    transform: translateY(1px) scale(0.99);
+    transform: translateY(1px) scale(0.98);
   }
+
+  /* ── Primary: solid accent fill ── */
   .btn-primary {
     background: var(--accent);
     color: var(--on-accent);
-    box-shadow: 0 16px 34px -14px rgba(var(--accent-rgb), 0.7);
+    box-shadow: 0 12px 28px -10px rgba(var(--accent-rgb), 0.6);
   }
   .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 22px 44px -14px rgba(var(--accent-rgb), 0.85);
+    box-shadow: 0 20px 40px -12px rgba(var(--accent-rgb), 0.8);
   }
+
+  /* ── Ghost: outlined, transparent ── */
   .btn-ghost {
-    border: 1px solid var(--border-strong);
+    border: 1.5px solid var(--border-strong);
     color: var(--ink);
     background: var(--surface-2);
   }
   .btn-ghost:hover {
     transform: translateY(-3px);
     border-color: var(--accent);
+    color: var(--accent);
     background: var(--surface);
+  }
+
+  /* ── Link: text-only, underline on hover ── */
+  .btn-link {
+    padding: 0.4rem 0.2rem;
+    border-radius: 4px;
+    color: var(--accent);
+    background: transparent;
+    font-weight: 600;
+    position: relative;
+  }
+  .btn-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+    border-radius: 99px;
+  }
+  .btn-link:hover::after {
+    width: 100%;
+  }
+  .btn-link:hover {
+    opacity: 0.85;
+  }
+
+  /* ── Download: accent ghost with down-arrow feel ── */
+  .btn-download {
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.06);
+    box-shadow: inset 0 0 0 0 rgba(var(--accent-rgb), 0.15);
+  }
+  .btn-download:hover {
+    transform: translateY(-3px);
+    background: rgba(var(--accent-rgb), 0.12);
+    box-shadow:
+      inset 0 0 0 0 rgba(var(--accent-rgb), 0.15),
+      0 12px 28px -10px rgba(var(--accent-rgb), 0.35);
+  }
+
+  /* ── Pill: subtle surface tag-like button ── */
+  .btn-pill {
+    padding: 0.5rem 1rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .btn-pill:hover {
+    background: var(--surface);
+    border-color: var(--border-strong);
+    color: var(--ink);
+    transform: translateY(-2px);
   }
 
   .chip {
@@ -419,7 +481,6 @@
     opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
     transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
 }
 [data-reveal="fade"] {
   transform: none;

@@ -4,16 +4,16 @@ import type { NextRequest } from "next/server";
 let locales = ["en", "mn"];
 let defaultLocale = "en";
 
-// Simple Accept-Language parser
-function getPreferredLocale(request: NextRequest) {
-  const acceptLang = request.headers.get("accept-language");
-  if (acceptLang) {
-    if (acceptLang.includes("mn")) {
-      return "mn";
-    }
-  }
-  return defaultLocale;
-}
+// Simple Accept-Language parser (preserved for future i18n re-enablement)
+// function getPreferredLocale(request: NextRequest) {
+//   const acceptLang = request.headers.get("accept-language");
+//   if (acceptLang) {
+//     if (acceptLang.includes("mn")) {
+//       return "mn";
+//     }
+//   }
+//   return defaultLocale;
+// }
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -34,13 +34,9 @@ export function middleware(request: NextRequest) {
     return;
   }
 
-  // Handle subdomain for mn.ariunbold.dev
-  const host = request.headers.get("host") || "";
-  let locale = getPreferredLocale(request);
-  
-  if (host === "mn.ariunbold.dev") {
-    locale = "mn";
-  }
+  // Always use English — i18n detection disabled for now
+  // (Accept-Language and mn.ariunbold.dev subdomain logic preserved above)
+  const locale = defaultLocale;
 
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);

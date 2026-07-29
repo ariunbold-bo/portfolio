@@ -4,13 +4,15 @@ const en: Dictionary = {
   identity: {
     name: "Ariunbold Bold",
     firstName: "Ariunbold",
-    role: "Systems Developer & Multidisciplinary Learner",
+    role: "Systems Developer",
     seoTitle: "Software & Hardware Developer",
     site: "https://ariunbold.dev",
     siteName: "Ariunbold Bold Portfolio",
     location: "Mongolia",
     initials: "AB",
     tagline: "im just a guy who likes thinkering complex questions",
+    dob: "2009-07-01",
+    resumeUrl: "/resume.pdf",
   },
   knowsAbout: [
     "React",
@@ -49,13 +51,7 @@ const en: Dictionary = {
       icon: "linkedin",
       external: true,
     },
-    {
-      label: "Instagram",
-      value: "@ariuka_69",
-      href: "https://www.instagram.com/ariuka_69/",
-      icon: "instagram",
-      external: true,
-    },
+   
     {
       label: "Facebook",
       value: "Ariunbold Bold",
@@ -312,8 +308,9 @@ const en: Dictionary = {
     },
   ],
   gallery: [
-    { src: "/playing_tts.mp4", type: "video", alt: "playing tts", aspectRatio: "aspect-video" },
-    { src: "/tsetseg.webp", type: "image", alt: "just a flower ", aspectRatio: "aspect-[2/3]" },
+    { src: "/ble_speaker_mono.mp4", type: "video", alt: "Mono Speaker Version", aspectRatio: "aspect-[9/16]" },
+    { src: "/playing_tts.mp4", type: "video", alt: "Playing TTS", aspectRatio: "aspect-video" },
+    { src: "/tsetseg.webp", type: "image", alt: "Just a flower", aspectRatio: "aspect-[2/3]" },
   ],
   growth: [
     {
@@ -350,21 +347,55 @@ const en: Dictionary = {
     { id: "journey", label: "Journey", icon: "route" },
     { id: "hardware", label: "Hardware", icon: "chip" },
     { id: "projects", label: "Projects", icon: "grid" },
-    { id: "beyond", label: "Beyond", icon: "spark" },
     { id: "contact", label: "Contact", icon: "mail" },
   ],
   ui: {
+    // Hero
+    openForOpp: "Open for opportunities",
+    viewProjects: "View Projects",
+    contactMe: "Contact Me",
+
+    // About
+    aboutLabel: "About Me",
+    aboutTitle: "Bridging software and hardware.",
     coreTechnologies: "Core Technologies",
     activelyMoving: "Actively moving lower level, into memory, toolchains, and the metal underneath the frameworks.",
-    viewProject: "View Project",
-    hardwareProjects: "Hardware Projects",
-    hardwareDesc: "Exploring circuits, microcontrollers, and custom physical computing systems.",
-    softwareProjects: "Software Projects",
-    softwareDesc: "Full-stack web applications, interactive canvas tools, and performance-focused frontend architectures.",
-    learning: "Learning & Disciplines",
-    learningDesc: "Systems thinking applied beyond the screen — mastering analog mechanics and cognitive patterns.",
-    sendMeEmail: "Send me an email",
-    connectWithMe: "Connect with me",
+    personalDisciplines: "Personal Disciplines",
+    growthTargets: "Current Growth Targets",
+    wip: "WIP",
+
+    // Stack
+    stackLabel: "The Stack",
+    stackTitle: "Engineering capabilities.",
+
+    // Journey
+    journeyLabel: "Journey",
+    journeyTitle: "My path in technology.",
+
+    // Hardware
+    hardwareLabel: "Hardware",
+    hardwareTitle: "Where software meets physical logic.",
+    hardwareDesc: "A selection of my physical engineering projects, including microcontrollers and hardware modification.",
+    more: "More...",
+
+    // Projects
+    softwareLabel: "Software Projects",
+    softwareTitle: "Selected web applications.",
+    liveSite: "Live Site",
+    source: "Source",
+
+    // Contact
+    contactLabel: "Contact",
+    contactTitle: "Let's build something.",
+    contactDesc: "Whether it's a software project or a hardware idea, I'm always open to discussing new opportunities.",
+    footer: "© {year} Ariunbold Bold. Built with React, Next.js, and plenty of coffee.",
+
+    // Gallery / Modal
+    close: "Close",
+
+    // Resume
+    downloadResume: "Download Résumé",
+    viewResume: "View Résumé",
   },
 };
 

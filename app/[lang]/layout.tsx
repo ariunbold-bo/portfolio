@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import en from "@/app/lib/dictionaries/en";
+import SmoothScroll from "../components/smooth-scroll-provider";
 const { identity, knowsAbout, contact } = en;
 
 const poppins = Poppins({
@@ -112,7 +113,7 @@ export default async function RootLayout(props: {
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         /> */}
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

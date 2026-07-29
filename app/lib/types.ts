@@ -5,14 +5,13 @@ export type NavId =
   | "journey"
   | "hardware"
   | "projects"
-  | "beyond"
   | "contact";
 
 export type ContactLink = {
   label: string;
   value: string;
   href: string;
-  icon: "mail" | "phone" | "github" | "linkedin" | "instagram" | "facebook";
+  icon: "mail" | "phone" | "github" | "linkedin" | "facebook";
   external: boolean;
 };
 
@@ -85,6 +84,8 @@ export type Dictionary = {
     location: string;
     initials: string;
     tagline: string;
+    dob: string;
+    resumeUrl: string;
   };
   knowsAbout: readonly string[];
   contact: ContactLink[];
@@ -97,16 +98,34 @@ export type Dictionary = {
   growth: GrowthTarget[];
   nav: { id: NavId; label: string; icon: string }[];
   ui: {
+    openForOpp: string;
+    viewProjects: string;
+    contactMe: string;
+    aboutLabel: string;
+    aboutTitle: string;
     coreTechnologies: string;
     activelyMoving: string;
-    viewProject: string;
-    hardwareProjects: string;
+    personalDisciplines: string;
+    growthTargets: string;
+    wip: string;
+    stackLabel: string;
+    stackTitle: string;
+    journeyLabel: string;
+    journeyTitle: string;
+    hardwareLabel: string;
+    hardwareTitle: string;
     hardwareDesc: string;
-    softwareProjects: string;
-    softwareDesc: string;
-    learning: string;
-    learningDesc: string;
-    sendMeEmail: string;
-    connectWithMe: string;
+    more: string;
+    softwareLabel: string;
+    softwareTitle: string;
+    liveSite: string;
+    source: string;
+    contactLabel: string;
+    contactTitle: string;
+    contactDesc: string;
+    footer: string;
+    close: string;
+    downloadResume: string;
+    viewResume: string;
   };
 };

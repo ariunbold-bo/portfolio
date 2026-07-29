@@ -11,9 +11,9 @@ export function Hardware({ dict }: { dict: Dictionary }) {
     <section id="hardware" className="scroll-mt-32">
       <Reveal variant="up">
         <SectionHeading
-          label="Hardware"
-          title="Where software meets physical logic."
-          description="A selection of my physical engineering projects, including microcontrollers and hardware modification."
+          label={dict.ui.hardwareLabel}
+          title={dict.ui.hardwareTitle}
+          description={dict.ui.hardwareDesc}
         />
       </Reveal>
 
@@ -36,12 +36,13 @@ export function Hardware({ dict }: { dict: Dictionary }) {
                 <p className="mb-6 text-base leading-relaxed text-muted sm:text-lg">
                   {hw.summary}
                 </p>
-                <div className="relative bottom-0">
+                <div className="relative bottom-0 mt-2">
                   <Link
                     href={`/work/${hw.slug}`}
-                    className="btn btn-primary hover-lift"
+                    className="btn btn-primary hover-lift group w-full sm:w-auto"
                   >
-                    More...
+                    {dict.ui.more}
+                    <Icon name="arrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>

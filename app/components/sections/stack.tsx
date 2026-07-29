@@ -8,7 +8,7 @@ export function Stack({ dict }: { dict: Dictionary }) {
   return (
     <section id="stack" className="scroll-mt-32">
       <Reveal variant="up">
-        <SectionHeading label="The Stack" title="Engineering capabilities." />
+        <SectionHeading label={dict.ui.stackLabel} title={dict.ui.stackTitle} />
       </Reveal>
 
       <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-3">

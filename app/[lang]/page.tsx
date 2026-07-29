@@ -9,15 +9,13 @@ import { Stack } from "../components/sections/stack";
 import { Journey } from "../components/sections/journey";
 import { Hardware } from "../components/sections/hardware";
 import { Projects } from "../components/sections/projects";
-import { Beyond } from "../components/sections/beyond";
-import { Gallery } from "../components/sections/gallery";
 import { Contact } from "../components/sections/contact";
 
 export default async function LandingZone(props: {
   params: Promise<{ lang: string }>;
 }) {
   const params = await props.params;
-  const dict = await getDictionary(params.lang as "en" | "mn");
+  const dict = await getDictionary(params.lang as "en");
 
   return (
     <>
@@ -33,8 +31,6 @@ export default async function LandingZone(props: {
           <Journey dict={dict} />
           <Hardware dict={dict} />
           <Projects dict={dict} />
-          <Beyond dict={dict} />
-          <Gallery dict={dict} />
           <Contact dict={dict} />
         </div>
       </main>

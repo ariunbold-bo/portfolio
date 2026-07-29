@@ -5,7 +5,6 @@ type IconName =
   | "phone"
   | "github"
   | "linkedin"
-  | "instagram"
   | "facebook"
   | "home"
   | "user"
@@ -29,7 +28,12 @@ type IconName =
   | "moon"
   | "code"
   | "mapPin"
-  | "speaker";
+  | "speaker"
+  | "x"
+  | "doc"
+  | "external"
+  | "download"
+  | "play";
 
 const paths: Record<IconName, React.ReactNode> = {
   mail: (
@@ -174,19 +178,28 @@ const paths: Record<IconName, React.ReactNode> = {
       d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.26-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9V9Z"
     />
   ),
-  instagram: (
-    <>
-      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
-    </>
-  ),
+
   facebook: (
     <path
       fill="currentColor"
       stroke="none"
       d="M14 9h2.5V6H14c-2 0-3.5 1.4-3.5 3.6V11H8v3h2.5v7H14v-7h2.3l.4-3H14V9.9c0-.6.4-.9 1-.9Z"
     />
+  ),
+  x: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  ),
+  doc: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+  ),
+  external: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+  ),
+  download: (
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+  ),
+  play: (
+    <polygon points="5 3 19 12 5 21 5 3" />
   ),
 };
 
