@@ -345,12 +345,8 @@ const mn: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Нүүр", icon: "home" },
-    { id: "about", label: "Тухай", icon: "user" },
     { id: "stack", label: "Технологи", icon: "layers" },
     { id: "journey", label: "Аялал", icon: "route" },
-    { id: "hardware", label: "Техник", icon: "chip" },
-    { id: "projects", label: "Төслүүд", icon: "grid" },
-    { id: "contact", label: "Холбогдох", icon: "mail" },
   ],
   ui: {
     // Hero

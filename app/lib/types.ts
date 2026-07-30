@@ -126,5 +126,14 @@ export type Dictionary = {
     close: string;
     downloadResume: string;
     viewResume: string;
+    backToHome: string;
+    wantToKnowMore: string;
+    yearsOld: string;
+    yearsCoding: string;
+    projectsBuilt: string;
+    language: string;
+    theme: string;
+    clickToReveal: string;
+    readFullStory: string;
   };
 };

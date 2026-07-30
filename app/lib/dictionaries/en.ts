@@ -342,12 +342,8 @@ const en: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Home", icon: "home" },
-    { id: "about", label: "About", icon: "user" },
     { id: "stack", label: "Stack", icon: "layers" },
     { id: "journey", label: "Journey", icon: "route" },
-    { id: "hardware", label: "Hardware", icon: "chip" },
-    { id: "projects", label: "Projects", icon: "grid" },
-    { id: "contact", label: "Contact", icon: "mail" },
   ],
   ui: {
     // Hero

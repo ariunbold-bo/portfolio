@@ -95,7 +95,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   const lang = pathname.split("/")[1] || "en";
 
   // Filter out standalone pages and hardware from the nav rail (only keep home, stack, journey)
-  const navItems = dict.nav.filter(item => !PAGE_IDS.has(item.id) && item.id !== "hardware");
+  const navItems = dict.nav.filter(item => !PAGE_IDS.has(item.id));
 
   // Detect active item: for page-level routes derive from pathname,
   // for anchor sections use IntersectionObserver.
