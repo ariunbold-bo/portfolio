@@ -77,10 +77,10 @@ export function NavRail({ dict }: { dict: Dictionary }) {
         <ThemeToggle />
       </nav>
 
-      {/* Mobile bottom bar */}
+      {/* Mobile floating pill */}
       <nav
         aria-label="Section navigation"
-        className="glass fixed bottom-0 left-0 right-0 z-40 flex items-center justify-center gap-0 rounded-none border-t border-[var(--border)] bg-[var(--surface)] px-2 py-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] sm:bottom-3 sm:left-1/2 sm:right-auto sm:w-auto sm:-translate-x-1/2 sm:rounded-full sm:border sm:bg-transparent lg:hidden"
+        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 flex items-center justify-center gap-0 rounded-full border border-[var(--border)] bg-[var(--surface-solid)]/85 px-2 py-1.5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:hidden"
       >
         {visible.map((item) => {
           const isActive = active === item.id;
@@ -128,7 +128,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
             </button>
 
             {moreOpen && (
-              <div className="glass absolute bottom-[calc(100%+8px)] right-0 z-50 flex flex-col gap-1 rounded-2xl border border-[var(--border-strong)] p-2 shadow-[var(--shadow)] sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
+              <div className="absolute bottom-[calc(100%+8px)] right-0 z-50 flex flex-col gap-1 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-solid)]/90 p-2 shadow-[0_16px_48px_-12px_rgba(0,0,0,0.5)] backdrop-blur-2xl sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
                 {overflow.map((item) => {
                   const isActive = active === item.id;
                   return (

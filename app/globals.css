@@ -4,68 +4,68 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ------------------------------------------------------------------ *
- * COLOR SYSTEM — Navy Blue & Gray
- *   Light: cool light gray · deep navy blue
- *   Dark:  deep slate gray · rich navy/blue
+ * COLOR SYSTEM — Warm Amber & Slate Premium
+ *   Light: warm off-white · rich amber-gold
+ *   Dark:  deep charcoal · electric amber
  * ------------------------------------------------------------------ */
 :root,
 [data-theme="light"] {
-  --accent: #2563eb;       /* Bright Vivid Blue */
-  --accent-2: #1d4ed8;     
-  --accent-rgb: 37, 99, 235;
-  --status-dot: #2563eb;   
+  --accent: #b45309;       /* Amber 700 */
+  --accent-2: #d97706;     /* Amber 600 */
+  --accent-rgb: 180, 83, 9;
+  --status-dot: #d97706;
 
-  --bg: #ffffff;           /* Pure White */
-  --bg-grad-1: #f8fafc;
-  --bg-grad-2: #ffffff;
+  --bg: #fafaf8;           /* Warm neutral white */
+  --bg-grad-1: #fefefe;
+  --bg-grad-2: #f4f3ef;
 
-  --ink: #475569;          
-  --ink-strong: #0f172a;   
-  --muted: #64748b;        
-  --faint: #e2e8f0;
+  --ink: #44403c;          /* Stone 700 */
+  --ink-strong: #1c1917;   /* Stone 900 */
+  --muted: #78716c;        /* Stone 500 */
+  --faint: #e7e5e0;        /* Stone 200 */
 
   --surface: rgba(var(--accent-rgb), 0.04);
-  --surface-2: rgba(var(--accent-rgb), 0.08);
+  --surface-2: rgba(var(--accent-rgb), 0.07);
   --surface-solid: #ffffff;
   --border: rgba(var(--accent-rgb), 0.12);
   --border-strong: rgba(var(--accent-rgb), 0.22);
 
   --on-accent: #ffffff;
-  --shadow-rgb: 17, 24, 39;
-  --shadow: 0 4px 24px -4px rgba(17, 24, 39, 0.08);
+  --shadow-rgb: 28, 25, 23;
+  --shadow: 0 4px 24px -4px rgba(28, 25, 23, 0.08);
 
   --ring: var(--accent);
-  --glass-highlight: rgba(255, 255, 255, 0.9);
-  --grid-line: rgba(17, 24, 39, 0.05);
+  --glass-highlight: rgba(255, 255, 255, 0.92);
+  --grid-line: rgba(180, 83, 9, 0.04);
 }
 [data-theme="dark"] {
-  --accent: #1e40af;       /* Navy Blue (Bright enough for dark mode) */
-  --accent-2: #2563eb;     
-  --accent-rgb: 30, 64, 175;
-  --status-dot: #60a5fa;   /* Lighter blue for visibility */
+  --accent: #f59e0b;       /* Amber 400 */
+  --accent-2: #fbbf24;     /* Amber 300 */
+  --accent-rgb: 245, 158, 11;
+  --status-dot: #fcd34d;   /* Amber 300 */
 
-  --bg: #111827;           /* Deep Slate Gray */
-  --bg-grad-1: #1f2937;
-  --bg-grad-2: #030712;
+  --bg: #0c0a09;           /* Warm near-black */
+  --bg-grad-1: #171412;
+  --bg-grad-2: #060504;
 
-  --ink: #9ca3af;          /* Cool gray */
-  --ink-strong: #f3f4f6;   
-  --muted: #6b7280;        
-  --faint: #374151;
+  --ink: #a8a29e;          /* Stone 400 */
+  --ink-strong: #f5f5f4;   /* Stone 100 */
+  --muted: #78716c;        /* Stone 500 */
+  --faint: #292524;        /* Stone 800 */
 
-  --surface: rgba(var(--accent-rgb), 0.15);
-  --surface-2: rgba(var(--accent-rgb), 0.25);
-  --surface-solid: #1f2937;
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.2);
+  --surface: rgba(var(--accent-rgb), 0.08);
+  --surface-2: rgba(var(--accent-rgb), 0.14);
+  --surface-solid: #1c1917;
+  --border: rgba(245, 158, 11, 0.15);
+  --border-strong: rgba(245, 158, 11, 0.28);
 
-  --on-accent: #ffffff;    
+  --on-accent: #1c1917;
   --shadow-rgb: 0, 0, 0;
-  --shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5);
+  --shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.6);
 
   --ring: var(--accent);
-  --glass-highlight: rgba(255, 255, 255, 0.05);
-  --grid-line: rgba(255, 255, 255, 0.03);
+  --glass-highlight: rgba(245, 158, 11, 0.05);
+  --grid-line: rgba(245, 158, 11, 0.04);
 }
 /* Expose the runtime tokens to Tailwind utilities (inline = no copy). */
 @theme inline {
@@ -225,15 +225,27 @@
   }
 
   .hover-lift {
-    transition:
-      transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
-      box-shadow 0.55s ease,
-      border-color 0.55s ease;
+    position: relative;
+    transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  /* Shadow via opacity on a pre-rendered pseudo-element —
+     avoids box-shadow paint calls on every animation frame */
+  .hover-lift::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 34px 70px -30px rgba(var(--shadow-rgb), 0.55);
+    opacity: 0;
+    transition: opacity 0.55s ease;
+    pointer-events: none;
+    z-index: -1;
   }
   .hover-lift:hover {
     transform: translateY(-6px);
-    border-color: var(--border-strong);
-    box-shadow: 0 34px 70px -30px rgba(var(--shadow-rgb), 0.55);
+  }
+  .hover-lift:hover::after {
+    opacity: 1;
   }
 
   /* soft rosewood glow that follows a card on hover */
@@ -435,9 +447,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    font-size: 0.72rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
   }
@@ -452,8 +464,8 @@
   .gradient-text {
     background: linear-gradient(
       115deg,
-      var(--ink-strong) 10%,
-      var(--accent) 90%
+      var(--ink-strong) 20%,
+      var(--accent) 80%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -473,10 +485,14 @@
 
 /* ------------------------------------------------------------------ *
  * SCROLL-REVEAL SYSTEM (paired with <Reveal /> IntersectionObserver)
+ * GPU-optimised: will-change is set before the transition fires and
+ * released (auto) once the element is visible to free compositor
+ * memory — critical on mobile where GPU VRAM is shared with the CPU.
  * ------------------------------------------------------------------ */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translate3d(0, 26px, 0); /* translate3d forces GPU path */
+  will-change: transform, opacity;    /* promote before animation     */
   transition:
     opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
     transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -489,10 +505,10 @@
   transform: scale(0.94);
 }
 [data-reveal="left"] {
-  transform: translateX(-32px);
+  transform: translate3d(-32px, 0, 0);
 }
 [data-reveal="right"] {
-  transform: translateX(32px);
+  transform: translate3d(32px, 0, 0);
 }
 [data-reveal="blur"] {
   filter: blur(10px);
@@ -509,14 +525,16 @@
 
 /* ------------------------------------------------------------------ *
  * KEYFRAMES — reusable motion vocabulary
+ * All use translate3d / rotate3d so the browser keeps every animated
+ * element on its own compositor layer (GPU) and never triggers layout.
  * ------------------------------------------------------------------ */
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-14px);
+    transform: translate3d(0, -14px, 0);
   }
 }
 @keyframes float-slow {
@@ -554,17 +572,11 @@
   }
 }
 @keyframes shimmer {
-  0% {
-    transform: translateX(-120%);
-  }
-  100% {
-    transform: translateX(120%);
-  }
+  0%   { transform: translate3d(-120%, 0, 0); }
+  100% { transform: translate3d(120%, 0, 0); }
 }
 @keyframes spin-slow {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate3d(0, 0, 1, 360deg); }
 }
 @keyframes pulse-ring {
   0% {
@@ -599,46 +611,52 @@
 @keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translate3d(0, 20px, 0);
   }
   to {
     opacity: 1;
-    transform: none;
+    transform: translate3d(0, 0, 0);
   }
 }
 @keyframes pop-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+  0%   { opacity: 0; transform: scale(0.95) translate3d(0, 10px, 0); }
+  100% { opacity: 1; transform: scale(1)    translate3d(0, 0,   0); }
 }
 
+/* Continuous-animation helpers — will-change declared here so every
+   element using the class gets its own compositor layer immediately. */
 .animate-float {
+  will-change: transform;
   animation: float 6s ease-in-out infinite;
 }
 .animate-float-slow {
+  will-change: transform;
   animation: float-slow 9s ease-in-out infinite;
 }
 .animate-spin-slow {
+  will-change: transform;
   animation: spin-slow 26s linear infinite;
 }
 .animate-rise {
+  will-change: transform, opacity;
   animation: rise-in 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 .animate-pop {
+  will-change: transform, opacity;
   animation: pop-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ambient background blobs */
+/* Ambient background blobs
+   translateZ(0) + backface-visibility: hidden forces an immediate
+   GPU layer promotion so the aurora animation never triggers a repaint
+   on the main thread. */
 .blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(70px);
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   animation: aurora 20s ease-in-out infinite;
 }
 
@@ -686,6 +704,8 @@
 .marquee-track {
   display: flex;
   width: max-content;
+  will-change: transform;           /* pre-promote for infinite scroll */
+  transform: translateZ(0);
   animation: marquee 32s linear infinite;
 }
 .marquee:hover .marquee-track {
@@ -696,9 +716,7 @@
  * REDUCED MOTION
  * ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
   *,
   *::before,
   *::after {
@@ -710,5 +728,55 @@
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * GPU UTILITIES
+ * Reusable classes for manual compositing control.
+ * ------------------------------------------------------------------ */
+@layer utilities {
+  /* Force element onto its own GPU compositor layer.
+     Use sparingly — each layer costs GPU memory. */
+  .gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Limit repaint scope to this element's bounding box.
+     Great for cards, modals, sidebars. */
+  .contain-paint {
+    contain: layout style paint;
+  }
+
+  /* Pause all descendant animations (e.g. when a section
+     is scrolled far off screen via an IntersectionObserver). */
+  .anim-paused,
+  .anim-paused * {
+    animation-play-state: paused !important;
+  }
+
+  /* ── MY OWN METHOD ──────────────────────────────────────────────
+     On touch/mobile devices GPU VRAM is shared with system RAM.
+     Blanket will-change declarations waste that shared memory and
+     can actually slow things down. Strip will-change from all
+     continuously-animated helpers on coarse-pointer devices and
+     let the browser decide layer promotion on its own.
+     Blob + marquee keep their will-change because they're truly
+     continuous and the browser won't promote them otherwise.
+  ───────────────────────────────────────────────────────────────── */
+  @media (hover: none) and (pointer: coarse) {
+    .animate-float,
+    .animate-float-slow,
+    .animate-spin-slow,
+    .animate-rise,
+    .animate-pop {
+      will-change: auto;
+    }
+    /* Shorten reveal transitions on mobile for snappier feel */
+    [data-reveal] {
+      transition-duration: 0.5s;
+    }
   }
 }

@@ -15,11 +15,8 @@
 13 title yes yeah i got it
 
 
-
-
 rank easy to hard:
 12.scroll down speed change (i made the scroll more smoother with physics)
-#14. the hu tao icon im sorry
 15. add yo age pls
 16. probably add my cv? (cv is at public/resume.pdf)
 3. title add a gap
@@ -27,3 +24,4 @@ rank easy to hard:
 
 bug:
 the language thing is different for everyone idk why and some of it havent even translated god damn it what a mess
+

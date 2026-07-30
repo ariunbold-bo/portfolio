@@ -94,7 +94,7 @@ export function About({ dict }: { dict: Dictionary }) {
                     <span className="shrink-0 text-[0.6rem] font-semibold uppercase tracking-widest text-accent sm:text-xs">{item.meta}</span>
                   </div>
                   <p className="text-xs leading-relaxed text-muted sm:text-sm">{item.body}</p>
-                  {item.youtubeId && (
+                  {/* {item.youtubeId && (
                     <div className="mt-4 overflow-hidden rounded-xl bg-[var(--surface-solid)] relative aspect-video w-full">
                       <iframe
                         src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0`}
@@ -105,7 +105,7 @@ export function About({ dict }: { dict: Dictionary }) {
                         className="absolute inset-0 h-full w-full border-0"
                       />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </GlassCard>
             </Reveal>
