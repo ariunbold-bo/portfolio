@@ -713,6 +713,54 @@
 }
 
 /* ------------------------------------------------------------------ *
+ * PAGE TRANSITION
+ * Used by [lang]/template.tsx for route-change slide animations.
+ * ------------------------------------------------------------------ */
+@keyframes page-slide-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes page-slide-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+}
+.page-enter {
+  animation: page-slide-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+/* ------------------------------------------------------------------ *
+ * JOURNEY ACCORDION
+ * Collapse / expand the body text inside timeline cards on click.
+ * ------------------------------------------------------------------ */
+.journey-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+.journey-body > .journey-body-inner {
+  overflow: hidden;
+}
+.journey-body.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
  * REDUCED MOTION
  * ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {

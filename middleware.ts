@@ -4,16 +4,23 @@ import type { NextRequest } from "next/server";
 let locales = ["en", "mn"];
 let defaultLocale = "en";
 
-// Simple Accept-Language parser (preserved for future i18n re-enablement)
-// function getPreferredLocale(request: NextRequest) {
-//   const acceptLang = request.headers.get("accept-language");
-//   if (acceptLang) {
-//     if (acceptLang.includes("mn")) {
-//       return "mn";
-//     }
-//   }
-//   return defaultLocale;
-// }
+function getPreferredLocale(request: NextRequest) {
+  // 1. Check if user explicitly set a language preference
+  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
+  if (cookieLocale && locales.includes(cookieLocale)) {
+    return cookieLocale;
+  }
+
+  // 2. Fallback to browser language commented for a quite a long time due to incomplete translation
+  const acceptLang = request.headers.get("accept-language");
+  if (acceptLang) {
+    // Basic check for Mongolian in the accept-language header
+    if (acceptLang.toLowerCase().includes("mn")) {
+      return "mn";
+    }
+  }
+  return defaultLocale;
+}
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -34,10 +41,8 @@ export function middleware(request: NextRequest) {
     return;
   }
 
-  // Always use English — i18n detection disabled for now
-  // (Accept-Language and mn.ariunbold.dev subdomain logic preserved above)
-  const locale = defaultLocale;
-
+  const locale = getPreferredLocale(request);
+  
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }

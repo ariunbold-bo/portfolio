@@ -4,6 +4,10 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import en from "@/app/lib/dictionaries/en";
 import SmoothScroll from "../components/smooth-scroll-provider";
+import { SiteBackground } from "../components/site-background";
+import { NavRail } from "../components/nav-rail";
+import { ScrollProgress } from "../components/scroll-progress";
+
 const { identity, knowsAbout, contact } = en;
 
 const poppins = Poppins({
@@ -88,6 +92,7 @@ export default async function RootLayout(props: {
 }) {
   const { children } = props;
   const params = await props.params;
+
   return (
     <html
       lang={params.lang || "en"}
@@ -97,22 +102,28 @@ export default async function RootLayout(props: {
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <Script id="theme-script" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-full">
-        {/* <Script
+      <body className="min-h-full overflow-x-hidden">
+        <Script
           id="json-ld"
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
-        /> */}
+        />
+
+        {/*
+          SiteBackground, NavRail, ScrollProgress live HERE in the layout —
+          outside the Template wrapper — so position:fixed is never broken
+          by the page-transition transform animation in template.tsx.
+        */}
+        <SiteBackground />
+        <ScrollProgress />
+        <NavRail dict={en} />
+
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

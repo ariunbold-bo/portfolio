@@ -342,18 +342,23 @@ const en: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Home", icon: "home" },
-    { id: "about", label: "About", icon: "user" },
     { id: "stack", label: "Stack", icon: "layers" },
     { id: "journey", label: "Journey", icon: "route" },
-    { id: "hardware", label: "Hardware", icon: "chip" },
-    { id: "projects", label: "Projects", icon: "grid" },
-    { id: "contact", label: "Contact", icon: "mail" },
   ],
   ui: {
     // Hero
     openForOpp: "Open for opportunities",
     viewProjects: "View Projects",
     contactMe: "Contact Me",
+    yearsOld: "Years old",
+    yearsCoding: "Years coding",
+    projectsBuilt: "Projects built",
+
+    // Navigation & Common
+    backToHome: "Back to Home",
+    language: "Language",
+    theme: "Theme",
+    wantToKnowMore: "Want to know more about me or get in touch?",
 
     // About
     aboutLabel: "About Me",
@@ -371,9 +376,11 @@ const en: Dictionary = {
     // Journey
     journeyLabel: "Journey",
     journeyTitle: "My path in technology.",
+    clickToReveal: "Click any card to reveal the story ↑",
+    readFullStory: "Read my full story",
 
     // Hardware
-    hardwareLabel: "Hardware",
+    hardwareLabel: "Hardware projects",
     hardwareTitle: "Where software meets physical logic.",
     hardwareDesc: "A selection of my physical engineering projects, including microcontrollers and hardware modification.",
     more: "More...",

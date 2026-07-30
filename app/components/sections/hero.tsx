@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { Dictionary } from '@/app/lib/types';
 import { Reveal } from "../reveal";
 import { Typewriter } from "../typewriter";
 import Image from "next/image";
 
-export function Hero({ dict }: { dict: Dictionary }) {
+export function Hero({ dict, lang = "en" }: { dict: Dictionary; lang?: string }) {
   const dob = new Date(dict.identity.dob);
   const now = new Date();
   const age = now.getFullYear() - dob.getFullYear() -
@@ -49,16 +50,19 @@ export function Hero({ dict }: { dict: Dictionary }) {
           <Reveal variant="fade" delay={80}>
             <div className="inline-flex items-center gap-2.5 mb-8 self-start">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--status-dot)] opacity-75" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--status-dot)]" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
               </span>
               <span className="text-[0.7rem] font-medium tracking-wider uppercase text-[var(--muted)]">
                 {dict.ui.openForOpp}
               </span>
               <span className="mx-1 h-3 w-px bg-[var(--border-strong)]" />
-              <span className="text-[0.7rem] font-medium text-[var(--muted)]">
+           
+          {/* no need for seconth time */}
+        
+              {/* <span className="text-[0.7rem] font-medium text-[var(--muted)]">
                 {age} y/o
-              </span>
+              </span> */}
             </div>
           </Reveal>
 
@@ -100,28 +104,30 @@ export function Hero({ dict }: { dict: Dictionary }) {
           </Reveal>
 
           {/* CTAs */}
-          <Reveal variant="up" delay={480} className="flex flex-wrap items-center gap-4">
-            <a
-              href="#projects"
-              className="btn btn-primary hover-lift glow-hover px-7 py-3.5 text-sm"
-            >
-              {dict.ui.viewProjects}
-            </a>
-            <a
-              href="#contact"
-              className="btn btn-ghost hover-lift px-7 py-3.5 text-sm"
-            >
-              {dict.ui.contactMe}
-            </a>
+          <Reveal variant="up" delay={480} className="flex flex-wrap items-center gap-4 sm:gap-6 mt-8">
+            <div className="flex items-center gap-4">
+              <Link
+                href={`/${lang}/projects`}
+                className="btn btn-primary hover-lift glow-hover px-7 py-3.5 text-sm"
+              >
+                {dict.ui.viewProjects}
+              </Link>
+              <Link
+                href={`/${lang}/contact`}
+                className="btn btn-ghost hover-lift px-7 py-3.5 text-sm"
+              >
+                {dict.ui.contactMe}
+              </Link>
+            </div>
           </Reveal>
 
           {/* Stats */}
           <Reveal variant="up" delay={620}>
             <div className="mt-12 pt-8 border-t border-[var(--border)] grid grid-cols-3 gap-6 max-w-sm">
               {[
-                { value: age.toString(), label: 'Years old' },
-                { value: '3+', label: 'Years coding' },
-                { value: '10+', label: 'Projects built' },
+                { value: age.toString(), label: dict.ui.yearsOld },
+                { value: '4+', label: dict.ui.yearsCoding },
+                { value: '50+', label: dict.ui.projectsBuilt },
               ].map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
                   <span
