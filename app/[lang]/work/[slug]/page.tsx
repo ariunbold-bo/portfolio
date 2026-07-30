@@ -7,7 +7,7 @@ import en from "@/app/lib/dictionaries/en";
 const { identity, hardware: hardwareContent } = en;
 import { SiteBackground } from "@/app/components/site-background";
 import { ScrollProgress } from "@/app/components/scroll-progress";
-import { NavRail } from "@/app/components/nav-rail";
+// import { NavRail } from "@/app/components/nav-rail";
 import { Reveal } from "@/app/components/reveal";
 import { Icon } from "@/app/components/icons";
 
@@ -122,7 +122,7 @@ export default async function WorkPage({ params }: Props) {
       />
       <SiteBackground />
       <ScrollProgress />
-      <NavRail dict={dict} />
+      {/* <NavRail dict={dict} /> */}
 
       <main className="relative z-10 mx-auto max-w-5xl px-4 pt-6 pb-28 sm:px-6 sm:pt-8 md:px-12 md:pt-12 lg:pl-32 lg:pr-12">
         {/* ── Back link ── */}
@@ -175,8 +175,9 @@ export default async function WorkPage({ params }: Props) {
                   {proj.slug === "esp32" ? "preview.mp4" : "render.png"}
                 </span>
               </div>
-              {proj.media && proj.media.length > 0 && (
-                proj.media[0].type === "video" ? (
+              {proj.media &&
+                proj.media.length > 0 &&
+                (proj.media[0].type === "video" ? (
                   <video
                     src={proj.media[0].src}
                     controls
@@ -195,8 +196,7 @@ export default async function WorkPage({ params }: Props) {
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
-                )
-              )}
+                ))}
             </div>
           </Reveal>
         </div>

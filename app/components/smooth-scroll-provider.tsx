@@ -5,7 +5,11 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+export default function SmoothScroll({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +27,9 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     // Intercept anchor clicks so they use Lenis scrollTo (faster, consistent)
     const handleClick = (e: MouseEvent) => {
-      const anchor = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+      const anchor = (e.target as HTMLElement).closest<HTMLAnchorElement>(
+        'a[href^="#"]',
+      );
       if (!anchor) return;
       const id = anchor.getAttribute("href")!.slice(1);
       const target = document.getElementById(id);
@@ -41,4 +47,3 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
   return <>{children}</>;
 }
-

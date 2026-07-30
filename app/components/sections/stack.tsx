@@ -1,4 +1,4 @@
-import { Dictionary } from '@/app/lib/types';
+import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";

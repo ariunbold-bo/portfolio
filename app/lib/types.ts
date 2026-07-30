@@ -1,10 +1,5 @@
 export type NavId =
-  | "home"
-  | "about"
-  | "stack"
-  | "journey"
-  | "projects"
-  | "contact";
+  "home" | "about" | "stack" | "journey" | "projects" | "contact";
 
 export type ContactLink = {
   label: string;

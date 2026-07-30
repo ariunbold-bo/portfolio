@@ -1,4 +1,4 @@
-import { Dictionary } from '@/app/lib/types';
+import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { Icon } from "../icons";
@@ -54,7 +54,9 @@ export function Contact({ dict }: { dict: Dictionary }) {
             </div>
             <div>
               <p className="text-sm font-semibold text-ink-strong">Résumé</p>
-              <p className="text-xs text-muted">resume.pdf · {dict.identity.name}</p>
+              <p className="text-xs text-muted">
+                resume.pdf · {dict.identity.name}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
@@ -85,7 +87,10 @@ export function Contact({ dict }: { dict: Dictionary }) {
         className="mt-16 border-t border-[var(--border)] pt-8 text-center text-xs text-muted sm:mt-20 sm:text-sm lg:mt-24"
       >
         <p>
-          {dict.ui.footer.replace("{year}", new Date().getFullYear().toString())}
+          {dict.ui.footer.replace(
+            "{year}",
+            new Date().getFullYear().toString(),
+          )}
         </p>
       </Reveal>
     </section>

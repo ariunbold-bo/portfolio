@@ -34,7 +34,10 @@ export default async function LandingZone(props: {
             </Link>
           </div>
           <p className="text-xs text-muted opacity-60 mt-4">
-            {dict.ui.footer.replace("{year}", new Date().getFullYear().toString())}
+            {dict.ui.footer.replace(
+              "{year}",
+              new Date().getFullYear().toString(),
+            )}
           </p>
         </div>
       </div>

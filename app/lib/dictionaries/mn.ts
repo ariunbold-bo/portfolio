@@ -51,7 +51,7 @@ const mn: Dictionary = {
       icon: "linkedin",
       external: true,
     },
-   
+
     {
       label: "Facebook",
       value: "Ariunbold Bold",
@@ -195,7 +195,11 @@ const mn: Dictionary = {
       ],
       icon: "battery",
       media: [
-        { type: "video", src: "/mobile-compressed.mp4", poster: "/mobile-poster.webp" },
+        {
+          type: "video",
+          src: "/mobile-compressed.mp4",
+          poster: "/mobile-poster.webp",
+        },
       ],
     },
     {
@@ -230,7 +234,11 @@ const mn: Dictionary = {
       ],
       icon: "speaker",
       media: [
-        { type: "video", src: "/ble_speaker_final.mp4", poster: "/ble_speaker_final_poster.jpg" },
+        {
+          type: "video",
+          src: "/ble_speaker_final.mp4",
+          poster: "/ble_speaker_final_poster.jpg",
+        },
         { type: "image", src: "/voltage_amplifier+audio_amplifier.JPG" },
         { type: "image", src: "/first version of the ble speaker.JPG" },
       ],
@@ -276,7 +284,8 @@ const mn: Dictionary = {
     },
     {
       name: "Зураг хуваалцах платформ",
-      blurb: "penetration тест хийхэд зориулагдсан аюулгүй зураг хуваалцах платформ.",
+      blurb:
+        "penetration тест хийхэд зориулагдсан аюулгүй зураг хуваалцах платформ.",
       live: "https://psp-ten-zeta.vercel.app/",
       source: "https://github.com/ariunbold-bo/psp.git",
       tags: ["Security", "Full-Stack"],
@@ -311,9 +320,24 @@ const mn: Dictionary = {
     },
   ],
   gallery: [
-    { src: "/ble_speaker_mono.mp4", type: "video", alt: "Mono Speaker Version", aspectRatio: "aspect-[9/16]" },
-    { src: "/playing_tts.mp4", type: "video", alt: "Playing TTS", aspectRatio: "aspect-video" },
-    { src: "/tsetseg.webp", type: "image", alt: "Цэцэг", aspectRatio: "aspect-[2/3]" },
+    {
+      src: "/ble_speaker_mono.mp4",
+      type: "video",
+      alt: "Mono Speaker Version",
+      aspectRatio: "aspect-[9/16]",
+    },
+    {
+      src: "/playing_tts.mp4",
+      type: "video",
+      alt: "Playing TTS",
+      aspectRatio: "aspect-video",
+    },
+    {
+      src: "/tsetseg.webp",
+      type: "image",
+      alt: "Цэцэг",
+      aspectRatio: "aspect-[2/3]",
+    },
   ],
   growth: [
     {
@@ -361,13 +385,15 @@ const mn: Dictionary = {
     backToHome: "Нүүр хуудас руу буцах",
     language: "Хэл",
     theme: "Загвар",
-    wantToKnowMore: "Миний тухай илүү ихийг мэдэхийг эсвэл холбогдохыг хүсэж байна уу?",
+    wantToKnowMore:
+      "Миний тухай илүү ихийг мэдэхийг эсвэл холбогдохыг хүсэж байна уу?",
 
     // About
     aboutLabel: "Миний Тухай",
     aboutTitle: "Программ болон техник хангамжийг холбох нь.",
     coreTechnologies: "Үндсэн Технологиуд",
-    activelyMoving: "Доод түвшний санах ой, toolchain болон бусад фреймворкуудын доорх металл руу идэвхтэй шилжиж байна.",
+    activelyMoving:
+      "Доод түвшний санах ой, toolchain болон бусад фреймворкуудын доорх металл руу идэвхтэй шилжиж байна.",
     personalDisciplines: "Хувь Хүний Сахилга Бат",
     growthTargets: "Одоогийн Өсөлтийн Зорилтууд",
     wip: "Хийгдэж буй",
@@ -385,7 +411,8 @@ const mn: Dictionary = {
     // Hardware
     hardwareLabel: "Техник Хангамж",
     hardwareTitle: "Программ болон электроник огтлолцох цэг.",
-    hardwareDesc: "Миний инженерийн төслүүдийн сонголт, үүнд микроконтроллер, багаж болон гагнуур гэх мэт зүйлс орно.",
+    hardwareDesc:
+      "Миний инженерийн төслүүдийн сонголт, үүнд микроконтроллер, багаж болон гагнуур гэх мэт зүйлс орно.",
     more: "Дэлгэрэнгүй...",
 
     // Projects
@@ -397,8 +424,10 @@ const mn: Dictionary = {
     // Contact
     contactLabel: "Холбоо Барих",
     contactTitle: "Хамтдаа ирээдүйг бүтээе.",
-    contactDesc: "Программ хангамжийн төсөл эсвэл электроникийн санаа байсан ч, би шинэ боломжуудыг хэлэлцэхэд үргэлж нээлттэй.",
-    footer: "© {year} Ariunbold Bold. React, Next.js, болон хөлс, нулимсаар бүтээгдэв.",
+    contactDesc:
+      "Программ хангамжийн төсөл эсвэл электроникийн санаа байсан ч, би шинэ боломжуудыг хэлэлцэхэд үргэлж нээлттэй.",
+    footer:
+      "© {year} Ariunbold Bold. React, Next.js, болон хөлс, нулимсаар бүтээгдэв.",
 
     // Gallery / Modal
     close: "Хаах",

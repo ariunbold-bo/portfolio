@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Dictionary } from '@/app/lib/types';
+import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
@@ -42,7 +42,10 @@ export function Hardware({ dict }: { dict: Dictionary }) {
                     className="btn btn-primary hover-lift group w-full sm:w-auto"
                   >
                     {dict.ui.more}
-                    <Icon name="arrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <Icon
+                      name="arrowRight"
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    />
                   </Link>
                 </div>
               </div>

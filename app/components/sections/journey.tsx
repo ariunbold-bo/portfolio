@@ -17,7 +17,10 @@ export function Journey({ dict }: { dict: Dictionary }) {
   return (
     <section id="journey" className="scroll-mt-32">
       <Reveal variant="up">
-        <SectionHeading label={dict.ui.journeyLabel} title={dict.ui.journeyTitle} />
+        <SectionHeading
+          label={dict.ui.journeyLabel}
+          title={dict.ui.journeyTitle}
+        />
       </Reveal>
 
       <div className="relative mt-12 sm:mt-16 md:mt-24">
@@ -62,11 +65,11 @@ export function Journey({ dict }: { dict: Dictionary }) {
                   <Reveal variant="up" delay={100} className="w-full">
                     <GlassCard
                       className={`p-5 sm:p-6 md:p-8 glow-hover hover-lift relative cursor-pointer select-none ${
-                        isOpen ? "shadow-[0_0_24px_rgba(var(--accent-rgb),0.18)]" : ""
+                        isOpen
+                          ? "shadow-[0_0_24px_rgba(var(--accent-rgb),0.18)]"
+                          : ""
                       }`}
-                      onClick={() =>
-                        setOpenIndex(isOpen ? null : index)
-                      }
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
                     >
                       {/* Header row */}
                       <div className="flex items-start justify-between gap-3">
@@ -103,7 +106,9 @@ export function Journey({ dict }: { dict: Dictionary }) {
                       </div>
 
                       {/* Collapsible body */}
-                      <div className={`journey-body mt-3 ${isOpen ? "open" : ""}`}>
+                      <div
+                        className={`journey-body mt-3 ${isOpen ? "open" : ""}`}
+                      >
                         <div className="journey-body-inner">
                           <p className="text-xs leading-relaxed text-muted sm:text-sm pt-1 border-t border-[var(--border)] mt-1">
                             {entry.body}
@@ -123,11 +128,14 @@ export function Journey({ dict }: { dict: Dictionary }) {
         <p className="text-xs text-muted sm:text-sm opacity-60">
           {dict.ui.clickToReveal}
         </p>
-        <Link 
+        <Link
           href={`/${lang}/about`}
           className="btn btn-primary hover-lift glow-hover px-6 py-3 text-sm mt-2 shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)]"
         >
-          {dict.ui.readFullStory} <span aria-hidden="true" className="ml-1 font-bold">&rarr;</span>
+          {dict.ui.readFullStory}{" "}
+          <span aria-hidden="true" className="ml-1 font-bold">
+            &rarr;
+          </span>
         </Link>
       </div>
     </section>

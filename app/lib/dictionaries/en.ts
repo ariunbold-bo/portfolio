@@ -51,7 +51,7 @@ const en: Dictionary = {
       icon: "linkedin",
       external: true,
     },
-   
+
     {
       label: "Facebook",
       value: "Ariunbold Bold",
@@ -195,7 +195,11 @@ const en: Dictionary = {
       ],
       icon: "battery",
       media: [
-        { type: "video", src: "/mobile-compressed.mp4", poster: "/mobile-poster.webp" },
+        {
+          type: "video",
+          src: "/mobile-compressed.mp4",
+          poster: "/mobile-poster.webp",
+        },
       ],
     },
     {
@@ -227,7 +231,11 @@ const en: Dictionary = {
       ],
       icon: "speaker",
       media: [
-        { type: "video", src: "/ble_speaker_final.mp4", poster: "/ble_speaker_final_poster.jpg" },
+        {
+          type: "video",
+          src: "/ble_speaker_final.mp4",
+          poster: "/ble_speaker_final_poster.jpg",
+        },
         { type: "image", src: "/voltage_amplifier+audio_amplifier.JPG" },
         { type: "image", src: "/first version of the ble speaker.JPG" },
       ],
@@ -273,7 +281,8 @@ const en: Dictionary = {
     },
     {
       name: "Photo Sharing Platform",
-      blurb: "A secure image-sharing platform built for penetration-testing workflows.",
+      blurb:
+        "A secure image-sharing platform built for penetration-testing workflows.",
       live: "https://psp-ten-zeta.vercel.app/",
       source: "https://github.com/ariunbold-bo/psp.git",
       tags: ["Security", "Full-Stack"],
@@ -308,9 +317,24 @@ const en: Dictionary = {
     },
   ],
   gallery: [
-    { src: "/ble_speaker_mono.mp4", type: "video", alt: "Mono Speaker Version", aspectRatio: "aspect-[9/16]" },
-    { src: "/playing_tts.mp4", type: "video", alt: "Playing TTS", aspectRatio: "aspect-video" },
-    { src: "/tsetseg.webp", type: "image", alt: "Just a flower", aspectRatio: "aspect-[2/3]" },
+    {
+      src: "/ble_speaker_mono.mp4",
+      type: "video",
+      alt: "Mono Speaker Version",
+      aspectRatio: "aspect-[9/16]",
+    },
+    {
+      src: "/playing_tts.mp4",
+      type: "video",
+      alt: "Playing TTS",
+      aspectRatio: "aspect-video",
+    },
+    {
+      src: "/tsetseg.webp",
+      type: "image",
+      alt: "Just a flower",
+      aspectRatio: "aspect-[2/3]",
+    },
   ],
   growth: [
     {
@@ -364,7 +388,8 @@ const en: Dictionary = {
     aboutLabel: "About Me",
     aboutTitle: "Bridging software and hardware.",
     coreTechnologies: "Core Technologies",
-    activelyMoving: "Actively moving lower level, into memory, toolchains, and the metal underneath the frameworks.",
+    activelyMoving:
+      "Actively moving lower level, into memory, toolchains, and the metal underneath the frameworks.",
     personalDisciplines: "Personal Disciplines",
     growthTargets: "Current Growth Targets",
     wip: "WIP",
@@ -382,7 +407,8 @@ const en: Dictionary = {
     // Hardware
     hardwareLabel: "Hardware projects",
     hardwareTitle: "Where software meets physical logic.",
-    hardwareDesc: "A selection of my physical engineering projects, including microcontrollers and hardware modification.",
+    hardwareDesc:
+      "A selection of my physical engineering projects, including microcontrollers and hardware modification.",
     more: "More...",
 
     // Projects
@@ -394,8 +420,10 @@ const en: Dictionary = {
     // Contact
     contactLabel: "Contact",
     contactTitle: "Let's build something.",
-    contactDesc: "Whether it's a software project or a hardware idea, I'm always open to discussing new opportunities.",
-    footer: "© {year} Ariunbold Bold. Built with React, Next.js, and plenty of coffee.",
+    contactDesc:
+      "Whether it's a software project or a hardware idea, I'm always open to discussing new opportunities.",
+    footer:
+      "© {year} Ariunbold Bold. Built with React, Next.js, and plenty of coffee.",
 
     // Gallery / Modal
     close: "Close",

@@ -175,7 +175,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
       {/* ── Desktop vertical rail ── */}
       <nav
         aria-label="Section navigation"
-        className="glass overflow-x-hidden fixed left-6 top-1/2 z-[9999] hidden -translate-y-1/2 flex-col items-center gap-1 rounded-full p-2 lg:flex"
+        className="glass overflow-x-hidden fixed left-6 top-1/2 z-9999 hidden -translate-y-1/2 flex-col items-center gap-1 rounded-full p-2 lg:flex"
       >
         {navItems.map((item) => (
           <NavItem

@@ -40,8 +40,14 @@ export default async function AboutPage(props: {
   return (
     <main className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col px-4 pt-10 pb-28 sm:px-6 sm:pt-12 md:px-12 md:pt-24 lg:pl-32 lg:pr-12">
       <div className="mb-8 md:mb-12">
-        <Link href={`/${lang}`} className="group inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-ink transition-colors mb-4 md:mb-6">
-          <span className="transition-transform group-hover:-translate-x-1">&larr;</span> {dict.ui.backToHome}
+        <Link
+          href={`/${lang}`}
+          className="group inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-ink transition-colors mb-4 md:mb-6"
+        >
+          <span className="transition-transform group-hover:-translate-x-1">
+            &larr;
+          </span>{" "}
+          {dict.ui.backToHome}
         </Link>
       </div>
       <About dict={dict} />

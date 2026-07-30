@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Dictionary } from '@/app/lib/types';
+import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
+import { LightboxModal } from "../lightbox";
 
 type GalleryItem = {
   src: string;
@@ -28,16 +29,15 @@ export function About({ dict }: { dict: Dictionary }) {
 
   useEffect(() => {
     document.body.style.overflow = activeItem ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [activeItem]);
 
   return (
     <section id="about" className="scroll-mt-32">
       <Reveal variant="up">
-        <SectionHeading
-          label={dict.ui.aboutLabel}
-          title={dict.ui.aboutTitle}
-        />
+        <SectionHeading label={dict.ui.aboutLabel} title={dict.ui.aboutTitle} />
       </Reveal>
 
       {/* — Bio + Tech Stack — */}
@@ -60,7 +60,9 @@ export function About({ dict }: { dict: Dictionary }) {
             </h2>
             <div className="flex flex-wrap gap-2">
               {dict.knowsAbout.map((tech) => (
-                <span key={tech} className="chip text-xs sm:text-sm">{tech}</span>
+                <span key={tech} className="chip text-xs sm:text-sm">
+                  {tech}
+                </span>
               ))}
             </div>
             <div className="mt-auto pt-6 sm:pt-10">
@@ -90,10 +92,16 @@ export function About({ dict }: { dict: Dictionary }) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="mb-1 flex items-center justify-between gap-2">
-                    <h4 className="text-base font-semibold text-ink-strong sm:text-lg">{item.title}</h4>
-                    <span className="shrink-0 text-[0.6rem] font-semibold uppercase tracking-widest text-accent sm:text-xs">{item.meta}</span>
+                    <h4 className="text-base font-semibold text-ink-strong sm:text-lg">
+                      {item.title}
+                    </h4>
+                    <span className="shrink-0 text-[0.6rem] font-semibold uppercase tracking-widest text-accent sm:text-xs">
+                      {item.meta}
+                    </span>
                   </div>
-                  <p className="text-xs leading-relaxed text-muted sm:text-sm">{item.body}</p>
+                  <p className="text-xs leading-relaxed text-muted sm:text-sm">
+                    {item.body}
+                  </p>
                   {/* {item.youtubeId && (
                     <div className="mt-4 overflow-hidden rounded-xl bg-[var(--surface-solid)] relative aspect-video w-full">
                       <iframe
@@ -123,15 +131,21 @@ export function About({ dict }: { dict: Dictionary }) {
             {dict.growth.map((item, i) => (
               <Reveal key={item.no} variant="up" delay={(i + 1) * 100}>
                 <div className="group flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-4 transition-colors hover:border-[var(--border-strong)] hover:bg-[var(--surface)] sm:gap-4 sm:p-5">
-                  <span className="text-xs font-bold tracking-widest text-accent mt-0.5 sm:mt-1">{item.no}</span>
+                  <span className="text-xs font-bold tracking-widest text-accent mt-0.5 sm:mt-1">
+                    {item.no}
+                  </span>
                   <div className="min-w-0 flex-1">
                     <h4 className="mb-1 text-sm font-semibold text-ink flex items-center gap-2 sm:text-base flex-wrap">
                       {item.title}
                       {item.wip && (
-                        <span className="chip px-1.5 py-0.5 text-[0.6rem]">{dict.ui.wip}</span>
+                        <span className="chip px-1.5 py-0.5 text-[0.6rem]">
+                          {dict.ui.wip}
+                        </span>
                       )}
                     </h4>
-                    <p className="text-xs leading-relaxed text-muted sm:text-sm">{item.body}</p>
+                    <p className="text-xs leading-relaxed text-muted sm:text-sm">
+                      {item.body}
+                    </p>
                   </div>
                 </div>
               </Reveal>
@@ -148,18 +162,24 @@ export function About({ dict }: { dict: Dictionary }) {
               className="mb-6 overflow-hidden group relative cursor-pointer border border-[rgba(var(--accent-rgb),0.25)] shadow-[0_0_30px_rgba(var(--accent-rgb),0.2)]"
               onClick={() => setActiveItem(item as GalleryItem)}
             >
-              <div className={`relative w-full ${item.aspectRatio} bg-[var(--surface-solid)]`}>
+              <div
+                className={`relative w-full ${item.aspectRatio} bg-[var(--surface-solid)]`}
+              >
                 {item.type === "video" ? (
                   <>
                     <video
                       src={`${item.src}#t=0.1`}
                       muted
                       playsInline
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute h-screen w-screen object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <div className="rounded-full bg-black/30 p-3 text-white backdrop-blur-sm shadow-xl transition-all group-hover:bg-black/50 group-hover:scale-110 ring-1 ring-white/20">
-                        <Icon name="play" className="h-6 w-6 translate-x-0.5" fill="currentColor" />
+                        <Icon
+                          name="play"
+                          className="h-6 w-6 translate-x-0.5"
+                          fill="currentColor"
+                        />
                       </div>
                     </div>
                   </>
@@ -174,8 +194,18 @@ export function About({ dict }: { dict: Dictionary }) {
                 )}
                 <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10 dark:group-hover:bg-white/5 flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity rounded-full bg-black/50 p-3 text-white backdrop-blur-md shadow-xl scale-95 group-hover:scale-100">
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -186,40 +216,11 @@ export function About({ dict }: { dict: Dictionary }) {
       </div>
 
       {/* Lightbox modal */}
-      {activeItem && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
-          onClick={() => setActiveItem(null)}
-        >
-          <div className="relative flex flex-col items-center animate-pop w-full max-w-[95vw] sm:max-w-4xl">
-            <button
-              onClick={() => setActiveItem(null)}
-              className="absolute -top-14 right-0 flex items-center gap-2 text-white/70 hover:text-white p-2 transition-colors z-10 bg-black/50 hover:bg-black/80 rounded-full sm:bg-transparent sm:hover:bg-transparent sm:rounded-none"
-              aria-label="Close modal"
-            >
-              <span className="hidden sm:inline text-sm tracking-widest uppercase font-semibold">{dict.ui.close}</span>
-              <Icon name="x" className="h-6 w-6 sm:h-5 sm:w-5" />
-            </button>
-            {activeItem.type === "video" ? (
-              <video
-                src={activeItem.src}
-                className="w-full h-auto max-h-[85vh] rounded-xl object-contain shadow-2xl ring-1 ring-white/10"
-                autoPlay
-                controls
-                playsInline
-                onClick={(e) => e.stopPropagation()}
-              />
-            ) : (
-              <img
-                src={activeItem.src}
-                alt={activeItem.alt}
-                className="w-full h-auto max-h-[85vh] rounded-xl object-contain shadow-2xl ring-1 ring-white/10"
-                onClick={(e) => e.stopPropagation()}
-              />
-            )}
-          </div>
-        </div>
-      )}
+      <LightboxModal
+        activeItem={activeItem}
+        onClose={() => setActiveItem(null)}
+        dict={dict}
+      />
     </section>
   );
 }

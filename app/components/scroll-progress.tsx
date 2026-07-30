@@ -32,8 +32,7 @@ export function ScrollProgress() {
         ref={ref}
         className="scroll-progress h-full w-full"
         style={{
-          background:
-            "linear-gradient(90deg, var(--accent), var(--accent-2))",
+          background: "linear-gradient(90deg, var(--accent), var(--accent-2))",
         }}
       />
     </div>
