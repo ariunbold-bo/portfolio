@@ -357,6 +357,15 @@ const mn: Dictionary = {
     openForOpp: "Шинэ боломжуудад нээлттэй",
     viewProjects: "Төслүүд Харах",
     contactMe: "Холбоо Барих",
+    yearsOld: "Настай",
+    yearsCoding: "Жил код бичсэн",
+    projectsBuilt: "Төсөл хийсэн",
+
+    // Navigation & Common
+    backToHome: "Нүүр хуудас руу буцах",
+    language: "Хэл",
+    theme: "Загвар",
+    wantToKnowMore: "Миний тухай илүү ихийг мэдэхийг эсвэл холбогдохыг хүсэж байна уу?",
 
     // About
     aboutLabel: "Миний Тухай",
@@ -374,6 +383,8 @@ const mn: Dictionary = {
     // Journey
     journeyLabel: "Замнал",
     journeyTitle: "Миний технологийн замнал.",
+    clickToReveal: "Түүхийг дэлгэхийн тулд дурын карт дээр дарна уу ↑",
+    readFullStory: "Бүрэн түүхийг унших",
 
     // Hardware
     hardwareLabel: "Техник Хангамж",

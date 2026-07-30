@@ -3,7 +3,6 @@ export type NavId =
   | "about"
   | "stack"
   | "journey"
-  | "hardware"
   | "projects"
   | "contact";
 

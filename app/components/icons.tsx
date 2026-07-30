@@ -33,9 +33,20 @@ type IconName =
   | "doc"
   | "external"
   | "download"
-  | "play";
+  | "play"
+  | "languages";
 
 const paths: Record<IconName, React.ReactNode> = {
+  languages: (
+    <>
+      <path d="m5 8 6 6" />
+      <path d="m4 14 6-6 2-3" />
+      <path d="M2 5h12" />
+      <path d="M7 2h1" />
+      <path d="m22 22-5-10-5 10" />
+      <path d="M14 18h6" />
+    </>
+  ),
   mail: (
     <>
       <rect x="3" y="5" width="18" height="14" rx="2.5" />
