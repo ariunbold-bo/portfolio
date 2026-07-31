@@ -8,7 +8,6 @@ const images = [
   { src: "/mobile-poster.webp", title: "Mobile Mod Poster" },
   { src: "/ble_speaker_final_poster.jpg", title: "BLE Speaker Poster" },
   { src: "/tsetseg.webp", title: "Tsetseg" },
-  { src: "/og-image.png", title: "OG Image" },
 ];
 
 export async function GET() {

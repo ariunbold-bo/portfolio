@@ -20,14 +20,6 @@ export const metadata: Metadata = {
       "Explore the projects built by Ariunbold Bold — ranging from full-stack applications to hardware and real-time collaborative tools.",
     siteName: identity.siteName,
     locale: "en_US",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Projects · ${identity.name}`,
-    description:
-      "Explore the projects built by Ariunbold Bold — ranging from full-stack applications to hardware and real-time collaborative tools.",
-    images: ["/og-image.png"],
   },
 };
 

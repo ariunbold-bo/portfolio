@@ -45,7 +45,7 @@ export async function GET() {
   <url>
     <loc>${identity.site}</loc>
     <video:video>
-      <video:thumbnail_loc>${identity.site}/og-image.png</video:thumbnail_loc>
+      <video:thumbnail_loc>${identity.site}/hero.JPG</video:thumbnail_loc>
       <video:title>${vid.title}</video:title>
       <video:description>${vid.description}</video:description>
       <video:content_loc>${identity.site}${vid.src}</video:content_loc>

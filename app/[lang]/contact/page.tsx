@@ -19,14 +19,6 @@ export const metadata: Metadata = {
       "Get in touch with Ariunbold Bold — open to software projects, hardware collaborations, and new opportunities.",
     siteName: identity.siteName,
     locale: "en_US",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Contact · ${identity.name}`,
-    description:
-      "Get in touch with Ariunbold Bold — open to software projects, hardware collaborations, and new opportunities.",
-    images: ["/og-image.png"],
   },
 };
 

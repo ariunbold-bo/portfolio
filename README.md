@@ -41,6 +41,7 @@ built because most templates feel like the same startup landing page copy-pasted
 | animation  | css keyframes + intersection observer |
 | i18n       | file-based dict (`en.ts` / `mn.ts`)   |
 | deployment | vercel                                |
+| scroll     | lenis                                 |
 
 zero runtime deps beyond react + next. no framer motion, no radix, no three.js — just css doing work.
 

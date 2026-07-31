@@ -19,14 +19,6 @@ export const metadata: Metadata = {
       "Learn about Ariunbold Bold — a self-taught systems developer from Mongolia building full-stack web apps, hardware mods, and everything in between.",
     siteName: identity.siteName,
     locale: "en_US",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `About Me · ${identity.name}`,
-    description:
-      "Learn about Ariunbold Bold — a self-taught systems developer from Mongolia building full-stack web apps, hardware mods, and everything in between.",
-    images: ["/og-image.png"],
   },
 };
 

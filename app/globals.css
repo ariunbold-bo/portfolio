@@ -8,65 +8,66 @@
  *   Light: warm off-white · rich amber-gold
  *   Dark:  deep charcoal · electric amber
  * ------------------------------------------------------------------ */
-:root,
 [data-theme="light"] {
-  --accent: #b45309;       /* Amber 700 */
-  --accent-2: #d97706;     /* Amber 600 */
-  --accent-rgb: 180, 83, 9;
-  --status-dot: #d97706;
-
-  --bg: #fafaf8;           /* Warm neutral white */
+  --accent: #7d6749;          /* Muted bronze — was a bright Amber 700 */
+  --accent-2: #96805f;        /* Soft warm taupe */
+  --accent-rgb: 125, 103, 73;
+  --status-dot: #96805f;
+ 
+  --bg: #fafaf8;               /* Warm neutral white */
   --bg-grad-1: #fefefe;
   --bg-grad-2: #f4f3ef;
-
-  --ink: #44403c;          /* Stone 700 */
-  --ink-strong: #1c1917;   /* Stone 900 */
-  --muted: #78716c;        /* Stone 500 */
-  --faint: #e7e5e0;        /* Stone 200 */
-
-  --surface: rgba(var(--accent-rgb), 0.04);
-  --surface-2: rgba(var(--accent-rgb), 0.07);
+ 
+  --ink: #44403c;              /* Stone 700 */
+  --ink-strong: #1c1917;       /* Stone 900 */
+  --muted: #78716c;            /* Stone 500 */
+  --faint: #e7e5e0;            /* Stone 200 */
+ 
+  --surface: rgba(var(--accent-rgb), 0.025);
+  --surface-2: rgba(var(--accent-rgb), 0.045);
   --surface-solid: #ffffff;
-  --border: rgba(var(--accent-rgb), 0.12);
-  --border-strong: rgba(var(--accent-rgb), 0.22);
-
+  --border: rgba(var(--accent-rgb), 0.10);
+  --border-strong: rgba(var(--accent-rgb), 0.16);
+ 
   --on-accent: #ffffff;
   --shadow-rgb: 28, 25, 23;
-  --shadow: 0 4px 24px -4px rgba(28, 25, 23, 0.08);
-
+  --shadow: 0 1px 2px rgba(28, 25, 23, 0.04), 0 8px 24px -8px rgba(28, 25, 23, 0.08);
+ 
   --ring: var(--accent);
   --glass-highlight: rgba(255, 255, 255, 0.92);
-  --grid-line: rgba(180, 83, 9, 0.04);
+  --grid-line: rgba(var(--accent-rgb), 0.03);
 }
+ 
 [data-theme="dark"] {
-  --accent: #f59e0b;       /* Amber 400 */
-  --accent-2: #fbbf24;     /* Amber 300 */
-  --accent-rgb: 245, 158, 11;
-  --status-dot: #fcd34d;   /* Amber 300 */
-
-  --bg: #0c0a09;           /* Warm near-black */
+  --accent: #c4a575;           /* Muted gold — was a bright Amber 400 */
+  --accent-2: #d6bd92;         /* Soft champagne */
+  --accent-rgb: 196, 165, 117;
+  --status-dot: #d6bd92;
+ 
+  --bg: #0c0a09;                /* Warm near-black */
   --bg-grad-1: #171412;
   --bg-grad-2: #060504;
-
-  --ink: #a8a29e;          /* Stone 400 */
-  --ink-strong: #f5f5f4;   /* Stone 100 */
-  --muted: #78716c;        /* Stone 500 */
-  --faint: #292524;        /* Stone 800 */
-
-  --surface: rgba(var(--accent-rgb), 0.08);
-  --surface-2: rgba(var(--accent-rgb), 0.14);
+ 
+  --ink: #a8a29e;               /* Stone 400 */
+  --ink-strong: #f5f5f4;        /* Stone 100 */
+  --muted: #78716c;             /* Stone 500 */
+  --faint: #292524;             /* Stone 800 */
+ 
+  --surface: rgba(var(--accent-rgb), 0.05);
+  --surface-2: rgba(var(--accent-rgb), 0.09);
   --surface-solid: #1c1917;
-  --border: rgba(245, 158, 11, 0.15);
-  --border-strong: rgba(245, 158, 11, 0.28);
-
+  --border: rgba(var(--accent-rgb), 0.10);
+  --border-strong: rgba(var(--accent-rgb), 0.18);
+ 
   --on-accent: #1c1917;
   --shadow-rgb: 0, 0, 0;
-  --shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.6);
-
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+ 
   --ring: var(--accent);
-  --glass-highlight: rgba(245, 158, 11, 0.05);
-  --grid-line: rgba(245, 158, 11, 0.04);
+  --glass-highlight: rgba(var(--accent-rgb), 0.04);
+  --grid-line: rgba(var(--accent-rgb), 0.03);
 }
+
 /* Expose the runtime tokens to Tailwind utilities (inline = no copy). */
 @theme inline {
   /* Legacy aliases removed — rosewood/blush palette retired */

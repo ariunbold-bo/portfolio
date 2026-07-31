@@ -10,11 +10,10 @@ import { ThemeToggle } from "./theme-toggle";
 const MAX_VISIBLE = 5;
 
 /** IDs that have their own dedicated page rather than being in-page anchors. */
-const PAGE_IDS = new Set(["about", "contact", "projects"]);
+const PAGE_IDS = new Set(["about", "contact", "projects",]);
 
 function navHref(id: string, lang: string, pathname: string) {
   if (id === "about" || id === "contact") return `/${lang}/${id}`;
-  if (id === "home") return `/${lang}`;
   
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
   const isProjectsPage = pathname === `/${lang}/projects` || pathname === `/${lang}/projects/`;
@@ -24,8 +23,13 @@ function navHref(id: string, lang: string, pathname: string) {
     return isProjectsPage ? `#${id}` : `/${lang}/projects#${id}`;
   }
 
-  // stack, journey
-  return isHome ? `#${id}` : `/${lang}/#${id}`;
+  // home, stack, journey
+  // early return fix
+  if (isHome) {
+    return `#${id}`;
+  } else {
+    return `/${lang}/#${id}`;
+  }
 }
 
 // Module-level component — avoids remounting on every NavRail render
