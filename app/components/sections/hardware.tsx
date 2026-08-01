@@ -4,13 +4,13 @@ import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
-import Image from "next/image";
 
-export function Hardware({ dict }: { dict: Dictionary }) {
+export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
   return (
     <section id="hardware" className="scroll-mt-32">
       <Reveal variant="up">
         <SectionHeading
+          as="h1"
           label={dict.ui.hardwareLabel}
           title={dict.ui.hardwareTitle}
           description={dict.ui.hardwareDesc}
@@ -38,7 +38,7 @@ export function Hardware({ dict }: { dict: Dictionary }) {
                 </p>
                 <div className="relative bottom-0 mt-2">
                   <Link
-                    href={`/work/${hw.slug}`}
+                    href={`/${lang}/work/${hw.slug}`}
                     className="btn btn-primary hover-lift group w-full sm:w-auto"
                   >
                     {dict.ui.more}

@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Dictionary } from "@/app/lib/types";
-import { Icon } from "./icons";
+import { useLocale } from "@/app/lib/hooks";
+import { Icon, type IconName } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
 
 const MAX_VISIBLE = 5;
@@ -36,7 +37,7 @@ function navHref(id: string, lang: string, pathname: string) {
 function NavItem({
   id, label, icon, href, isActive, isPageLink, className, showLabel, onClick,
 }: {
-  id: string; label: string; icon: string; href: string;
+  id: string; label: string; icon: IconName; href: string;
   isActive: boolean; isPageLink: boolean; className: string;
   showLabel?: boolean; onClick?: () => void;
 }) {
@@ -47,7 +48,7 @@ function NavItem({
   );
   const content = (
     <>
-      <Icon name={icon as any} className={showLabel ? "h-[1.1rem] w-[1.1rem]" : "h-[1.15rem] w-[1.15rem]"} />
+      <Icon name={icon} className={showLabel ? "h-[1.1rem] w-[1.1rem]" : "h-[1.15rem] w-[1.15rem]"} />
       {showLabel && label}
       {tooltip}
     </>
@@ -70,7 +71,7 @@ function NavItem({
 
 function LangToggle({ className = "" }: { className?: string }) {
   const pathname = usePathname();
-  const lang = pathname.split("/")[1] || "en";
+  const lang = useLocale();
   const nextLang = lang === "en" ? "mn" : "en";
   
   // Replace the first occurrence of the current lang in the path
@@ -83,6 +84,7 @@ function LangToggle({ className = "" }: { className?: string }) {
 
   return (
     <button
+      type="button"
       onClick={switchLang}
       className={`icon-btn hover:cursor-pointer relative h-11 w-11 overflow-hidden grid place-items-center rounded-full transition-all duration-300 ${className}`}
       aria-label="Toggle language"
@@ -96,7 +98,7 @@ function LangToggle({ className = "" }: { className?: string }) {
 
 export function NavRail({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
-  const lang = pathname.split("/")[1] || "en";
+  const lang = useLocale();
 
   // Filter out standalone pages and hardware from the nav rail (only keep home, stack, journey)
   const navItems = dict.nav.filter(item => !PAGE_IDS.has(item.id));

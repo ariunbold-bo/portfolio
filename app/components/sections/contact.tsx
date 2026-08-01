@@ -8,6 +8,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
     <section id="contact" className="scroll-mt-32 pb-32">
       <Reveal variant="up">
         <SectionHeading
+          as="h1"
           label={dict.ui.contactLabel}
           title={dict.ui.contactTitle}
           description={dict.ui.contactDesc}
@@ -81,18 +82,20 @@ export function Contact({ dict }: { dict: Dictionary }) {
         </div>
       </Reveal>
 
-      <Reveal
-        variant="fade"
-        delay={300}
-        className="mt-16 border-t border-[var(--border)] pt-8 text-center text-xs text-muted sm:mt-20 sm:text-sm lg:mt-24"
-      >
-        <p>
-          {dict.ui.footer.replace(
-            "{year}",
-            new Date().getFullYear().toString(),
-          )}
-        </p>
-      </Reveal>
+      <footer>
+        <Reveal
+          variant="fade"
+          delay={300}
+          className="mt-16 border-t border-[var(--border)] pt-8 text-center text-xs text-muted sm:mt-20 sm:text-sm lg:mt-24"
+        >
+          <p>
+            {dict.ui.footer.replace(
+              "{year}",
+              new Date().getFullYear().toString(),
+            )}
+          </p>
+        </Reveal>
+      </footer>
     </section>
   );
 }

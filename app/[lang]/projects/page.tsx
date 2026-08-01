@@ -1,52 +1,49 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getDictionary } from "@/app/lib/dictionaries";
+import { resolveLocale } from "@/app/lib/locales";
 import { Hardware } from "@/app/components/sections/hardware";
 import { Projects } from "@/app/components/sections/projects";
+import { PageShell } from "@/app/components/page-shell";
 import en from "@/app/lib/dictionaries/en";
+import { buildAlternates, ogLocale } from "@/app/lib/seo";
 
 const { identity } = en;
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Explore the projects built by Ariunbold Bold — ranging from full-stack applications to hardware and real-time collaborative tools.",
-  alternates: { canonical: `${identity.site}/en/projects` },
-  openGraph: {
-    type: "website",
-    url: `${identity.site}/en/projects`,
-    title: `Projects · ${identity.name}`,
-    description:
-      "Explore the projects built by Ariunbold Bold — ranging from full-stack applications to hardware and real-time collaborative tools.",
-    siteName: identity.siteName,
-    locale: "en_US",
-  },
-};
+const description =
+  "Explore the projects built by Ariunbold Bold — ranging from full-stack applications to hardware and real-time collaborative tools.";
+
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await props.params;
+
+  return {
+    title: "Projects",
+    description,
+    alternates: buildAlternates(identity.site, lang, "/projects"),
+    openGraph: {
+      type: "website",
+      url: `${identity.site}/${lang}/projects`,
+      title: `Projects · ${identity.name}`,
+      description,
+      siteName: identity.siteName,
+      locale: ogLocale(lang),
+    },
+  };
+}
 
 export default async function ProjectsPage(props: {
   params: Promise<{ lang: string }>;
 }) {
-  const params = await props.params;
-  const lang = params.lang;
-  const dict = await getDictionary(lang as "en");
+  const { lang } = await props.params;
+  const dict = await getDictionary(resolveLocale(lang));
 
   return (
-    <main className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col px-4 pt-10 pb-28 sm:px-6 sm:pt-12 md:px-12 md:pt-24 lg:pl-32 lg:pr-12">
-      <div className="mb-8 md:mb-12">
-        <Link
-          href={`/${lang}`}
-          className="group inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-ink transition-colors mb-4 md:mb-6"
-        >
-          <span className="transition-transform group-hover:-translate-x-1">
-            &larr;
-          </span>{" "}
-          {dict.ui.backToHome}
-        </Link>
-      </div>
+    <PageShell lang={lang} backLabel={dict.ui.backToHome}>
       <div className="flex w-full flex-col space-y-28 sm:space-y-36 md:space-y-56">
-        <Hardware dict={dict} />
+        <Hardware dict={dict} lang={lang} />
         <Projects dict={dict} />
       </div>
-    </main>
+    </PageShell>
   );
 }

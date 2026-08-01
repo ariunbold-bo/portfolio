@@ -1,29 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const LenisContext = createContext<Lenis | null>(null);
+
+/** Access the shared Lenis instance, e.g. to `.stop()`/`.start()` it around a modal. */
+export function useLenis() {
+  return useContext(LenisContext);
+}
 
 export default function SmoothScroll({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  const [lenis, setLenis] = useState<Lenis | null>(null);
 
-    const lenis = new Lenis({
+  useEffect(() => {
+    const instance = new Lenis({
       lerp: 0.12,
       syncTouch: false,
       autoRaf: true, // Lenis manages its own rAF — avoids the double-raf jank
     });
-
-    // Sync scroll position into GSAP ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // Tighter animation sync — no lag smoothing
-    gsap.ticker.lagSmoothing(0);
+    setLenis(instance);
 
     // Intercept anchor clicks so they use Lenis scrollTo (faster, consistent)
     const handleClick = (e: MouseEvent) => {
@@ -35,15 +35,18 @@ export default function SmoothScroll({
       const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { duration: 0.55, offset: -48 });
+      instance.scrollTo(target, { duration: 0.55, offset: -48 });
     };
     document.addEventListener("click", handleClick);
 
     return () => {
       document.removeEventListener("click", handleClick);
-      lenis.destroy();
+      instance.destroy();
+      setLenis(null);
     };
   }, []);
 
-  return <>{children}</>;
+  return (
+    <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>
+  );
 }

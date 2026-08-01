@@ -2,12 +2,23 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import { type HardwareProject } from "@/app/lib/types";
+
+// This weight is only used on this route (project title), so it's loaded
+// here instead of the root layout to avoid preloading it on every page.
+const poppinsExtrabold = Poppins({
+  subsets: ["latin"],
+  weight: ["800"],
+  display: "swap",
+});
 import en from "@/app/lib/dictionaries/en";
+import { buildAlternates } from "@/app/lib/seo";
+import { getDictionary } from "@/app/lib/dictionaries";
+import { resolveLocale } from "@/app/lib/locales";
 const { identity, hardware: hardwareContent } = en;
 import { SiteBackground } from "@/app/components/site-background";
 import { ScrollProgress } from "@/app/components/scroll-progress";
-// import { NavRail } from "@/app/components/nav-rail";
 import { Reveal } from "@/app/components/reveal";
 import { Icon } from "@/app/components/icons";
 
@@ -32,14 +43,15 @@ function findAdjacent(slug: string): {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const proj = findProject(slug);
   if (!proj) return { title: "Not Found" };
   return {
     title: `${proj.name} — Hardware Project`,
     description: proj.summary,
-    alternates: { canonical: `${identity.site}/work/${slug}` },
+    alternates: buildAlternates(identity.site, lang, `/work/${slug}`),
     openGraph: {
+      url: `${identity.site}/${lang}/work/${slug}`,
       title: proj.name,
       description: proj.summary,
       images: proj.media?.[0]?.src,
@@ -80,11 +92,9 @@ function CircuitDots({ className = "" }: { className?: string }) {
   );
 }
 
-import { getDictionary } from "@/app/lib/dictionaries";
-
 export default async function WorkPage({ params }: Props) {
   const { lang, slug } = await params;
-  const dict = await getDictionary(lang as any);
+  const dict = await getDictionary(resolveLocale(lang));
   const proj = findProject(slug);
   if (!proj) notFound();
 
@@ -128,7 +138,7 @@ export default async function WorkPage({ params }: Props) {
         {/* ── Back link ── */}
         <Reveal variant="fade" delay={0}>
           <Link
-            href="/#hardware"
+            href={`/${lang}/projects#hardware`}
             className="group mb-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted transition-colors hover:text-accent sm:mb-8"
           >
             <Icon name="arrowLeft" className="h-3.5 w-3.5" />
@@ -141,7 +151,7 @@ export default async function WorkPage({ params }: Props) {
           <Reveal variant="fade" delay={100}>
             <div>
               <span className="section-label">{proj.kicker}</span>
-              <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-ink-strong sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
+              <h1 className={`${poppinsExtrabold.className} mt-4 text-4xl font-extrabold tracking-tight text-ink-strong sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]`}>
                 {proj.name}
               </h1>
               <p className="mt-4 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
@@ -180,8 +190,10 @@ export default async function WorkPage({ params }: Props) {
                 (proj.media[0].type === "video" ? (
                   <video
                     src={proj.media[0].src}
+                    poster={proj.media[0].poster}
                     controls
                     playsInline
+                    preload="metadata"
                     className="w-full h-auto max-h-[70vh] object-contain bg-black"
                   >
                     Your browser does not support the video tag.
@@ -210,7 +222,10 @@ export default async function WorkPage({ params }: Props) {
                   key={i}
                   className="relative bg-[var(--surface)] p-5 sm:p-6"
                 >
-                  <span className="absolute top-3 right-3 text-[0.55rem] font-mono font-bold text-accent/30">
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-3 right-3 text-[0.55rem] font-mono font-bold text-accent/30"
+                  >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <CircuitDots className="absolute bottom-3 right-3 h-14 w-14 text-[var(--border)]" />
@@ -290,7 +305,7 @@ export default async function WorkPage({ params }: Props) {
               <Reveal key={section.title} variant="up" delay={80}>
                 <div className="relative pl-8 sm:pl-10">
                   <div className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full bg-gradient-to-b from-accent via-accent-2 to-transparent" />
-                  <span className="mb-1 block text-xs font-bold tracking-wider text-accent/60">
+                  <span className="mb-1 block text-xs font-bold tracking-wider text-accent">
                     Section {ch}
                   </span>
                   <h2 className="mb-4 text-2xl font-bold text-ink-strong sm:text-3xl lg:text-4xl">
@@ -365,7 +380,7 @@ export default async function WorkPage({ params }: Props) {
         >
           {prev ? (
             <Link
-              href={`/work/${prev.slug}`}
+              href={`/${lang}/work/${prev.slug}`}
               className="group flex flex-1 flex-col items-start gap-1 rounded-2xl border border-[var(--border-strong)] p-5 transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow)] active:translate-y-0 sm:p-6"
             >
               <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-accent">
@@ -383,7 +398,7 @@ export default async function WorkPage({ params }: Props) {
 
           {next ? (
             <Link
-              href={`/work/${next.slug}`}
+              href={`/${lang}/work/${next.slug}`}
               className="group flex flex-1 flex-col items-end gap-1 rounded-2xl border border-[var(--border-strong)] p-5 text-right transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow)] active:translate-y-0 sm:p-6"
             >
               <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-accent">

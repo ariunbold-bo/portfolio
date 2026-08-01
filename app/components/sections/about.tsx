@@ -2,19 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Dictionary } from "@/app/lib/types";
+import { Dictionary, GalleryItem } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
 import { LightboxModal } from "../lightbox";
-
-type GalleryItem = {
-  src: string;
-  type: "video" | "image";
-  alt: string;
-  aspectRatio: string;
-};
 
 export function About({ dict }: { dict: Dictionary }) {
   const [activeItem, setActiveItem] = useState<GalleryItem | null>(null);
@@ -27,17 +20,10 @@ export function About({ dict }: { dict: Dictionary }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = activeItem ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [activeItem]);
-
   return (
     <section id="about" className="scroll-mt-32">
       <Reveal variant="up">
-        <SectionHeading label={dict.ui.aboutLabel} title={dict.ui.aboutTitle} />
+        <SectionHeading as="h1" label={dict.ui.aboutLabel} title={dict.ui.aboutTitle} />
       </Reveal>
 
       {/* — Bio + Tech Stack — */}
@@ -92,9 +78,9 @@ export function About({ dict }: { dict: Dictionary }) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="mb-1 flex items-center justify-between gap-2">
-                    <h4 className="text-base font-semibold text-ink-strong sm:text-lg">
+                    <h3 className="text-base font-semibold text-ink-strong sm:text-lg">
                       {item.title}
-                    </h4>
+                    </h3>
                     <span className="shrink-0 text-[0.6rem] font-semibold uppercase tracking-widest text-accent sm:text-xs">
                       {item.meta}
                     </span>
@@ -135,14 +121,14 @@ export function About({ dict }: { dict: Dictionary }) {
                     {item.no}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h4 className="mb-1 text-sm font-semibold text-ink flex items-center gap-2 sm:text-base flex-wrap">
+                    <h3 className="mb-1 text-sm font-semibold text-ink flex items-center gap-2 sm:text-base flex-wrap">
                       {item.title}
                       {item.wip && (
                         <span className="chip px-1.5 py-0.5 text-[0.6rem]">
                           {dict.ui.wip}
                         </span>
                       )}
-                    </h4>
+                    </h3>
                     <p className="text-xs leading-relaxed text-muted sm:text-sm">
                       {item.body}
                     </p>
@@ -160,7 +146,7 @@ export function About({ dict }: { dict: Dictionary }) {
           <Reveal key={item.src} variant="up" delay={i * 80}>
             <GlassCard
               className="mb-6 overflow-hidden group relative cursor-pointer border border-[rgba(var(--accent-rgb),0.25)] shadow-[0_0_30px_rgba(var(--accent-rgb),0.2)]"
-              onClick={() => setActiveItem(item as GalleryItem)}
+              onClick={() => setActiveItem(item)}
             >
               <div
                 className={`relative w-full ${item.aspectRatio} bg-[var(--surface-solid)]`}
@@ -171,7 +157,8 @@ export function About({ dict }: { dict: Dictionary }) {
                       src={`${item.src}#t=0.1`}
                       muted
                       playsInline
-                      className="absolute h-screen w-screen object-cover"
+                      preload="metadata"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <div className="rounded-full bg-black/30 p-3 text-white backdrop-blur-sm shadow-xl transition-all group-hover:bg-black/50 group-hover:scale-110 ring-1 ring-white/20">

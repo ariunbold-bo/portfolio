@@ -45,7 +45,7 @@ export function Hero({
       <Reveal variant="fade" delay={0}>
         <div className="flex items-center gap-3 mb-10 md:mb-14">
           <span className="h-px w-8 bg-[var(--accent)] opacity-70" />
-          <span className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase text-[var(--accent)] opacity-80">
+          <span className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase text-[var(--accent)]">
             Portfolio — {new Date().getFullYear()}
           </span>
         </div>
@@ -196,8 +196,10 @@ export function Hero({
                   alt={dict.identity.name}
                   width={600}
                   height={750}
+                  sizes="(max-width: 767px) 220px, 300px"
                   className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </div>

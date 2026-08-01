@@ -20,7 +20,7 @@
  
   --ink: #44403c;              /* Stone 700 */
   --ink-strong: #1c1917;       /* Stone 900 */
-  --muted: #78716c;            /* Stone 500 */
+  --muted: #6b655f;            /* Darkened from Stone 500 for WCAG AA contrast (~5.5:1 on bg) */
   --faint: #e7e5e0;            /* Stone 200 */
  
   --surface: rgba(var(--accent-rgb), 0.025);
@@ -50,7 +50,7 @@
  
   --ink: #a8a29e;               /* Stone 400 */
   --ink-strong: #f5f5f4;        /* Stone 100 */
-  --muted: #78716c;             /* Stone 500 */
+  --muted: #96908b;             /* Lightened from Stone 500 for WCAG AA contrast (~5.5:1 on surfaces) */
   --faint: #292524;             /* Stone 800 */
  
   --surface: rgba(var(--accent-rgb), 0.05);
@@ -645,6 +645,26 @@
 .animate-pop {
   will-change: transform, opacity;
   animation: pop-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Skeleton loading placeholder — used by loading.tsx route boundaries */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+  border-radius: 0.6rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--accent-rgb), 0.16),
+    transparent
+  );
+  animation: shimmer 1.8s ease-in-out infinite;
 }
 
 /* Ambient background blobs

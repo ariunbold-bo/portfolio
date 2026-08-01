@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Poppins } from "next/font/google";
-import "../globals.css";
 import en from "@/app/lib/dictionaries/en";
+import { buildAlternates, ogLocale } from "@/app/lib/seo";
 import SmoothScroll from "../components/smooth-scroll-provider";
 import { SiteBackground } from "../components/site-background";
 import { NavRail } from "../components/nav-rail";
@@ -10,46 +9,43 @@ import { ScrollProgress } from "../components/scroll-progress";
 
 const { identity, knowsAbout, contact } = en;
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  display: "swap",
-});
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await props.params;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(identity.site),
-  title: {
-    default: `${identity.name} — ${identity.seoTitle}`,
-    template: `%s · ${identity.name}`,
-  },
-  description: identity.tagline,
-  keywords: [
-    "Ariunbold Bold",
-    "software developer Mongolia",
-    "ariuka",
-    "hardware developer",
-    "systems developer",
-    "React",
-    "Next.js",
-    "C++",
-    "ESP32",
-    "full-stack developer",
-  ],
-  authors: [{ name: identity.name, url: identity.site }],
-  creator: identity.name,
-  alternates: { canonical: identity.site },
-  openGraph: {
-    type: "website",
-    url: identity.site,
-    title: `${identity.name} — ${identity.seoTitle}`,
+  return {
+    title: {
+      default: `${identity.name} — ${identity.seoTitle}`,
+      template: `%s · ${identity.name}`,
+    },
     description: identity.tagline,
-    siteName: identity.siteName,
-    locale: "en_US",
-  },
- 
-  robots: { index: true, follow: true },
-};
+    keywords: [
+      "Ariunbold Bold",
+      "software developer Mongolia",
+      "ariuka",
+      "hardware developer",
+      "systems developer",
+      "React",
+      "Next.js",
+      "C++",
+      "ESP32",
+      "full-stack developer",
+    ],
+    authors: [{ name: identity.name, url: identity.site }],
+    creator: identity.name,
+    alternates: buildAlternates(identity.site, lang),
+    openGraph: {
+      type: "website",
+      url: `${identity.site}/${lang}`,
+      title: `${identity.name} — ${identity.seoTitle}`,
+      description: identity.tagline,
+      siteName: identity.siteName,
+      locale: ogLocale(lang),
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -76,53 +72,33 @@ const jsonLd = {
   ],
 };
 
-// Flash-free theme init — runs during HTML parse, before first paint.
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`;
-
-export default async function RootLayout(props: {
+export default async function LangLayout(props: {
   children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }) {
   const { children } = props;
-  const params = await props.params;
 
   return (
-    <html
-      lang={params.lang || "en"}
-      suppressHydrationWarning
-      data-scroll-behavior="smooth"
-      className={`${poppins.variable} h-full antialiased`}
-    >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
-      <body className="min-h-full overflow-x-hidden">
-        <Script
-          id="json-ld"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
+    <>
+      <Script
+        id="json-ld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
 
-        {/*
-          SiteBackground, NavRail, ScrollProgress live HERE in the layout —
-          outside the Template wrapper — so position:fixed is never broken
-          by the page-transition transform animation in template.tsx.
-        */}
-        <SiteBackground />
-        <ScrollProgress />
-        <NavRail dict={en} />
+      {/*
+        SiteBackground, NavRail, ScrollProgress live HERE in the layout —
+        outside the Template wrapper — so position:fixed is never broken
+        by the page-transition transform animation in template.tsx.
+      */}
+      <SiteBackground />
+      <ScrollProgress />
+      <NavRail dict={en} />
 
-        <SmoothScroll>{children}</SmoothScroll>
-      </body>
-    </html>
+      <SmoothScroll>{children}</SmoothScroll>
+    </>
   );
 }

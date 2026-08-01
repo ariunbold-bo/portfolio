@@ -1,13 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-
-let locales = ["en", "mn"];
-let defaultLocale = "en";
+import { LOCALES, DEFAULT_LOCALE, isLocale } from "./app/lib/locales";
 
 function getPreferredLocale(request: NextRequest) {
   // 1. Check if user explicitly set a language preference
   const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
-  if (cookieLocale && locales.includes(cookieLocale)) {
+  if (cookieLocale && isLocale(cookieLocale)) {
     return cookieLocale;
   }
 
@@ -19,18 +17,30 @@ function getPreferredLocale(request: NextRequest) {
       return "mn";
     }
   }
-  return defaultLocale;
+  return DEFAULT_LOCALE;
+}
+
+/**
+ * Forwards the resolved locale as a request header so the root layout
+ * (`app/layout.tsx`) can set an accurate `<html lang>` without needing
+ * `[lang]` route params — it's the one true root layout, so it also renders
+ * for requests that never resolve into a `[lang]` route (e.g. a bare 404).
+ */
+function withLocaleHeader(request: NextRequest, locale: string) {
+  const headers = new Headers(request.headers);
+  headers.set("x-locale", locale);
+  return NextResponse.next({ request: { headers } });
 }
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  
+
   // Check if there is any supported locale in the pathname
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  const matchedLocale = LOCALES.find(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
-  
-  if (pathnameHasLocale) return;
+
+  if (matchedLocale) return withLocaleHeader(request, matchedLocale);
 
   // Avoid processing static files or images
   if (
@@ -42,7 +52,7 @@ export function proxy(request: NextRequest) {
   }
 
   const locale = getPreferredLocale(request);
-  
+
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }

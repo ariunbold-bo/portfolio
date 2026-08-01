@@ -1,3 +1,5 @@
+import type { IconName } from "@/app/components/icons";
+
 export type NavId =
   "home" | "about" | "stack" | "journey" | "projects" | "contact";
 
@@ -90,8 +92,9 @@ export type Dictionary = {
   disciplines: Discipline[];
   gallery: GalleryItem[];
   growth: GrowthTarget[];
-  nav: { id: NavId; label: string; icon: string }[];
+  nav: { id: NavId; label: string; icon: IconName }[];
   ui: {
+    easterEgg: string;
     openForOpp: string;
     viewProjects: string;
     contactMe: string;

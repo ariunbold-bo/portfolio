@@ -1,27 +1,30 @@
 import Link from "next/link";
 import { getDictionary } from "../lib/dictionaries";
+import { resolveLocale } from "../lib/locales";
 import { Hero } from "../components/sections/hero";
 import { Stack } from "../components/sections/stack";
 import { Journey } from "../components/sections/journey";
-import { Hardware } from "../components/sections/hardware";
-import { Projects } from "../components/sections/projects";
 
 export default async function LandingZone(props: {
   params: Promise<{ lang: string }>;
 }) {
   const params = await props.params;
-  const dict = await getDictionary(params.lang as "en");
   const lang = params.lang;
-
+  const dict = await getDictionary(resolveLocale(lang));
+  // easter egg for programers
+  console.log(
+    `%c${dict.ui.easterEgg}`,
+    "font-weight: bold; color: #c4a575;",
+  );
   return (
     <main className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col px-4 pt-10 pb-28 sm:px-6 sm:pt-12 md:px-12 md:pt-24 lg:pl-32 lg:pr-12">
       <div className="flex w-full flex-col space-y-28 sm:space-y-36 md:space-y-56">
         <Hero dict={dict} lang={lang} />
         <Stack dict={dict} />
-        <Journey dict={dict} />
+        <Journey dict={dict} lang={lang} />
 
         {/* Footer CTA */}
-        <div className="pb-8 border-t border-[var(--border)] pt-16 flex flex-col items-center gap-6 text-center">
+        <footer className="pb-8 border-t border-[var(--border)] pt-16 flex flex-col items-center gap-6 text-center">
           <p className="text-sm text-muted max-w-sm leading-relaxed">
             {dict.ui.wantToKnowMore}
           </p>
@@ -33,13 +36,13 @@ export default async function LandingZone(props: {
               {dict.ui.contactLabel} &rarr;
             </Link>
           </div>
-          <p className="text-xs text-muted opacity-60 mt-4">
+          <p className="text-xs text-muted mt-4">
             {dict.ui.footer.replace(
               "{year}",
               new Date().getFullYear().toString(),
             )}
           </p>
-        </div>
+        </footer>
       </div>
     </main>
   );

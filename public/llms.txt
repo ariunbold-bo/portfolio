@@ -1,0 +1,22 @@
+# Ariunbold Bold — Portfolio
+
+> Software & hardware developer from Mongolia building full-stack web apps, embedded firmware, and hardware mods.
+
+## Pages
+
+- [Home](https://ariunbold.dev/en): Introduction, tech stack, and career journey timeline.
+- [About](https://ariunbold.dev/en/about): Background, core technologies, personal disciplines, and growth targets.
+- [Projects](https://ariunbold.dev/en/projects): Hardware and software project showcase.
+- [Contact](https://ariunbold.dev/en/contact): Ways to get in touch.
+
+## Hardware Projects
+
+- [ESP32 Animation](https://ariunbold.dev/en/work/esp32): C++ firmware decoding binary-encoded GIF frames onto a 128x64 OLED display.
+- [CryoCell](https://ariunbold.dev/en/work/cryocell): Samsung Galaxy S21 mod with a custom 10,000mAh battery and active cooling.
+- [Custom DIY Stereo Bluetooth Speaker](https://ariunbold.dev/en/work/bt-speaker): Dual-rail power isolation, boost regulation, and tuned acoustic damping.
+- [Arch Linux Ricing & RGB Sync](https://ariunbold.dev/en/work/arch-ricing): Hyprland setup with wallpaper-reactive keyboard RGB.
+
+## Optional
+
+- [Монгол хэл дээрх хувилбар](https://ariunbold.dev/mn): Mongolian-language version of this site.
+- [Résumé (PDF)](https://ariunbold.dev/resume.pdf)

@@ -1,48 +1,45 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getDictionary } from "@/app/lib/dictionaries";
+import { resolveLocale } from "@/app/lib/locales";
 import { Contact } from "@/app/components/sections/contact";
+import { PageShell } from "@/app/components/page-shell";
 import en from "@/app/lib/dictionaries/en";
+import { buildAlternates, ogLocale } from "@/app/lib/seo";
 
 const { identity } = en;
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Get in touch with Ariunbold Bold — open to software projects, hardware collaborations, and new opportunities.",
-  alternates: { canonical: `${identity.site}/en/contact` },
-  openGraph: {
-    type: "website",
-    url: `${identity.site}/en/contact`,
-    title: `Contact · ${identity.name}`,
-    description:
-      "Get in touch with Ariunbold Bold — open to software projects, hardware collaborations, and new opportunities.",
-    siteName: identity.siteName,
-    locale: "en_US",
-  },
-};
+const description =
+  "Get in touch with Ariunbold Bold — open to software projects, hardware collaborations, and new opportunities.";
+
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await props.params;
+
+  return {
+    title: "Contact",
+    description,
+    alternates: buildAlternates(identity.site, lang, "/contact"),
+    openGraph: {
+      type: "website",
+      url: `${identity.site}/${lang}/contact`,
+      title: `Contact · ${identity.name}`,
+      description,
+      siteName: identity.siteName,
+      locale: ogLocale(lang),
+    },
+  };
+}
 
 export default async function ContactPage(props: {
   params: Promise<{ lang: string }>;
 }) {
-  const params = await props.params;
-  const lang = params.lang;
-  const dict = await getDictionary(params.lang as "en");
+  const { lang } = await props.params;
+  const dict = await getDictionary(resolveLocale(lang));
 
   return (
-    <main className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col px-4 pt-10 pb-28 sm:px-6 sm:pt-12 md:px-12 md:pt-24 lg:pl-32 lg:pr-12">
-      <div className="mb-8 md:mb-12">
-        <Link
-          href={`/${lang}`}
-          className="group inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-ink transition-colors mb-4 md:mb-6"
-        >
-          <span className="transition-transform group-hover:-translate-x-1">
-            &larr;
-          </span>{" "}
-          {dict.ui.backToHome}
-        </Link>
-      </div>
+    <PageShell lang={lang} backLabel={dict.ui.backToHome}>
       <Contact dict={dict} />
-    </main>
+    </PageShell>
   );
 }

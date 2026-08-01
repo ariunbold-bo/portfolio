@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-type IconName =
+export type IconName =
   | "mail"
   | "phone"
   | "github"
@@ -231,8 +231,8 @@ const paths: Record<IconName, React.ReactNode> = {
 export function Icon({
   name,
   ...props
-}: { name: string } & SVGProps<SVGSVGElement>) {
-  const node = paths[name as IconName];
+}: { name: IconName } & SVGProps<SVGSVGElement>) {
+  const node = paths[name];
   return (
     <svg
       viewBox="0 0 24 24"

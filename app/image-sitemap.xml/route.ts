@@ -6,7 +6,7 @@ const images = [
   { src: "/hero.JPG", title: "Hero Background" },
   { src: "/esp32-poster.webp", title: "ESP32 Poster" },
   { src: "/mobile-poster.webp", title: "Mobile Mod Poster" },
-  { src: "/ble_speaker_final_poster.jpg", title: "BLE Speaker Poster" },
+  { src: "/ble_speaker_final_poster.webp", title: "BLE Speaker Poster" },
   { src: "/tsetseg.webp", title: "Tsetseg" },
 ];
 

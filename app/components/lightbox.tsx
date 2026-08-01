@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "./icons";
+import { useLenis } from "./smooth-scroll-provider";
 
 interface LightboxModalProps {
   activeItem: {
@@ -24,17 +25,39 @@ export function LightboxModal({
   dict,
 }: LightboxModalProps) {
   const [mounted, setMounted] = useState(false);
+  const lenis = useLenis();
 
   // Prevent SSR/hydration errors in Next.js since document.body doesn't exist on the server
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Lock the background from scrolling while the modal is open. Lenis takes
+  // over scroll handling entirely, so toggling `overflow` on html/body alone
+  // isn't enough — it also needs to be stopped explicitly, or it'll keep
+  // animating the page underneath the fullscreen overlay.
+  useEffect(() => {
+    if (!activeItem) return;
+
+    const { documentElement, body } = document;
+    const previousHtmlOverflow = documentElement.style.overflow;
+    const previousBodyOverflow = body.style.overflow;
+    documentElement.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    lenis?.stop();
+
+    return () => {
+      documentElement.style.overflow = previousHtmlOverflow;
+      body.style.overflow = previousBodyOverflow;
+      lenis?.start();
+    };
+  }, [activeItem, lenis]);
+
   if (!mounted || !activeItem) return null;
 
   return createPortal(
     <div
-      className="fixed inset-0 z-9999 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-9999 flex items-center justify-center overscroll-contain bg-black/80 p-4 backdrop-blur-md"
       onClick={onClose}
     >
       <div className="relative flex flex-col items-center animate-pop w-full max-w-[95vw] sm:max-w-4xl">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
@@ -9,10 +8,8 @@ import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { TimelineLine } from "../timeline-line";
 
-export function Journey({ dict }: { dict: Dictionary }) {
+export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const pathname = usePathname();
-  const lang = pathname.split("/")[1] || "en";
 
   return (
     <section id="journey" className="scroll-mt-32">
@@ -98,7 +95,7 @@ export function Journey({ dict }: { dict: Dictionary }) {
                             <path d="M6 9l6 6 6-6" />
                           </svg>
                           {!isOpen && (
-                            <span className="hidden sm:block text-[0.55rem] font-semibold uppercase tracking-widest text-muted/60 whitespace-nowrap">
+                            <span className="hidden sm:block text-[0.55rem] font-semibold uppercase tracking-widest text-muted whitespace-nowrap">
                               tap
                             </span>
                           )}
@@ -125,7 +122,7 @@ export function Journey({ dict }: { dict: Dictionary }) {
       </div>
 
       <div className="mt-14 flex flex-col items-center gap-4 text-center">
-        <p className="text-xs text-muted sm:text-sm opacity-60">
+        <p className="text-xs text-muted sm:text-sm">
           {dict.ui.clickToReveal}
         </p>
         <Link
