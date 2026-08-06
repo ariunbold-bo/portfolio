@@ -3,11 +3,36 @@ import en from "@/app/lib/dictionaries/en";
 const { identity } = en;
 
 const images = [
-  { src: "/hero.JPG", title: "Hero Background" },
-  { src: "/esp32-poster.webp", title: "ESP32 Poster" },
-  { src: "/mobile-poster.webp", title: "Mobile Mod Poster" },
-  { src: "/ble_speaker_final_poster.webp", title: "BLE Speaker Poster" },
-  { src: "/tsetseg.webp", title: "Tsetseg" },
+  {
+    src: "/hero.JPG",
+    title: "Ariunbold Bold — Hero Portrait",
+    caption: "Ariunbold Bold, systems developer from Mongolia.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/esp32-poster.webp",
+    title: "ESP32 OLED Animation — Project Poster",
+    caption: "ESP32 microcontroller driving a 128×64 OLED with animated GIF frames.",
+    page: `${identity.site}/en/work/esp32`,
+  },
+  {
+    src: "/mobile-poster.webp",
+    title: "Samsung Galaxy S21 CryoCell Mod — Project Poster",
+    caption: "Custom 10,000mAh battery and active cooling mod for the Galaxy S21.",
+    page: `${identity.site}/en/work/cryocell`,
+  },
+  {
+    src: "/ble_speaker_final_poster.webp",
+    title: "Custom DIY Bluetooth Speaker — Project Poster",
+    caption: "Custom-built portable stereo Bluetooth speaker with dual power rails.",
+    page: `${identity.site}/en/work/bt-speaker`,
+  },
+  {
+    src: "/tsetseg.webp",
+    title: "Tsetseg — Flower Photo",
+    caption: "A flower photograph taken by Ariunbold Bold.",
+    page: `${identity.site}/en/about`,
+  },
 ];
 
 export async function GET() {
@@ -18,10 +43,11 @@ export async function GET() {
     .map(
       (img) => `
   <url>
-    <loc>${identity.site}</loc>
+    <loc>${img.page}</loc>
     <image:image>
       <image:loc>${identity.site}${img.src}</image:loc>
       <image:title>${img.title}</image:title>
+      <image:caption>${img.caption}</image:caption>
     </image:image>
   </url>`,
     )

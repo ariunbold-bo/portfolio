@@ -27,7 +27,16 @@ export async function generateMetadata(props: {
       description,
       siteName: identity.siteName,
       locale: ogLocale(lang),
+      images: [
+        {
+          url: `${identity.site}/hero.JPG`,
+          width: 1200,
+          height: 630,
+          alt: `Contact ${identity.name} — Software & Hardware Developer`,
+        },
+      ],
     },
+    robots: { index: true, follow: true },
   };
 }
 

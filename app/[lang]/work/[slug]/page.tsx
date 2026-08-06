@@ -17,6 +17,14 @@ import { buildAlternates } from "@/app/lib/seo";
 import { getDictionary } from "@/app/lib/dictionaries";
 import { resolveLocale } from "@/app/lib/locales";
 const { identity, hardware: hardwareContent } = en;
+
+/** ISO 8601 duration and upload date keyed by project slug */
+const videoMeta: Record<string, { duration: number; uploadDate: string; thumbnail: string }> = {
+  esp32:         { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
+  cryocell:      { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
+  "bt-speaker":  { duration: 51, uploadDate: "2026-03-10", thumbnail: `${identity.site}/ble_speaker_final_poster.webp` },
+  "arch-ricing": { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/hero.JPG` },
+};
 import { SiteBackground } from "@/app/components/site-background";
 import { ScrollProgress } from "@/app/components/scroll-progress";
 import { Reveal } from "@/app/components/reveal";
@@ -46,6 +54,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, lang } = await params;
   const proj = findProject(slug);
   if (!proj) return { title: "Not Found" };
+  const meta = videoMeta[slug];
+  const ogImage = meta?.thumbnail ?? `${identity.site}/hero.JPG`;
   return {
     title: `${proj.name} — Hardware Project`,
     description: proj.summary,
@@ -54,8 +64,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${identity.site}/${lang}/work/${slug}`,
       title: proj.name,
       description: proj.summary,
-      images: proj.media?.[0]?.src,
+      siteName: identity.siteName,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${proj.name} — ${proj.kicker}`,
+        },
+      ],
     },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -100,6 +119,9 @@ export default async function WorkPage({ params }: Props) {
 
   const { prev, next } = findAdjacent(slug);
 
+  const vMeta = videoMeta[slug];
+  const firstVideo = proj.media?.find((m) => m.type === "video");
+
   return (
     <>
       <script
@@ -130,6 +152,34 @@ export default async function WorkPage({ params }: Props) {
           }),
         }}
       />
+      {firstVideo && vMeta && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              name: proj.name,
+              description: proj.summary,
+              thumbnailUrl: vMeta.thumbnail,
+              contentUrl: `${identity.site}${firstVideo.src}`,
+              uploadDate: vMeta.uploadDate,
+              duration: `PT${vMeta.duration}S`,
+              author: {
+                "@type": "Person",
+                name: identity.name,
+                url: identity.site,
+              },
+              publisher: {
+                "@type": "Person",
+                name: identity.name,
+                url: identity.site,
+              },
+              embedUrl: `${identity.site}/${lang}/work/${slug}`,
+            }),
+          }}
+        />
+      )}
       <SiteBackground />
       <ScrollProgress />
       {/* <NavRail dict={dict} /> */}
