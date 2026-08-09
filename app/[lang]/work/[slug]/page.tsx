@@ -231,9 +231,17 @@ export default async function WorkPage({ params }: Props) {
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
-                <span className="ml-2 text-[0.55rem] font-mono font-semibold tracking-wider text-muted">
+                <span className="ml-2 flex-1 text-[0.55rem] font-mono font-semibold tracking-wider text-muted">
                   {proj.slug === "esp32" ? "preview.mp4" : "render.png"}
                 </span>
+                {proj.media && proj.media.length > 0 && proj.media[0].type === "video" && (
+                  <Link
+                    href={`/${lang}/work/${slug}/watch`}
+                    className="flex items-center gap-1 text-[0.55rem] font-mono font-bold uppercase tracking-wider text-accent hover:underline"
+                  >
+                    Watch Full <Icon name="external" className="h-3 w-3" />
+                  </Link>
+                )}
               </div>
               {proj.media &&
                 proj.media.length > 0 &&
