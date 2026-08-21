@@ -269,7 +269,7 @@ const mn: Dictionary = {
       ],
     },
     {
-      slug: "пү-speaker",
+      slug: "pusda-speaker",
       name: "пү Speaker — 2-р үеийн Стерео BT Систем",
       kicker: "Аудио Инженерчлэл • Тэжээлийн Систем • DIY Техник",
       summary:
