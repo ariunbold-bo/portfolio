@@ -4,11 +4,13 @@ const { identity } = en;
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: [],
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/mn/"],   // prevent duplicate-content indexing of Mongolian locale
+      },
+    ],
     sitemap: [
       `${identity.site}/sitemap.xml`,
       `${identity.site}/video-sitemap.xml`,

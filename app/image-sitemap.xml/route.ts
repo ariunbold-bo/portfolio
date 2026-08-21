@@ -33,6 +33,12 @@ const images = [
     caption: "A flower photograph taken by Ariunbold Bold.",
     page: `${identity.site}/en/about`,
   },
+  {
+    src: "/pusda_speaker.webp",
+    title: "Pusda Speaker Gen 2 — Build Photo",
+    caption: "Second-generation DIY Bluetooth stereo speaker using XH-MX8 amplifier, MH-MX8 BT receiver, and dual isolated power rails. Enclosure is the amp's original shipping box.",
+    page: `${identity.site}/en/work/pusda-speaker`,
+  },
 ];
 
 export async function GET() {

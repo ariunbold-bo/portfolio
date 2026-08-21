@@ -28,7 +28,7 @@ export type TimelineEntry = {
 };
 
 export type HardwareProject = {
-  slug: "esp32" | "cryocell" | "bt-speaker" | "arch-ricing";
+  slug: "esp32" | "cryocell" | "bt-speaker" | "arch-ricing" | "pusda-speaker";
   name: string;
   kicker: string;
   summary: string;

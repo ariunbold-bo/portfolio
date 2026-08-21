@@ -10,7 +10,7 @@ const en: Dictionary = {
     siteName: "Ariunbold Bold Portfolio",
     location: "Mongolia",
     initials: "AB",
-    tagline: "im just a guy who likes thinkering complex questions",
+    tagline: "If it works, don't touch it — unless it needs an upgrade, then I'll risk the entire project to make it better.",
     dob: "2009-07-01",
     resumeUrl: "/resume.pdf",
   },
@@ -104,6 +104,11 @@ const en: Dictionary = {
       body: "My mom and dad had a shebang and thus here i am.",
     },
     {
+      when: "2014",
+      title: "The First Victim",
+      body: "Took apart an RC car in kindergarten. The battery wire broke, so I taped it back together since I didn't have a soldering iron. It worked for a few hours. The rest is history.",
+    },
+    {
       when: "2017",
       title: "First Lines of Code",
       body: "It started when his mom brought home a computer twice his age. He learned the basics from a kids' programming book that taught Scratch and Python.",
@@ -114,9 +119,19 @@ const en: Dictionary = {
       body: "Self-taught HTML, CSS, and JS. Built early Python apps like music players and web scrapers — days spent digging through Stack Overflow before AI assistants existed.",
     },
     {
+      when: "2020",
+      title: "The Pizza Box Incident",
+      body: "Disassembled a perfectly working antique Windows XP Thinkpad and tried mounting the motherboard inside a pizza box. Broke something along the way and it never turned on again. An expensive, time-consuming lesson.",
+    },
+    {
       when: "2022",
       title: "Pinecone School",
       body: "Attended Pinecone programming school and graduated with flying colors thanks to prior knowledge. Refreshing to finally have a real teacher to code alongside.",
+    },
+    {
+      when: "2023",
+      title: "GitHub & Real Teams",
+      body: "Still at Pinecone, but leveled up the workflow. Learned Git, GitHub, and how to collaborate with real colleagues on everyday projects.",
     },
     {
       when: "Early 2024",
@@ -124,9 +139,19 @@ const en: Dictionary = {
       body: "Set up his first Linux VM (Kali) and dove deep into ADB, scrcpy, and Android internals — building a reputation at school for formatting locked devices.",
     },
     {
+      when: "2024",
+      title: "The Unofficial School IT Guy",
+      body: "Fixed teachers' laptops, HDMI cables, and forgotten passwords. Competed in a C++ olympiad (with zero prior knowledge of hashmaps or arrays—at least I tried!). Secured straight 100%s in informatics class every year, sometimes by 'borrowing' the Wi-Fi password.",
+    },
+    {
       when: "Late 2024",
       title: "The Arch Linux Switch",
       body: "Started dual-booting Windows and Arch. After a Windows update wiped un-pushed code, he nuked the partition, switched fully to Arch Linux, and never looked back.",
+    },
+    {
+      when: "2025 – Present",
+      title: "The TTS Era",
+      body: "Continued pushing boundaries. My biggest achievement to date has been building and deploying my custom TTS (Text-to-Speech) project.",
     },
   ],
   hardware: [
@@ -241,6 +266,48 @@ const en: Dictionary = {
       ],
     },
     {
+      slug: "pusda-speaker",
+      name: "Pusda Speaker — Gen 2 Stereo BT System",
+      kicker: "Audio Engineering • Power Systems • DIY Hardware",
+      summary:
+        "A significantly upgraded second-generation Bluetooth stereo speaker system. True stereo with dual isolated power rails — a 3.7V battery powering the MH-MX8 BT receiver and an 8.4V series-pack driving the XH-MX8 amplifier — eliminating the common-ground noise that plagued Gen 1. Loud enough that sitting next to it at full volume makes conversation impossible.",
+      highlights: [
+        "Dual isolated power rails: separate 3.7V for the BT receiver and 8.4V (2×3.7V series) for the amplifier — eliminates common-ground back-noise completely.",
+        "True stereo: two independent 4Ω 15W full-range drivers, one per channel, for genuine left/right separation.",
+        "Insane SPL: at full volume you cannot hear someone yelling beside you. Peak draw 3A on heavy bass; idle 0.04A.",
+      ],
+      sections: [
+        {
+          title: "Why Two Power Sources?",
+          body: "In Gen 1 a single common ground shared between the MH-MX8 Bluetooth receiver and the amplifier board created a massive hum — digital switching noise from the BT module bled straight into the audio path. The fix: completely separate supplies. The MH-MX8 receiver runs off a dedicated 3.7V lithium cell. The XH-MX8 amplifier board gets its own 8.4V pack (two 3.7V cells wired in series, giving 7.4V nominal and 8.4V at full charge). No shared ground, no noise floor.",
+        },
+        {
+          title: "Amplifier & Bluetooth Receiver — XH-MX8 + MH-MX8",
+          body: "The MH-MX8 is a compact Bluetooth 5.0 audio receiver/decoder module that handles wireless audio input and feeds a clean line-level signal to the amplifier. The XH-MX8 is a stereo class-D amplifier board rated for 12–24V DC input with dual-channel output — here driven at 8.4V for controlled headroom that still pushes the 4Ω 15W drivers hard. Class-D efficiency means the 8.4V pack lasts a respectable time at moderate volumes despite the peak 3A draw during bass transients.",
+        },
+        {
+          title: "The Enclosure — Yes, That's the Amplifier Box",
+          body: "The speaker enclosure is literally the cardboard box the XH-MX8 amplifier arrived in. It was the right size, already had character, and cost nothing. Acoustic damping cotton was packed inside to reduce standing waves and give the drivers the impression of a larger chamber. The result is surprisingly punchy low-end for a cardboard box. Engineering sometimes means using whatever is on hand.",
+        },
+      ],
+      specs: [
+        { label: "Drivers", value: "2× 4Ω 15W" },
+        { label: "Amp", value: "XH-MX8" },
+        { label: "BT Module", value: "MH-MX8" },
+        { label: "Amp Supply", value: "8.4V (2S Li)" },
+        { label: "BT Supply", value: "3.7V Li" },
+        { label: "Peak Draw", value: "3A" },
+        { label: "Idle Draw", value: "0.04A" },
+        { label: "Enclosure", value: "The amp's own box" },
+      ],
+      icon: "speaker",
+      media: [
+        { type: "video", src: "/pusda_speaker1.mp4", poster: "/pusda_speaker1_poster.webp" },
+        { type: "video", src: "/pusda_speaker2.mp4", poster: "/pusda_speaker2_poster.webp" },
+        { type: "image", src: "/pusda_speaker.webp" },
+      ],
+    },
+    {
       slug: "arch-ricing",
       name: "Arch Linux Ricing & RGB Sync",
       kicker: "Hyprland • System Customization",
@@ -298,8 +365,8 @@ const en: Dictionary = {
   disciplines: [
     {
       title: "Table Tennis",
-      meta: "5+ years",
-      body: "Five-plus years of dedicated practice — the same grit, repetition, and technical precision he applies to engineering.",
+      meta: "National 3rd Degree",
+      body: "Hold a nationally recognized 3rd-degree ranking in Mongolia with an official ID passport. Five-plus years of dedicated practice — the same grit, repetition, and technical precision applied to engineering.",
       icon: "pingpong",
     },
     {
@@ -362,6 +429,11 @@ const en: Dictionary = {
       title: "Embedded A/V Streaming",
       body: "Engineering a remote-controlled vehicle that streams synchronized video and audio over a real-time network link.",
       wip: true,
+    },
+    {
+      no: "06",
+      title: "The Endgame",
+      body: "Currently a 12th grader leaning towards Computer Science or Electrical Engineering. The ultimate goal isn't yachts or supercars — it's a peaceful 2-story house, financial stability with my future family, and a dedicated room for my electronics and coding lab.",
     },
   ],
   nav: [

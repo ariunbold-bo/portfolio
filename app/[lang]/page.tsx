@@ -3,6 +3,7 @@ import { getDictionary } from "../lib/dictionaries";
 import { resolveLocale } from "../lib/locales";
 import { Hero } from "../components/sections/hero";
 import { Stack } from "../components/sections/stack";
+import { Synth } from "../components/sections/synth";
 import { Journey } from "../components/sections/journey";
 
 export default async function LandingZone(props: {
@@ -21,6 +22,7 @@ export default async function LandingZone(props: {
       <div className="flex w-full flex-col space-y-28 sm:space-y-36 md:space-y-56">
         <Hero dict={dict} lang={lang} />
         <Stack dict={dict} />
+        <Synth />
         <Journey dict={dict} lang={lang} />
 
         {/* Footer CTA */}

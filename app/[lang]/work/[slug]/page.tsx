@@ -20,10 +20,11 @@ const { identity, hardware: hardwareContent } = en;
 
 /** ISO 8601 duration and upload date keyed by project slug */
 const videoMeta: Record<string, { duration: number; uploadDate: string; thumbnail: string }> = {
-  esp32:         { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
-  cryocell:      { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
-  "bt-speaker":  { duration: 51, uploadDate: "2026-03-10", thumbnail: `${identity.site}/ble_speaker_final_poster.webp` },
-  "arch-ricing": { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/hero.JPG` },
+  esp32:           { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
+  cryocell:        { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
+  "bt-speaker":    { duration: 51, uploadDate: "2026-03-10", thumbnail: `${identity.site}/ble_speaker_final_poster.webp` },
+  "arch-ricing":   { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/hero.JPG` },
+  "pusda-speaker": { duration: 30, uploadDate: "2026-08-22", thumbnail: `${identity.site}/pusda_speaker1_poster.webp` },
 };
 import { SiteBackground } from "@/app/components/site-background";
 import { ScrollProgress } from "@/app/components/scroll-progress";
@@ -220,31 +221,18 @@ export default async function WorkPage({ params }: Props) {
             </div>
           </Reveal>
 
-          <Reveal
-            variant="up"
-            delay={150}
-            className="order-first lg:order-last"
-          >
+          <Reveal variant="up" delay={150} className="order-first lg:order-last">
             <div className="overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-2)] shadow-[var(--shadow)]">
               {/* window bar */}
               <div className="flex items-center gap-1.5 border-b border-[var(--border)] px-4 py-2.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
                 <span className="ml-2 flex-1 text-[0.55rem] font-mono font-semibold tracking-wider text-muted">
-                  {proj.slug === "esp32" ? "preview.mp4" : "render.png"}
+                  {proj.media?.[0]?.type === "video" ? "▶ demo.mp4" : "◼ render.png"}
                 </span>
-                {proj.media && proj.media.length > 0 && proj.media[0].type === "video" && (
-                  <Link
-                    href={`/${lang}/work/${slug}/watch`}
-                    className="flex items-center gap-1 text-[0.55rem] font-mono font-bold uppercase tracking-wider text-accent hover:underline"
-                  >
-                    Watch Full <Icon name="external" className="h-3 w-3" />
-                  </Link>
-                )}
+                <span className="text-[0.55rem] font-mono text-muted/50">
+                  {proj.media?.length ?? 0} file{(proj.media?.length ?? 0) !== 1 ? "s" : ""}
+                </span>
               </div>
-              {proj.media &&
-                proj.media.length > 0 &&
+              {proj.media && proj.media.length > 0 &&
                 (proj.media[0].type === "video" ? (
                   <video
                     src={proj.media[0].src}
@@ -271,27 +259,37 @@ export default async function WorkPage({ params }: Props) {
           </Reveal>
         </div>
 
-        {/* ── HIGHLIGHTS ── */}
+        {/* ── HIGHLIGHTS — big bold callout cards ── */}
         {proj.highlights.length > 0 && (
           <Reveal variant="up" delay={200}>
-            <div className="mb-14 grid gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] sm:mb-18 sm:grid-cols-3">
-              {proj.highlights.map((h, i) => (
-                <div
-                  key={i}
-                  className="relative bg-[var(--surface)] p-5 sm:p-6"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="absolute top-3 right-3 text-[0.55rem] font-mono font-bold text-accent/30"
+            <div className="mb-14 grid gap-4 sm:mb-18 sm:grid-cols-3">
+              {proj.highlights.map((h, i) => {
+                // Pull a leading number/symbol if the text starts with one (e.g. "2×", "3A", "0.04A")
+                const match = h.match(/^([\d×Ω.]+[A-Za-zΩ×°%+]*)[:：]?\s*/);
+                const bigVal = match ? match[1] : String(i + 1).padStart(2, "0");
+                const rest   = match ? h.slice(match[0].length) : h;
+                return (
+                  <div
+                    key={i}
+                    className="relative overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] p-5 sm:p-6"
                   >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <CircuitDots className="absolute bottom-3 right-3 h-14 w-14 text-[var(--border)]" />
-                  <p className="relative max-w-[75%] text-sm leading-relaxed text-ink sm:text-base">
-                    {h}
-                  </p>
-                </div>
-              ))}
+                    {/* Giant ghost number */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -bottom-3 -right-2 text-[5rem] font-black leading-none text-[var(--accent)] opacity-[0.06] select-none"
+                    >
+                      {String(i + 1)}
+                    </span>
+                    <CircuitDots className="absolute top-3 right-3 h-10 w-10 text-[var(--border)] opacity-60" />
+                    <span className="mb-3 block text-3xl font-black tracking-tight text-[var(--accent)] sm:text-4xl">
+                      {bigVal}
+                    </span>
+                    <p className="relative text-sm leading-relaxed text-ink sm:text-base">
+                      {rest}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         )}
@@ -358,25 +356,56 @@ export default async function WorkPage({ params }: Props) {
               );
             }
 
-            /* Middle sections: Accent bar on left */
+            /* Middle sections: text + optional inline media side by side */
+            const sideMedia = proj.media?.[i + 1];
             return (
               <Reveal key={section.title} variant="up" delay={80}>
-                <div className="relative pl-8 sm:pl-10">
-                  <div className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full bg-gradient-to-b from-accent via-accent-2 to-transparent" />
-                  <span className="mb-1 block text-xs font-bold tracking-wider text-accent">
-                    Section {ch}
-                  </span>
-                  <h2 className="mb-4 text-2xl font-bold text-ink-strong sm:text-3xl lg:text-4xl">
-                    {section.title}
-                  </h2>
-                  {paragraphs.map((p, pi) => (
-                    <p
-                      key={pi}
-                      className="text-sm leading-relaxed text-muted sm:text-base sm:leading-relaxed [&:not(:last-child)]:mb-4"
-                    >
-                      {p}
-                    </p>
-                  ))}
+                <div className={`grid gap-8 lg:items-start ${sideMedia ? "lg:grid-cols-2" : ""}`}>
+                  {/* Text */}
+                  <div className="relative pl-8 sm:pl-10">
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full bg-gradient-to-b from-accent via-accent-2 to-transparent" />
+                    <span className="mb-1 block text-xs font-bold tracking-wider text-accent">
+                      Section {ch}
+                    </span>
+                    <h2 className="mb-4 text-2xl font-bold text-ink-strong sm:text-3xl lg:text-4xl">
+                      {section.title}
+                    </h2>
+                    {paragraphs.map((p, pi) => (
+                      <p
+                        key={pi}
+                        className="text-sm leading-relaxed text-muted sm:text-base sm:leading-relaxed [&:not(:last-child)]:mb-4"
+                      >
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+
+                  {/* Inline media */}
+                  {sideMedia && (
+                    <div className="overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-2)]">
+                      {sideMedia.type === "video" ? (
+                        <video
+                          src={sideMedia.src}
+                          poster={sideMedia.poster}
+                          controls
+                          playsInline
+                          preload="metadata"
+                          className="w-full h-auto max-h-[420px] object-contain bg-black"
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <Image
+                          src={sideMedia.src}
+                          alt={`${proj.name} — section ${ch}`}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto object-contain"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
               </Reveal>
             );
@@ -390,38 +419,26 @@ export default async function WorkPage({ params }: Props) {
             <div className="p-6 sm:p-8 lg:p-10">
               <div className="mb-6 flex items-center gap-3">
                 <div className="grid h-8 w-8 place-items-center rounded-lg border border-[var(--border)] bg-[var(--surface)] text-accent">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="16" rx="2.5" />
                     <path d="m7 9 3 3-3 3M13 15h4" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-accent">
-                    Datasheet
-                  </h3>
-                  <p className="text-[0.65rem] text-muted">
-                    Project specifications
-                  </p>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-accent">Datasheet</h3>
+                  <p className="text-[0.65rem] text-muted">Project specifications</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
                 {proj.specs.map((spec) => (
                   <div
                     key={spec.label}
-                    className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 text-center transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow)] sm:p-5"
+                    className="group rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 text-center transition-all hover:-translate-y-1 hover:border-[var(--accent)]/40 hover:shadow-[0_8px_24px_-8px_rgba(var(--accent-rgb),0.25)] sm:p-5"
                   >
                     <span className="block text-[0.55rem] font-bold uppercase tracking-[0.15em] text-accent sm:text-xs">
                       {spec.label}
                     </span>
-                    <span className="mt-2 block text-base font-black text-ink-strong sm:text-xl">
+                    <span className="mt-2 block text-base font-black text-ink-strong sm:text-xl group-hover:text-accent transition-colors">
                       {spec.value}
                     </span>
                   </div>
