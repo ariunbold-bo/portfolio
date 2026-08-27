@@ -882,6 +882,7 @@
   .gpu {
     transform: translateZ(0);
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Limit repaint scope to this element's bounding box.
@@ -919,4 +920,11 @@
       transition-duration: 0.5s;
     }
   }
+}
+
+.warning{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

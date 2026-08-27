@@ -1,0 +1,90 @@
+diff --git a/app/components/sections/journey.tsx b/app/components/sections/journey.tsx
+--- a/app/components/sections/journey.tsx
++++ b/app/components/sections/journey.tsx
+@@ -69,1 +69,1 @@
+-                      onClick={() => setOpenIndex(isOpen ? null : index)}
++                      onClick={() => { setOpenIndex(isOpen ? null : index); }}
+diff --git a/app/components/reveal.tsx b/app/components/reveal.tsx
+--- a/app/components/reveal.tsx
++++ b/app/components/reveal.tsx
+@@ -43,1 +43,1 @@
+-    return () => io.disconnect();
++    return () => { io.disconnect(); };
+diff --git a/app/components/sections/synth.tsx b/app/components/sections/synth.tsx
+--- a/app/components/sections/synth.tsx
++++ b/app/components/sections/synth.tsx
+@@ -231,1 +231,1 @@
+-    return () => obs.disconnect();
++    return () => { obs.disconnect(); };
+@@ -250,1 +250,1 @@
+-    if (ac.state === "suspended") ac.resume();
++    if (ac.state === "suspended") void ac.resume();
+@@ -301,1 +301,1 @@
+-        acRef.current!.currentTime,
++        acRef.current?.currentTime,
+@@ -329,1 +329,1 @@
+-    acRef.current?.close();
++    void acRef.current?.close();
+@@ -473,1 +473,1 @@
+-                    setState(prev => ({ ...prev, gain: parseFloat(e.target.value) }))
++                    { setState(prev => ({ ...prev, gain: parseFloat(e.target.value) })); }
+@@ -530,1 +530,1 @@
+-                onClick={() => setState(prev => ({ ...prev, waveform: w.id }))}
++                onClick={() => { setState(prev => ({ ...prev, waveform: w.id })); }}
+diff --git a/app/components/sections/about.tsx b/app/components/sections/about.tsx
+--- a/app/components/sections/about.tsx
++++ b/app/components/sections/about.tsx
+@@ -20,1 +20,1 @@
+-    return () => window.removeEventListener("keydown", handleKeyDown);
++    return () => { window.removeEventListener("keydown", handleKeyDown); };
+@@ -149,1 +149,1 @@
+-              onClick={() => setActiveItem(item)}
++              onClick={() => { setActiveItem(item); }}
+@@ -208,1 +208,1 @@
+-        onClose={() => setActiveItem(null)}
++        onClose={() => { setActiveItem(null); }}
+diff --git a/app/components/smooth-scroll-provider.tsx b/app/components/smooth-scroll-provider.tsx
+--- a/app/components/smooth-scroll-provider.tsx
++++ b/app/components/smooth-scroll-provider.tsx
+@@ -34,1 +34,1 @@
+-      const id = anchor.getAttribute("href")!.slice(1);
++      const id = anchor.getAttribute("href")?.slice(1);
+diff --git a/app/components/lightbox.tsx b/app/components/lightbox.tsx
+--- a/app/components/lightbox.tsx
++++ b/app/components/lightbox.tsx
+@@ -82,1 +82,1 @@
+-            onClick={(e) => e.stopPropagation()}
++            onClick={(e) => { e.stopPropagation(); }}
+diff --git a/app/components/typewriter.tsx b/app/components/typewriter.tsx
+--- a/app/components/typewriter.tsx
++++ b/app/components/typewriter.tsx
+@@ -23,1 +23,1 @@
+-          () => setText(current.slice(0, text.length + 1)),
++          () => { setText(current.slice(0, text.length + 1)); },
+@@ -34,1 +34,1 @@
+-        timer = setTimeout(() => setText((prev) => prev.slice(0, -1)), 20);
++        timer = setTimeout(() => { setText((prev) => prev.slice(0, -1)); }, 20);
+@@ -38,1 +38,1 @@
+-        timer = setTimeout(() => setText(phrases[idxRef.current][0]), 40);
++        timer = setTimeout(() => { setText(phrases[idxRef.current][0]); }, 40);
+@@ -42,1 +42,1 @@
+-    return () => clearTimeout(timer);
++    return () => { clearTimeout(timer); };
+diff --git a/app/components/nav-rail.tsx b/app/components/nav-rail.tsx
+--- a/app/components/nav-rail.tsx
++++ b/app/components/nav-rail.tsx
+@@ -137,1 +137,1 @@
+-    return () => document.removeEventListener("mousedown", handler);
++    return () => { document.removeEventListener("mousedown", handler); };
+@@ -158,1 +158,1 @@
+-    els.forEach((el) => io.observe(el));
++    els.forEach((el) => { io.observe(el); });
+@@ -159,1 +159,1 @@
+-    return () => io.disconnect();
++    return () => { io.disconnect(); };
+@@ -221,1 +221,1 @@
+-              onClick={() => setMoreOpen((o) => !o)}
++              onClick={() => { setMoreOpen((o) => !o); }}
+@@ -244,1 +244,1 @@
+-                    onClick={() => setMoreOpen(false)}
++                    onClick={() => { setMoreOpen(false); }}

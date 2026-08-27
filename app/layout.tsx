@@ -50,7 +50,7 @@ export default async function RootLayout({
   // <html lang> attribute stays accurate without needing `[lang]` route
   // params here (this is the one true root layout — it also renders for
   // requests that never resolve to a `[lang]` route, like a bare 404).
-  const headersList = await headers();
+  const headersList = await headers();3
   const lang = headersList.get("x-locale") || "en";
 
   return (
@@ -61,6 +61,7 @@ export default async function RootLayout({
       className={`${poppins.variable} h-full antialiased ${poppins.className}`}
     >
       <head>
+        {/* we will be sanitizing the theme script later*/}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full overflow-x-hidden">{children}</body>

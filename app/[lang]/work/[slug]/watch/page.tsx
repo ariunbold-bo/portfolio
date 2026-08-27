@@ -73,6 +73,7 @@ export default async function WatchPage({ params }: Props) {
   return (
     <>
       {vMeta && (
+        // sanitize the JSON-LD to prevent XSS attacks
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
