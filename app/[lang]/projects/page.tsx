@@ -30,7 +30,7 @@ export async function generateMetadata(props: {
       locale: ogLocale(lang),
       images: [
         {
-          url: `${identity.site}/hero.JPG`,
+          url: `${identity.site}/hero.webp`,
           width: 1200,
           height: 630,
           alt: `Projects by ${identity.name} — Software & Hardware`,

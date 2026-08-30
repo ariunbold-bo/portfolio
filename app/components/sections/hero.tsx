@@ -23,20 +23,9 @@ export function Hero({
       id="home"
       className="relative flex min-h-[100svh] flex-col justify-center pb-20"
     >
-      {/* ── Background: large ghosted index numeral ── */}
-      <div
-        aria-hidden
-        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 font-bold leading-none tracking-tighter text-[30vw] text-[var(--accent)] opacity-[0.03] z-0"
-      >
-        AB
-      </div>
 
-      {/* ── Ambient glow blobs ── */}
-      <div className="absolute top-[10%] right-[8%] w-[380px] h-[380px] blob bg-[var(--accent)]/12 -z-10" />
-      <div
-        className="absolute bottom-[8%] left-[-4%] w-[280px] h-[280px] blob bg-[var(--accent-2)]/8 -z-10"
-        style={{ animationDelay: "-7s", animationDuration: "28s" }}
-      />
+
+
 
       {/* ── Top decorative rule ── */}
       <div className="absolute top-24 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border-strong)] to-transparent opacity-50" />
@@ -121,7 +110,7 @@ export function Hero({
           >
             <div className="flex items-center gap-4">
               <Link
-                href={`/${lang}/projects`}
+                href="#projects"
                 className="btn btn-primary hover-lift glow-hover px-7 py-3.5 text-sm"
               >
                 {dict.ui.viewProjects}
@@ -192,7 +181,7 @@ export function Hero({
                 {/* Subtle gradient on top of photo */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 pointer-events-none" />
                 <Image
-                  src="/hero.JPG"
+                  src="/hero.webp"
                   alt={dict.identity.name}
                   width={600}
                   height={750}

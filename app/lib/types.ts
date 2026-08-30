@@ -25,10 +25,11 @@ export type TimelineEntry = {
   when: string;
   title: string;
   body: string;
+  image?: { src: string; alt: string; aspectRatio: string; type?: "image" | "video" } | null;
 };
 
 export type HardwareProject = {
-  slug: "esp32" | "cryocell" | "bt-speaker" | "arch-ricing" | "pusda-speaker";
+  slug: "esp32" | "cryocell" | "arch-ricing" | "pusda-speaker";
   name: string;
   kicker: string;
   summary: string;
@@ -133,5 +134,7 @@ export type Dictionary = {
     theme: string;
     clickToReveal: string;
     readFullStory: string;
+    galleryLabel: string;
+    thingsIValue: string;
   };
 };

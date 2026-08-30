@@ -257,7 +257,7 @@
   .glow-hover::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -3px;
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(
@@ -307,7 +307,8 @@
   .btn-primary {
     background: var(--accent);
     color: var(--on-accent);
-    box-shadow: 0 12px 28px -10px rgba(var(--accent-rgb), 0.6);
+    /* shadowing difuses the button into bg */
+    /* box-shadow: 0 12px 28px -10px rgba(var(--accent-rgb), 0.6); */
   }
   .btn-primary:hover {
     transform: translateY(-3px);
@@ -781,6 +782,17 @@
   opacity: 1;
 }
 
+@media (min-width: 768px) {
+  .journey-body.md-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  .journey-body.md-closed {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * AUDIO SYNTHESIZER — custom range slider
  * ------------------------------------------------------------------ */
@@ -927,4 +939,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+video:fullscreen,
+img:fullscreen,
+video:-webkit-full-screen,
+img:-webkit-full-screen,
+video:-ms-fullscreen,
+img:-ms-fullscreen {
+  object-fit: contain !important;
+  background-color: black !important;
 }

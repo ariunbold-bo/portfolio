@@ -23,7 +23,7 @@ built because most templates feel like the same startup landing page copy-pasted
 ## the vibe
 
 - warm amber & slate palette — muted gold (`#c4a575`) on dark, bronze on light
-- glassmorphism cards with ambient blob background
+- glassmorphism cards with ambient animated blob background
 - circuit-dot grid overlay (hardware flavor)
 - typewriter tagline cycling through what i'm into
 - smooth light/dark mode toggle — no flash-white at 3am
@@ -33,17 +33,17 @@ built because most templates feel like the same startup landing page copy-pasted
 
 ## stack
 
-| layer      | thing                                 |
-| ---------- | ------------------------------------- |
-| framework  | next.js 16 (app router)               |
-| language   | typescript (strict)                   |
-| styling    | tailwind css v4                       |
-| fonts      | poppins (via next/font, per-route weight loading) |
-| animation  | css keyframes + intersection observer |
-| audio      | native Web Audio API (no libraries)   |
-| i18n       | file-based dict (`en.ts` / `mn.ts`)   |
-| deployment | vercel                                |
-| scroll     | lenis                                 |
+| layer      | thing                                              |
+| ---------- | -------------------------------------              |
+| framework  | next.js 16 (app router)                            |
+| language   | typescript (strict)                                |
+| styling    | tailwind css v4                                    |
+| fonts      | poppins (via next/font, per-route weight loading)  |
+| animation  | css keyframes + intersection observer              |
+| audio      | native Web Audio API (no libraries)                |
+| i18n       | file-based dict (`en.ts` / `mn.ts`)                |
+| deployment | vercel                                             |
+| scroll     | lenis                                              |
 
 zero runtime deps beyond react + next — except lenis for smooth scroll. no framer motion, no gsap, no radix, no three.js — just css doing work.
 
@@ -147,7 +147,6 @@ npm run lint     # eslint
 **hardware**
 - **ESP32 Animation** — C++/U8g2 firmware decoding binary GIFs onto a 128×64 OLED. tight memory, smooth frames.
 - **CryoCell** — Samsung S21 mod: custom 10,000mAh battery + active cooling fan. −10°C under load.
-- **BLE Speaker** — Gen 1 custom Bluetooth speaker build from scratch.
 - **Pusda Speaker Gen 2** — upgraded stereo BT system: dual isolated power rails (3.7V + 8.4V), XH-MX8 amp, MH-MX8 receiver, 2× 4Ω 15W drivers, cardboard box enclosure. ear-splitting loud.
 - **Arch Ricing** — full hyprland/wayland desktop environment setup.
 
@@ -165,7 +164,7 @@ npm run lint     # eslint
 
 ## audio synthesizer
 
-`components/sections/synth.tsx` — no external audio libraries, just the browser's own APIs:
+`components/sections/synth.tsx` — no external audio libraries, just the browser's own APIs (discontinued for now):
 
 - **`AudioContext`** — lazy-init on first click; respects autoplay policy
 - **`OscillatorNode`** — sine / square / sawtooth / triangle waveforms; rebuilt on waveform change
@@ -174,7 +173,7 @@ npm run lint     # eslint
 - **`requestAnimationFrame` loop** — two-pass draw: glow shadow + crisp gradient line, both using the live `--accent-rgb` CSS token so it matches the active theme
 - `ResizeObserver` keeps the canvas pixel-perfect at any DPR
 - Frequency slider is **logarithmic** (20 Hz → 2 kHz) — linear would make the low end useless
-- Note name display converts Hz → nearest 12-TET pitch (e.g. 440 Hz → A4)
+- Note name display converts Hz → nearest 12-TET pitch
 
 ## out of scope
 

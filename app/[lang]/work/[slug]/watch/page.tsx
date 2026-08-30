@@ -20,7 +20,7 @@ const videoMeta: Record<string, { duration: number; uploadDate: string; thumbnai
   esp32:         { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
   cryocell:      { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
   "bt-speaker":  { duration: 51, uploadDate: "2026-03-10", thumbnail: `${identity.site}/ble_speaker_final_poster.webp` },
-  "arch-ricing": { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/hero.JPG` },
+  "arch-ricing": { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/hero.webp` },
 };
 
 interface Props {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const proj = findProject(slug);
   if (!proj) return { title: "Not Found" };
   const meta = videoMeta[slug];
-  const ogImage = meta?.thumbnail ?? `${identity.site}/hero.JPG`;
+  const ogImage = meta?.thumbnail ?? `${identity.site}/hero.webp`;
   return {
     title: `Watch ${proj.name}`,
     description: `Watch the full video of ${proj.name}. ${proj.summary}`,

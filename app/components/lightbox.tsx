@@ -80,6 +80,7 @@ export function LightboxModal({
             controls
             playsInline
             onClick={(e) => e.stopPropagation()}
+            muted
           />
         ) : (
           <img

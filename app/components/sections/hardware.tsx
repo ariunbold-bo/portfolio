@@ -1,11 +1,15 @@
-import Link from "next/link";
+"use client"
+
+// import Link from "next/link";
 import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { GlassCard } from "../glass-card";
 import { Icon } from "../icons";
+import { useRouter } from "next/navigation";
 
 export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
+  const navigate = useRouter();
   return (
     <section id="hardware" className="scroll-mt-32">
       <Reveal variant="up">
@@ -20,8 +24,8 @@ export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
       <div className="mt-10 grid gap-8 sm:mt-12 sm:gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-12">
         {dict.hardware.map((hw, i) => (
           <Reveal key={hw.slug} variant="up" delay={i * 200}>
-            <GlassCard className="flex h-full flex-col overflow-hidden glow-hover hover-lift">
-              <div className="p-6 sm:p-8 lg:p-10 flex-grow">
+            <GlassCard onClick={() => { navigate.push(`/${lang}/work/${hw.slug}`) }} className="flex h-full flex-col  overflow-hidden glow-hover hover-lift hover:cursor-pointer">
+              <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between h-full ">
                 <div className="mb-4 flex items-center justify-between sm:mb-6">
                   <span className="text-xs font-bold tracking-widest text-accent uppercase">
                     {hw.kicker}
@@ -36,18 +40,15 @@ export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
                 <p className="mb-6 text-base leading-relaxed text-muted sm:text-lg">
                   {hw.summary}
                 </p>
-                <div className="relative bottom-0 mt-2">
+                {/* <div className="relative top-0 left-0 flex items-center justify-between gap-4">
                   <Link
                     href={`/${lang}/work/${hw.slug}`}
-                    className="btn btn-primary hover-lift group w-full sm:w-auto"
+                    className="btn btn-primary hover-lift group w-full! h-15 text-[20px] sm:w-auto font-bold"
                   >
                     {dict.ui.more}
-                    <Icon
-                      name="arrowRight"
-                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                    />
+                   
                   </Link>
-                </div>
+                </div> */}
               </div>
               <div className="grid grid-cols-2 gap-px border-t border-[var(--border)] bg-[var(--border)] sm:grid-cols-4">
                 {hw.specs.map((spec) => (

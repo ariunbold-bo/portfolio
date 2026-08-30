@@ -4,7 +4,7 @@ const { identity } = en;
 
 const images = [
   {
-    src: "/hero.JPG",
+    src: "/hero.webp",
     title: "Ariunbold Bold — Hero Portrait",
     caption: "Ariunbold Bold, systems developer from Mongolia.",
     page: `${identity.site}/en`,
@@ -35,7 +35,7 @@ const images = [
   },
   {
     src: "/pusda_speaker.webp",
-    title: "Pusda Speaker Gen 2 — Build Photo",
+    title: "Pusda Speaker— Build Photo",
     caption: "Second-generation DIY Bluetooth stereo speaker using XH-MX8 amplifier, MH-MX8 BT receiver, and dual isolated power rails. Enclosure is the amp's original shipping box.",
     page: `${identity.site}/en/work/pusda-speaker`,
   },

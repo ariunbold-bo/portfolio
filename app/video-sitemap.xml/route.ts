@@ -4,7 +4,7 @@ const { identity } = en;
 
 const videos = [
   {
-    src: "/esp32-demo.mp4",
+    src: "/esp32-demo.webm",
     title: "ESP32 OLED Animation",
     description:
       "C++ firmware that decodes binary-encoded GIF frames and drives a 128×64 OLED at smooth framerates on an ESP32 microcontroller.",
@@ -14,7 +14,7 @@ const videos = [
     publicationDate: "2026-01-15",
   },
   {
-    src: "/mobile-compressed.mp4",
+    src: "/mobile-compressed.webm",
     title: "Samsung Galaxy S21 CryoCell Mod Demo",
     description:
       "Hardware mod pairing a custom 10,000mAh power solution with an active cooling module and dual Power Save / Performance modes on a Galaxy S21.",
@@ -24,7 +24,7 @@ const videos = [
     publicationDate: "2026-02-20",
   },
   {
-    src: "/ble_speaker_final.mp4",
+    src: "/ble_speaker_mono.webm",
     title: "Custom DIY Stereo Bluetooth Speaker Build",
     description:
       "Custom-built portable Bluetooth speaker featuring isolated dual power rails, step-up voltage regulation, and tuned acoustic damping in a custom enclosure.",
@@ -34,17 +34,17 @@ const videos = [
     publicationDate: "2026-03-10",
   },
   {
-    src: "/arch_ricing.mp4",
+    src: "/arch_ricing.webm",
     title: "Arch Linux Hyprland Ricing and RGB Sync",
     description:
       "Highly customized Arch Linux setup using Hyprland, featuring keyboard RGB syncing that reacts to live and static wallpapers in real time.",
     page: `${identity.site}/en/work/arch-ricing`,
-    thumbnail: `${identity.site}/hero.JPG`,
+    thumbnail: `${identity.site}/hero.webp`,
     durationSeconds: 24,
     publicationDate: "2026-04-05",
   },
   {
-    src: "/pusda_speaker1.mp4",
+    src: "/pusda_speaker1.webm",
     title: "Pusda Speaker Gen 2 — Demo Video 1",
     description:
       "Second-generation DIY Bluetooth stereo speaker with dual isolated power rails, XH-MX8 amp, MH-MX8 BT receiver and two 4Ω 15W drivers. So loud you can't hear someone yelling beside you.",
@@ -54,7 +54,7 @@ const videos = [
     publicationDate: "2026-08-22",
   },
   {
-    src: "/pusda_speaker2.mp4",
+    src: "/pusda_speaker2.webm",
     title: "Pusda Speaker Gen 2 — Demo Video 2",
     description:
       "Additional footage of the Pusda Speaker Gen 2 build — stereo output, enclosure detail, and power system overview.",

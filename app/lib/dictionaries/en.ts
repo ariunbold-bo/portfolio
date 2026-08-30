@@ -82,76 +82,73 @@ const en: Dictionary = {
       body: "Working with ESP32 microcontrollers, soldering, and custom cooling system modifications.",
       icon: "chip",
     },
-    {
-      no: "04",
-      title: "Automated Toolchain Design",
-      tag: "CLI / Build systems",
-      body: "Building custom CLI tools and build systems for native environment security auditing.",
-      icon: "wrench",
-    },
-    {
-      no: "05",
-      title: "Lower-Level Optimization",
-      tag: "Memory / Profiling",
-      body: "Transitioning from high-level frameworks to memory allocation, binary toolchain internals, and performance profiling.",
-      icon: "gauge",
-    },
   ],
   timeline: [
     {
       when: "2009",
       title: "Came to this world",
       body: "My mom and dad had a shebang and thus here i am.",
+      image: null,
     },
     {
       when: "2014",
       title: "The First Victim",
       body: "Took apart an RC car in kindergarten. The battery wire broke, so I taped it back together since I didn't have a soldering iron. It worked for a few hours. The rest is history.",
+      image: { type: "video", src: "/first-victim.webm", alt: "First Victim", aspectRatio: "9/16" },
     },
     {
       when: "2017",
       title: "First Lines of Code",
       body: "It started when his mom brought home a computer twice his age. He learned the basics from a kids' programming book that taught Scratch and Python.",
+      image: { type: "image", src: "/first-code.webp", alt: "First lines of code", aspectRatio: "16/9" },
     },
     {
       when: "2017 – 2021",
       title: "The Self-Taught Era",
       body: "Self-taught HTML, CSS, and JS. Built early Python apps like music players and web scrapers — days spent digging through Stack Overflow before AI assistants existed.",
+      image: { type: "video", src: "/self-taught-era.webm", alt: "Self taught era", aspectRatio: "16/9" },
     },
     {
       when: "2020",
       title: "The Pizza Box Incident",
       body: "Disassembled a perfectly working antique Windows XP Thinkpad and tried mounting the motherboard inside a pizza box. Broke something along the way and it never turned on again. An expensive, time-consuming lesson.",
+      image: null,
     },
     {
       when: "2022",
       title: "Pinecone School",
       body: "Attended Pinecone programming school and graduated with flying colors thanks to prior knowledge. Refreshing to finally have a real teacher to code alongside.",
+      image: null,
     },
     {
       when: "2023",
       title: "GitHub & Real Teams",
       body: "Still at Pinecone, but leveled up the workflow. Learned Git, GitHub, and how to collaborate with real colleagues on everyday projects.",
+      image: null,
     },
     {
       when: "Early 2024",
       title: "Linux VMs & Android Modding",
       body: "Set up his first Linux VM (Kali) and dove deep into ADB, scrcpy, and Android internals — building a reputation at school for formatting locked devices.",
+      image: { type: "video", src: "/linux-android.webm", alt: "Linux VMs", aspectRatio: "3/4" },
     },
     {
       when: "2024",
       title: "The Unofficial School IT Guy",
       body: "Fixed teachers' laptops, HDMI cables, and forgotten passwords. Competed in a C++ olympiad (with zero prior knowledge of hashmaps or arrays—at least I tried!). Secured straight 100%s in informatics class every year, sometimes by 'borrowing' the Wi-Fi password.",
+      image: null,
     },
     {
       when: "Late 2024",
       title: "The Arch Linux Switch",
       body: "Started dual-booting Windows and Arch. After a Windows update wiped un-pushed code, he nuked the partition, switched fully to Arch Linux, and never looked back.",
+      image: { type: "image", src: "/arch-linux.webp", alt: "Arch Linux Switch", aspectRatio: "16/9" },
     },
     {
       when: "2025 – Present",
       title: "The TTS Era",
       body: "Continued pushing boundaries. My biggest achievement to date has been building and deploying my custom TTS (Text-to-Speech) project.",
+      image: { type: "video", src: "/tts-era.webm", alt: "TTS Era", aspectRatio: "16/9" },
     },
   ],
   hardware: [
@@ -188,7 +185,7 @@ const en: Dictionary = {
       ],
       icon: "chip",
       media: [
-        { type: "video", src: "/esp32-demo.mp4", poster: "/esp32-poster.webp" },
+        { type: "video", src: "/esp32-demo.webm", poster: "/esp32-poster.webp" },
       ],
     },
     {
@@ -222,55 +219,17 @@ const en: Dictionary = {
       media: [
         {
           type: "video",
-          src: "/mobile-compressed.mp4",
+          src: "/mobile-compressed.webm",
           poster: "/mobile-poster.webp",
         },
       ],
     },
     {
-      slug: "bt-speaker",
-      name: "Custom DIY Stereo Bluetooth Speaker & Power System",
-      kicker: "Hardware Systems • Circuit Design • Acoustic Engineering",
-      summary:
-        "A custom-built portable Bluetooth speaker featuring isolated dual power rails, step-up voltage regulation, and tuned acoustic damping in a custom enclosure.",
-      highlights: [
-        "Dual-Power Circuit Isolation: Separated power delivery between the Bluetooth receiver and stereo amplifier to eliminate ground-loop feedback and audio noise floor.",
-        "DC-DC Step-Up Regulation: Integrated boost converter module to boost battery voltage for cleaner output headroom at higher volumes.",
-        "Acoustic Tuning: Implemented internal cotton polyfill absorption to reduce standing wave distortion and improve low-end frequency response in a compact chamber.",
-      ],
-      sections: [
-        {
-          title: "Dual-Rail Power System & Voltage Boost",
-          body: "A custom lithium battery pack with BMS supplies isolated power lines to the BLE module and the PAM8610 power amplifier, preventing digital ground loop noise (buzzing/whining in the speakers). A blue DC-DC step-up module elevates supply voltage to maximize amplifier headroom and output power.",
-        },
-        {
-          title: "Acoustic Damping & Hardware Setup",
-          body: "Two full-range drivers are mounted on custom cardboard baffle plates and sealed with tape to prevent acoustic air leakage. White cotton polyfill acts as acoustic dampening, slowing internal sound waves and tricking the drivers into 'seeing' a larger acoustic enclosure for deeper bass response.",
-        },
-      ],
-      specs: [
-        { label: "Amp", value: "PAM8610" },
-        { label: "Power", value: "3.7V to 22V  Converter" },
-        { label: "Wiring", value: "An absolute mess" },
-        { label: "Speaker", value: "30W" },
-      ],
-      icon: "speaker",
-      media: [
-        {
-          type: "video",
-          src: "/ble_speaker_final.mp4",
-          poster: "/ble_speaker_final_poster.webp",
-        },
-        { type: "image", src: "/voltage_amplifier+audio_amplifier.JPG" },
-        { type: "image", src: "/first version of the ble speaker.JPG" },
-      ],
-    },
-    {
       slug: "pusda-speaker",
-      name: "Pusda Speaker — Gen 2 Stereo BT System",
-      kicker: "Audio Engineering • Power Systems • DIY Hardware",
+      name: "Pusda Speaker Stereo BT System",
+      kicker: "Audio Engineering • DIY Hardware",
       summary:
-        "A significantly upgraded second-generation Bluetooth stereo speaker system. True stereo with dual isolated power rails — a 3.7V battery powering the MH-MX8 BT receiver and an 8.4V series-pack driving the XH-MX8 amplifier — eliminating the common-ground noise that plagued Gen 1. Loud enough that sitting next to it at full volume makes conversation impossible.",
+        "True stereo with dual isolated power rails. a 3.7V battery powering the MH-MX8 BT receiver and an 8.4V series-pack driving the XH-MX8 amplifier.",
       highlights: [
         "Dual isolated power rails: separate 3.7V for the BT receiver and 8.4V (2×3.7V series) for the amplifier — eliminates common-ground back-noise completely.",
         "True stereo: two independent 4Ω 15W full-range drivers, one per channel, for genuine left/right separation.",
@@ -291,19 +250,15 @@ const en: Dictionary = {
         },
       ],
       specs: [
-        { label: "Drivers", value: "2× 4Ω 15W" },
         { label: "Amp", value: "XH-MX8" },
-        { label: "BT Module", value: "MH-MX8" },
-        { label: "Amp Supply", value: "8.4V (2S Li)" },
-        { label: "BT Supply", value: "3.7V Li" },
-        { label: "Peak Draw", value: "3A" },
+        { label: "Supply", value: "8.4V (2S Li)" },
         { label: "Idle Draw", value: "0.04A" },
-        { label: "Enclosure", value: "The amp's own box" },
+        { label: "Enclosure", value: "shipping box" },
       ],
       icon: "speaker",
       media: [
-        { type: "video", src: "/pusda_speaker1.mp4", poster: "/pusda_speaker1_poster.webp" },
-        { type: "video", src: "/pusda_speaker2.mp4", poster: "/pusda_speaker2_poster.webp" },
+        { type: "video", src: "/pusda_speaker1.webm", poster: "/pusda_speaker1_poster.webp" },
+        { type: "video", src: "/pusda_speaker2.webm", poster: "/pusda_speaker2_poster.webp" },
         { type: "image", src: "/pusda_speaker.webp" },
       ],
     },
@@ -330,12 +285,12 @@ const en: Dictionary = {
       ],
       specs: [
         { label: "OS", value: "Arch Linux" },
-        { label: "terimnal", value: "zsh" },
+        { label: "terminal", value: "zsh" },
         { label: "WM", value: "Hyprland" },
         { label: "Hardware", value: "RGB Keyboard" },
       ],
       icon: "terminal",
-      media: [{ type: "video", src: "/arch_ricing.mp4" }],
+      media: [{ type: "video", src: "/arch_ricing.webm" }],
     },
   ],
   projects: [
@@ -385,13 +340,13 @@ const en: Dictionary = {
   ],
   gallery: [
     {
-      src: "/ble_speaker_mono.mp4",
+      src: "/ble_speaker_mono.webm",
       type: "video",
       alt: "Mono Speaker Version",
       aspectRatio: "aspect-[9/16]",
     },
     {
-      src: "/playing_tts.mp4",
+      src: "/playing_tts.webm",
       type: "video",
       alt: "Playing TTS",
       aspectRatio: "aspect-video",
@@ -438,7 +393,7 @@ const en: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Home", icon: "home" },
-    { id: "stack", label: "Stack", icon: "layers" },
+    { id: "projects", label: "Projects", icon: "grid" },
     { id: "journey", label: "Journey", icon: "route" },
   ],
   ui: {
@@ -514,7 +469,7 @@ const en: Dictionary = {
     hardwareTitle: "Where software meets physical logic.",
     hardwareDesc:
       "A selection of my physical engineering projects, including microcontrollers and hardware modification.",
-    more: "More...",
+    more: "Read Case Study",
 
     // Projects
     softwareLabel: "Software Projects",
@@ -536,6 +491,10 @@ const en: Dictionary = {
     // Resume
     downloadResume: "Download Résumé",
     viewResume: "View Résumé",
+
+    // Gallery for things that i value <3
+    galleryLabel: "Gallery",
+    thingsIValue: "Things i value.",
   },
 };
 

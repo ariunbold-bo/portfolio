@@ -139,7 +139,9 @@ export function About({ dict }: { dict: Dictionary }) {
           </div>
         </div>
       </div>
-
+      <Reveal variant="up">
+        <SectionHeading as="h1" label={dict.ui.galleryLabel} title={dict.ui.thingsIValue} />
+      </Reveal>
       {/* — Gallery (Beyond the Screen) — */}
       <div className="mt-24 columns-1 gap-6 sm:columns-2 lg:columns-3">
         {dict.gallery.map((item, i) => (
@@ -201,7 +203,7 @@ export function About({ dict }: { dict: Dictionary }) {
           </Reveal>
         ))}
       </div>
-
+        
       {/* Lightbox modal */}
       <LightboxModal
         activeItem={activeItem}

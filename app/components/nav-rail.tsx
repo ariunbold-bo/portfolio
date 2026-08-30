@@ -11,21 +11,14 @@ import { ThemeToggle } from "./theme-toggle";
 const MAX_VISIBLE = 5;
 
 /** IDs that have their own dedicated page rather than being in-page anchors. */
-const PAGE_IDS = new Set(["about", "contact", "projects",]);
+const PAGE_IDS = new Set(["about", "contact", ]);
 
 function navHref(id: string, lang: string, pathname: string) {
   if (id === "about" || id === "contact") return `/${lang}/${id}`;
   
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
-  const isProjectsPage = pathname === `/${lang}/projects` || pathname === `/${lang}/projects/`;
 
-  if (id === "hardware" || id === "projects") {
-    // If we're already on the projects page, just use hash to smooth scroll
-    return isProjectsPage ? `#${id}` : `/${lang}/projects#${id}`;
-  }
-
-  // home, stack, journey
-  // early return fix
+  // home, hardware, projects, journey
   if (isHome) {
     return `#${id}`;
   } else {
@@ -108,8 +101,6 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   const getPageActive = () => {
     if (pathname.endsWith("/about")) return "about";
     if (pathname.endsWith("/contact")) return "contact";
-    // If on /projects page, let IntersectionObserver handle active state for projects/hardware
-    // unless we need to force a default. We return null so the observer runs on /projects.
     return null; 
   };
 
@@ -121,7 +112,6 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   useEffect(() => {
     const page = getPageActive();
     if (page) setActive(page);
-    else if (pathname.endsWith("/projects")) setActive("projects");
     else if (pathname === `/${lang}` || pathname === `/${lang}/`) setActive("home");
   }, [pathname, lang]);
 
@@ -139,7 +129,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
 
   // IntersectionObserver — runs on home page and projects page to track sections
   useEffect(() => {
-    if (getPageActive()) return; // skip on /about, /contact
+    // if (getPageActive()) return; // skip on /about, /contact
 
     const els = navItems
       .map((n) => document.getElementById(n.id))

@@ -82,76 +82,73 @@ const mn: Dictionary = {
       body: "ESP32 микроконтроллер, гагнуур мөн түүнчлэн бас бус юмнууд янзлах сонирхолтой.",
       icon: "chip",
     },
-    {
-      no: "04",
-      title: "Автоматжуулалт",
-      tag: "CLI / Build systems",
-      body: "Кибер аюулгүй байдлын аудит хийхэд зориулсан тусгай CLI болон build системүүдийг бүтээх.",
-      icon: "wrench",
-    },
-    {
-      no: "05",
-      title: "Доод түвшний оновчлол",
-      tag: "Санах ой / Profiling",
-      body: "Дээд түвшний фреймворкоос эхлээд санах ойн хуваарилалт, toolchain-ийн дотоод бүтэц, гүйцэтгэлийн оновчлол.",
-      icon: "gauge",
-    },
   ],
   timeline: [
     {
       when: "2009",
       title: "Энэ ертөнцөд ирсэн нь",
       body: "Аав ээж хоёр минь гэрлэж, би энэ хорвоод мэндэлсэн.",
+      image: null,
     },
     {
       when: "2014",
       title: "Анхны золиос",
       body: "Цэцэрлэгт байхдаа удирдлагатай тоглоомон машин задалсан. Батерейны утас тасарсан тул гагнуургүй үедээ скочдож торгоов. Хэдэн цаг л ажилласан даа. Ингээд л бүх зүйл эхэлсэн.",
+      image: { type: "video", src: "/first-victim.webm", alt: "Анхны золиос", aspectRatio: "9/16" },
     },
     {
       when: "2017",
       title: "Анхны кодын мөр",
       body: "Ээж минь надаас хоёр дахин хөгшин компьютер авчирснаар эхэлсэн. Scratch, Python заасан хүүхдийн номноос суурь мэдлэг олж авсан.",
+      image: { type: "image", src: "/first-code.webp", alt: "Анхны кодын мөр", aspectRatio: "16/9" },
     },
     {
       when: "2017 – 2021",
       title: "Бие даан суралцсан үе",
       body: "HTML, CSS, JS-ийг бие даан сурсан. Хиймэл оюун ухаан гарахаас өмнө Stack Overflow ухаж, хөгжим тоглуулагч, вэб скрапер зэрэг Python аппууд хийж байв.",
+      image: { type: "video", src: "/self-taught-era.webm", alt: "Бие даан суралцсан үе", aspectRatio: "16/9" },
     },
     {
       when: "2020",
       title: "Пиццаны хайрцагны хэрэг",
       body: "Зүгээр ажиллаж байсан хуучны Windows XP-тэй Thinkpad задалж, эх хавтанг нь пиццаны хайрцагт угсрах гэж оролдсон юм. Дунд нь ямар нэг юм эвдэрч, дахиж хэзээ ч асаагүй. Үнэтэй бөгөөд цаг үрсэн сургамж.",
+      image: null,
     },
     {
       when: "2022",
       title: "Pinecone Сургууль",
       body: "Pinecone програмчлалын сургуульд суралцаж, өмнөх мэдлэгийнхээ ачаар амжилттай төгссөн. Жинхэнэ багштай хамт код бичих нь өмнөхөөсөө үр бүтээлтэй байсан.",
+      image: null,
     },
     {
       when: "2023",
       title: "GitHub & Бодит багууд",
       body: "Pinecone-д байсан ч, ажлын урсгалаа сайжруулсан. Git, GitHub сурч, бодит хамт олонтой өдөр тутмын төслүүд дээр хэрхэн хамтран ажиллахыг сурсан.",
+      image: null,
     },
     {
       when: "2024 оны эхээр",
       title: "Linux VMs & Android Modding",
       body: "Анхны Linux VM (Kali)-г тохируулж, ADB, scrcpy, Android-ийн дотоод бүтцэд гүн гүнзгий нэвтэрч, утас форматлах тал дээр сургуульдаа нэртэй болсон.",
+      image: { type: "video", src: "/linux-android.webm", alt: "Linux VMs", aspectRatio: "3/4" },
     },
     {
       when: "2024",
       title: "Сургуулийн албан бус IT",
       body: "Багш нарын зөөврийн компьютер, HDMI утас, мартсан нууц үгсийг янзлав. C++ олимпиадад оролцсон (хэдийгээр hashmap, array-н талаар ямар ч ойлголтгүй байсан ч ядаж л оролдсон!). Мэдээлэл зүйн хичээл дээр жил бүр шууд 100% авдаг байлаа, заримдаа Wi-Fi нууц үгийг 'зээлэх' замаар.",
+      image: null,
     },
     {
       when: "2024 оны сүүлээр",
       title: "Arch Linux руу шилжсэн нь",
       body: "Windows болон Arch-г хослуулан хэрэглэж эхэлсэн. Windows update-ийн улмаас push хийгээгүй кодоо устгуулсны дараа бүрэн Arch Linux руу шилжиж, дахин хэзээ ч Windows-г дурсаагүй.",
+      image: { type: "image", src: "/arch-linux.webp", alt: "Arch Linux", aspectRatio: "16/9" },
     },
     {
       when: "2025 – Одоог хүртэл",
       title: "TTS төсөл",
       body: "Хил хязгаарыг давсаар байна. Миний хамгийн том амжилт бол өөрийн TTS (Text-to-Speech) төслийг бүтээж, ашиглалтад оруулсан явдал юм.",
+      image: { type: "video", src: "/tts-era.webm", alt: "TTS төсөл", aspectRatio: "16/9" },
     },
   ],
   hardware: [
@@ -188,7 +185,7 @@ const mn: Dictionary = {
       ],
       icon: "chip",
       media: [
-        { type: "video", src: "/esp32-demo.mp4", poster: "/esp32-poster.webp" },
+        { type: "video", src: "/esp32-demo.webm", poster: "/esp32-poster.webp" },
       ],
     },
     {
@@ -222,50 +219,9 @@ const mn: Dictionary = {
       media: [
         {
           type: "video",
-          src: "/mobile-compressed.mp4",
+          src: "/mobile-compressed.webm",
           poster: "/mobile-poster.webp",
         },
-      ],
-    },
-    {
-      slug: "bt-speaker",
-      name: "Custom DIY Stereo Bluetooth Speaker",
-      kicker: "Техник хангамж • Хэлхээний Дизайн • Акустик инженерчлэл",
-      summary:
-        "Тусгаарлагдсан хос тэжээл, хүчдэл өсгөгч болон тохируулсан акустик шингээлт бүхий зөөврийн Bluetooth чанга яригч.",
-      highlights: [
-        "Хос тэжээлийн тусгаарлалт: Bluetooth хүлээн авагч болон өсгөгчийн тэжээлийг салгаснаар шуугианыг арилгасан.",
-        "Хүчдэл өсгөгч: Батерейн хүчдэлийг өсгөж, дууны гаралтын чадлыг нэмэгдүүлэх boost converter ашигласан.",
-        "Акустик тохируулга: Дотоод дууны долгионыг багасгаж, басс дуугаралтыг сайжруулахын тулд хөвөн шингээгч ашигласан.",
-      ],
-      sections: [
-        {
-          title: "Хос тэжээлийн систем & Хүчдэл өсгөгч",
-          body: "BMS бүхий лити батерей нь BLE модуль болон PAM8610 өсгөгчийг тэжээлээр хангаж, дижитал шуугианаас сэргийлдэг. Цэнхэр DC-DC өсгөгч нь хүчдэлийг өсгөдөг.",
-        },
-        {
-          title: "Акустик шингээлт & Тохиргоо",
-          body: "Хоёр чанга яригчийг картон хавтан дээр суурилуулж, агаар алдахаас сэргийлж битүүмжилсэн. Хөвөн шингээгч нь дууны долгионыг удаашруулж, илүү гүн басс дуу гаргахад тусалдаг.",
-        },
-      ],
-      specs: [
-        { label: "Төрөл", value: "Bluetooth Audio" },
-        { label: "Өсгөгч", value: "PAM8610 (PAM)" },
-        { label: "Хянагч", value: "Pi BLE Cheap Controller" },
-        { label: "Тэжээл", value: "3.7V - 22V Boost Converter" },
-        { label: "Утас", value: "An absolute mess (damn)" },
-        { label: "Гадна", value: "Гар хийцийн гэр" },
-        { label: "Speaker", value: "30W" },
-      ],
-      icon: "speaker",
-      media: [
-        {
-          type: "video",
-          src: "/ble_speaker_final.mp4",
-          poster: "/ble_speaker_final_poster.webp",
-        },
-        { type: "image", src: "/voltage_amplifier+audio_amplifier.JPG" },
-        { type: "image", src: "/first version of the ble speaker.JPG" },
       ],
     },
     {
@@ -305,8 +261,8 @@ const mn: Dictionary = {
       ],
       icon: "speaker",
       media: [
-        { type: "video", src: "/pusda_speaker1.mp4", poster: "/pusda_speaker1_poster.webp" },
-        { type: "video", src: "/pusda_speaker2.mp4", poster: "/pusda_speaker2_poster.webp" },
+        { type: "video", src: "/pusda_speaker1.webm", poster: "/pusda_speaker1_poster.webp" },
+        { type: "video", src: "/pusda_speaker2.webm", poster: "/pusda_speaker2_poster.webp" },
         { type: "image", src: "/pusda_speaker.webp" },
       ],
     },
@@ -338,7 +294,7 @@ const mn: Dictionary = {
         { label: "Техник", value: "RGB Keyboard" },
       ],
       icon: "terminal",
-      media: [{ type: "video", src: "/arch_ricing.mp4" }],
+      media: [{ type: "video", src: "/arch_ricing.webm" }],
     },
   ],
   projects: [
@@ -388,13 +344,13 @@ const mn: Dictionary = {
   ],
   gallery: [
     {
-      src: "/ble_speaker_mono.mp4",
+      src: "/ble_speaker_mono.webm",
       type: "video",
       alt: "Mono Speaker Version",
       aspectRatio: "aspect-[9/16]",
     },
     {
-      src: "/playing_tts.mp4",
+      src: "/playing_tts.webm",
       type: "video",
       alt: "Playing TTS",
       aspectRatio: "aspect-video",
@@ -441,7 +397,7 @@ const mn: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Нүүр", icon: "home" },
-    { id: "stack", label: "Технологи", icon: "layers" },
+    { id: "projects", label: "Төслүүд", icon: "grid" },
     { id: "journey", label: "Аялал", icon: "route" },
   ],
   ui: {
@@ -540,6 +496,12 @@ const mn: Dictionary = {
     // Resume
     downloadResume: "Анкет татаж авах",
     viewResume: "Анкет үзэх",
+
+    // will be translating soon
+
+    // Gallery for things that i value <3
+    galleryLabel: "Gallery",
+    thingsIValue: "Things i value.",
   },
 };
 
