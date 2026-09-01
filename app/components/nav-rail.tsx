@@ -11,11 +11,11 @@ import { ThemeToggle } from "./theme-toggle";
 const MAX_VISIBLE = 5;
 
 /** IDs that have their own dedicated page rather than being in-page anchors. */
-const PAGE_IDS = new Set(["about", "contact", ]);
+const PAGE_IDS = new Set(["contact"]);
 
 function navHref(id: string, lang: string, pathname: string) {
-  if (id === "about" || id === "contact") return `/${lang}/${id}`;
-  
+  if (id === "contact") return `/${lang}/${id}`;
+
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
 
   // home, hardware, projects, journey
@@ -28,20 +28,39 @@ function navHref(id: string, lang: string, pathname: string) {
 
 // Module-level component — avoids remounting on every NavRail render
 function NavItem({
-  id, label, icon, href, isActive, isPageLink, className, showLabel, onClick,
+  id,
+  label,
+  icon,
+  href,
+  isActive,
+  isPageLink,
+  className,
+  showLabel,
+  onClick,
 }: {
-  id: string; label: string; icon: IconName; href: string;
-  isActive: boolean; isPageLink: boolean; className: string;
-  showLabel?: boolean; onClick?: () => void;
+  id: string;
+  label: string;
+  icon: IconName;
+  href: string;
+  isActive: boolean;
+  isPageLink: boolean;
+  className: string;
+  showLabel?: boolean;
+  onClick?: () => void;
 }) {
   const tooltip = !showLabel && (
-    <span className="glass-2 pointer-events-none absolute left-[130%] whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium text-ink opacity-0 -translate-x-1 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+    <span className="glass-2 pointer-events-none absolute left-[130%] whitespace-nowrap rounded-[28px] px-3 py-1 text-xs font-medium text-ink opacity-0 -translate-x-1 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
       {label}
     </span>
   );
   const content = (
     <>
-      <Icon name={icon} className={showLabel ? "h-[1.1rem] w-[1.1rem]" : "h-[1.15rem] w-[1.15rem]"} />
+      <Icon
+        name={icon}
+        className={
+          showLabel ? "h-[1.1rem] w-[1.1rem]" : "h-[1.15rem] w-[1.15rem]"
+        }
+      />
       {showLabel && label}
       {tooltip}
     </>
@@ -55,9 +74,15 @@ function NavItem({
   };
 
   const isInternalHash = href.startsWith("#");
-  return isPageLink || !isInternalHash
-    ? <Link href={href} {...shared}>{content}</Link>
-    : <a href={href} {...shared}>{content}</a>;
+  return isPageLink || !isInternalHash ? (
+    <Link href={href} {...shared}>
+      {content}
+    </Link>
+  ) : (
+    <a href={href} {...shared}>
+      {content}
+    </a>
+  );
 }
 
 // ─── LangToggle ───────────────────────────────────────────────────────────────
@@ -66,7 +91,7 @@ function LangToggle({ className = "" }: { className?: string }) {
   const pathname = usePathname();
   const lang = useLocale();
   const nextLang = lang === "en" ? "mn" : "en";
-  
+
   // Replace the first occurrence of the current lang in the path
   const newPath = pathname.replace(`/${lang}`, `/${nextLang}`);
 
@@ -79,7 +104,7 @@ function LangToggle({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={switchLang}
-      className={`icon-btn hover:cursor-pointer relative h-11 w-11 overflow-hidden grid place-items-center rounded-full transition-all duration-300 ${className}`}
+      className={`icon-btn hover:cursor-pointer relative h-11 w-11 overflow-hidden grid place-items-center rounded-[28px] transition-all duration-300 ${className}`}
       aria-label="Toggle language"
     >
       <Icon name="languages" className="h-[1.15rem] w-[1.15rem]" />
@@ -94,14 +119,14 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   const lang = useLocale();
 
   // Filter out standalone pages and hardware from the nav rail (only keep home, stack, journey)
-  const navItems = dict.nav.filter(item => !PAGE_IDS.has(item.id));
+  const navItems = dict.nav.filter((item) => !PAGE_IDS.has(item.id));
 
   // Detect active item: for page-level routes derive from pathname,
   // for anchor sections use IntersectionObserver.
   const getPageActive = () => {
-    if (pathname.endsWith("/about")) return "about";
+    // if (pathname.endsWith("/about")) return "about";
     if (pathname.endsWith("/contact")) return "contact";
-    return null; 
+    return null;
   };
 
   const [active, setActive] = useState<string>(getPageActive() ?? "home");
@@ -112,7 +137,8 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   useEffect(() => {
     const page = getPageActive();
     if (page) setActive(page);
-    else if (pathname === `/${lang}` || pathname === `/${lang}/`) setActive("home");
+    else if (pathname === `/${lang}` || pathname === `/${lang}/`)
+      setActive("home");
   }, [pathname, lang]);
 
   // Close overflow menu on outside click
@@ -153,14 +179,14 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   const overflow = navItems.slice(MAX_VISIBLE);
 
   const desktopItemCls = (isActive: boolean) =>
-    `group relative grid h-11 w-11 place-items-center rounded-full transition-all duration-[400ms] ${
+    `group relative grid h-11 w-11 place-items-center rounded-[28px] transition-all duration-[400ms] ${
       isActive
         ? "bg-accent text-on-accent shadow-[0_10px_24px_-10px_rgba(var(--accent-rgb),0.8)]"
         : "text-muted hover:text-ink hover:bg-surface"
     }`;
 
   const mobileItemCls = (isActive: boolean) =>
-    `grid h-12 w-12 shrink-0 place-items-center rounded-full transition-all duration-300 active:scale-90 touch-manipulation ${
+    `grid h-12 w-12 shrink-0 place-items-center rounded-[28px] transition-all duration-300 active:scale-90 touch-manipulation ${
       isActive
         ? "bg-accent text-on-accent shadow-[0_6px_16px_-6px_rgba(var(--accent-rgb),0.6)]"
         : "text-muted hover:text-ink hover:bg-surface-2"
@@ -171,7 +197,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
       {/* ── Desktop vertical rail ── */}
       <nav
         aria-label="Section navigation"
-        className="glass overflow-x-hidden fixed left-6 top-1/2 z-9999 hidden -translate-y-1/2 flex-col items-center gap-1 rounded-full p-2 lg:flex"
+        className="glass overflow-x-hidden fixed left-6 top-1/2 z-9999 hidden -translate-y-1/2 flex-col items-center gap-1 rounded-[28px] p-2 lg:flex"
       >
         {navItems.map((item) => (
           <NavItem
@@ -191,7 +217,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
       {/* ── Mobile floating pill ── */}
       <nav
         aria-label="Section navigation"
-        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[9999] flex items-center justify-center gap-0 rounded-full border border-[var(--border)] bg-[var(--surface-solid)]/85 px-2 py-1.5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:hidden"
+        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[9999] flex items-center justify-center gap-0 rounded-[28px] border border-[var(--border)] bg-[var(--surface-solid)]/85 px-2 py-1.5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:hidden"
       >
         {visible.map((item) => (
           <NavItem
@@ -210,11 +236,20 @@ export function NavRail({ dict }: { dict: Dictionary }) {
               type="button"
               onClick={() => setMoreOpen((o) => !o)}
               aria-label="More sections"
-              className={`grid h-12 w-12 shrink-0 place-items-center rounded-full transition-all duration-300 active:scale-90 touch-manipulation ${
-                moreOpen ? "bg-accent text-on-accent" : "text-muted hover:text-ink hover:bg-surface-2"
+              className={`grid h-12 w-12 shrink-0 place-items-center rounded-[28px] transition-all duration-300 active:scale-90 touch-manipulation ${
+                moreOpen
+                  ? "bg-accent text-on-accent"
+                  : "text-muted hover:text-ink hover:bg-surface-2"
               }`}
             >
-              <svg viewBox="0 0 24 24" className="h-[1.2rem] w-[1.2rem]" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-[1.2rem] w-[1.2rem]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+              >
                 <circle cx="12" cy="5" r="1.2" />
                 <circle cx="12" cy="12" r="1.2" />
                 <circle cx="12" cy="19" r="1.2" />
@@ -233,17 +268,23 @@ export function NavRail({ dict }: { dict: Dictionary }) {
                     showLabel
                     onClick={() => setMoreOpen(false)}
                     className={`flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
-                      active === item.id ? "bg-accent text-on-accent" : "text-muted hover:text-ink hover:bg-surface"
+                      active === item.id
+                        ? "bg-accent text-on-accent"
+                        : "text-muted hover:text-ink hover:bg-surface"
                     }`}
                   />
                 ))}
                 <span className="mx-2 my-1 h-px bg-[var(--border)]" />
                 <div className="flex items-center justify-between px-3 py-1.5">
-                  <span className="text-xs font-medium text-muted">{dict.ui.language}</span>
+                  <span className="text-xs font-medium text-muted">
+                    {dict.ui.language}
+                  </span>
                   <LangToggle className="h-9 w-9" />
                 </div>
                 <div className="flex items-center justify-between px-3 py-1.5">
-                  <span className="text-xs font-medium text-muted">{dict.ui.theme}</span>
+                  <span className="text-xs font-medium text-muted">
+                    {dict.ui.theme}
+                  </span>
                   <ThemeToggle className="h-9 w-9" />
                 </div>
               </div>

@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const phrases = [
-  "im just a guy who likes tinkering complex questions",
-  "currently exploring lower-level systems & toolchains",
-  "Arch Linux · ESP32 · React · C++",
+  "i would like to sleep.",
+  "hustling in school.",
+  "Arch Linux · ESP32 · Nextjs · C++",
 ];
 
 export function Typewriter() {

@@ -393,6 +393,7 @@ const en: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Home", icon: "home" },
+    { id: "about", label: "About", icon: "user" },
     { id: "projects", label: "Projects", icon: "grid" },
     { id: "journey", label: "Journey", icon: "route" },
   ],

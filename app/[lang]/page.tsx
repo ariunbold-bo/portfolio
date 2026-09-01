@@ -4,8 +4,8 @@ import { resolveLocale } from "../lib/locales";
 import { Hero } from "../components/sections/hero";
 import { Hardware } from "../components/sections/hardware";
 import { Projects } from "../components/sections/projects";
-import { Synth } from "../components/sections/synth";
 import { Journey } from "../components/sections/journey";
+import { About } from "../components/sections/about";
 
 export default async function LandingZone(props: {
   params: Promise<{ lang: string }>;
@@ -14,14 +14,12 @@ export default async function LandingZone(props: {
   const lang = params.lang;
   const dict = await getDictionary(resolveLocale(lang));
   // easter egg for programers
-  console.log(
-    `%c${dict.ui.easterEgg}`,
-    "font-weight: bold; color: #c4a575;",
-  );
+  console.log(`%c${dict.ui.easterEgg}`, "font-weight: bold; color: #c4a575;");
   return (
     <main className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col px-4 pt-10 pb-28 sm:px-6 sm:pt-12 md:px-12 md:pt-24 lg:pl-32 lg:pr-12">
       <div className="flex w-full flex-col space-y-28 sm:space-y-36 md:space-y-56">
         <Hero dict={dict} lang={lang} />
+        <About dict={dict} lang={lang} />
         <Projects dict={dict} />
         <Hardware dict={dict} lang={lang} />
         {/* due to being useless ill be moving it to idk doodle? im gonna import it somewhere*/}

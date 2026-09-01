@@ -23,10 +23,6 @@ export function Hero({
       id="home"
       className="relative flex min-h-[100svh] flex-col justify-center pb-20"
     >
-
-
-
-
       {/* ── Top decorative rule ── */}
       <div className="absolute top-24 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border-strong)] to-transparent opacity-50" />
 
@@ -78,7 +74,7 @@ export function Hero({
 
           {/* Role line */}
           <Reveal variant="up" delay={250}>
-            <div className="flex items-center gap-4 mb-8 mt-4">
+            <div className="flex items-center gap-4 mb-6 mt-4">
               <div className="h-px w-10 bg-[var(--accent)] opacity-60" />
               <p
                 className="text-sm font-semibold tracking-[0.14em] uppercase"
@@ -95,18 +91,25 @@ export function Hero({
             </div>
           </Reveal>
 
-          {/* Typewriter */}
-          <Reveal variant="up" delay={350} className="mb-10 min-h-[3rem]">
-            <p className="text-base leading-relaxed text-[var(--ink)] max-w-md">
-              <Typewriter />
-            </p>
-          </Reveal>
+          {/* Typewriter will be removed in next update */}
+          <div className="flex flex-col gap-2">
+            <Reveal variant="up" delay={350} className="min-h-[3rem]">
+              <p className="text-base leading-relaxed text-[var(--ink-strong)] max-w-md">
+                Don't cry because it's over, smile because it happened
+              </p>
+            </Reveal>
+            <Reveal variant="up" delay={350} className=" min-h-[3rem]">
+              <p className="text-base leading-relaxed text-[var(--ink)] max-w-md">
+                -Dr. Seuss
+              </p>
+            </Reveal>
+          </div>
 
           {/* CTAs */}
           <Reveal
             variant="up"
             delay={480}
-            className="flex flex-wrap items-center gap-4 sm:gap-6 mt-8"
+            className="flex flex-wrap items-center gap-4 sm:gap-6 mt-6"
           >
             <div className="flex items-center gap-4">
               <Link
@@ -179,14 +182,13 @@ export function Hero({
               {/* Image wrapper — this is the ONLY overflow-hidden */}
               <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">
                 {/* Subtle gradient on top of photo */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 pointer-events-none" />
                 <Image
                   src="/hero.webp"
                   alt={dict.identity.name}
                   width={600}
                   height={750}
                   sizes="(max-width: 767px) 220px, 300px"
-                  className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover w-full h-full transition-transform duration-700"
                   priority
                   fetchPriority="high"
                 />
