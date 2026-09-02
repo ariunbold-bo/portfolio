@@ -22,10 +22,22 @@ const images = [
     page: `${identity.site}/en/work/cryocell`,
   },
   {
-    src: "/ble_speaker_final_poster.webp",
-    title: "Custom DIY Bluetooth Speaker — Project Poster",
-    caption: "Custom-built portable stereo Bluetooth speaker with dual power rails.",
-    page: `${identity.site}/en/work/bt-speaker`,
+    src: "/arch-ricing-poster.webp",
+    title: "Arch Linux Hyprland Ricing — Project Poster",
+    caption: "Custom Arch Linux setup with Hyprland and keyboard RGB sync reacting to live wallpapers.",
+    page: `${identity.site}/en/work/arch-ricing`,
+  },
+  {
+    src: "/pusda_speaker1_poster.webp",
+    title: "Pusda Speaker Gen 2 — Demo Poster",
+    caption: "Second-generation DIY Bluetooth stereo speaker with dual isolated power rails.",
+    page: `${identity.site}/en/work/pusda-speaker`,
+  },
+  {
+    src: "/pusda_speaker2_poster.webp",
+    title: "Pusda Speaker Gen 2 — Build Poster",
+    caption: "Build detail of the Pusda Speaker Gen 2: enclosure, drivers, and power system.",
+    page: `${identity.site}/en/work/pusda-speaker`,
   },
   {
     src: "/tsetseg.webp",

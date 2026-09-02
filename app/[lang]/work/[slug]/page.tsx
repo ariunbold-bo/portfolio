@@ -22,8 +22,7 @@ const { identity, hardware: hardwareContent } = en;
 const videoMeta: Record<string, { duration: number; uploadDate: string; thumbnail: string }> = {
   esp32:           { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
   cryocell:        { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
-  "bt-speaker":    { duration: 51, uploadDate: "2026-03-10", thumbnail: `${identity.site}/ble_speaker_final_poster.webp` },
-  "arch-ricing":   { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/hero.webp` },
+  "arch-ricing":   { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/arch-ricing-poster.webp` },
   "pusda-speaker": { duration: 30, uploadDate: "2026-08-22", thumbnail: `${identity.site}/pusda_speaker1_poster.webp` },
 };
 import { SiteBackground } from "@/app/components/site-background";

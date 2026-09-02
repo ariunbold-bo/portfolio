@@ -22,8 +22,6 @@ export default async function LandingZone(props: {
         <About dict={dict} />
         <Projects dict={dict} />
         <Hardware dict={dict} lang={lang} />
-        {/* due to being useless ill be moving it to idk doodle? im gonna import it somewhere*/}
-        {/* <Synth /> */}
         <Journey dict={dict} lang={lang} />
 
         {/* Footer CTA */}

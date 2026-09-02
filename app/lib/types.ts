@@ -1,7 +1,7 @@
 import type { IconName } from "@/app/components/icons";
 
 export type NavId =
-  "home" | "about" | "stack" | "journey" | "projects" | "contact";
+  "home" | "about" | "journey" | "projects" | "contact";
 
 export type ContactLink = {
   label: string;
@@ -11,21 +11,11 @@ export type ContactLink = {
   external: boolean;
 };
 
-export type StackIcon = "layers" | "terminal" | "chip" | "wrench" | "gauge";
-
-export type StackItem = {
-  no: string;
-  title: string;
-  tag: string;
-  body: string;
-  icon: StackIcon;
-};
-
 export type TimelineEntry = {
   when: string;
   title: string;
   body: string;
-  image?: { src: string; alt: string; aspectRatio: string; type?: "image" | "video" } | null;
+  image?: { src: string; alt: string; aspectRatio: string; type?: "image" | "video"; poster?: string } | null;
 };
 
 export type HardwareProject = {
@@ -86,7 +76,6 @@ export type Dictionary = {
   };
   knowsAbout: readonly string[];
   contact: ContactLink[];
-  stack: StackItem[];
   timeline: TimelineEntry[];
   hardware: HardwareProject[];
   projects: SoftwareProject[];
@@ -106,8 +95,6 @@ export type Dictionary = {
     personalDisciplines: string;
     growthTargets: string;
     wip: string;
-    stackLabel: string;
-    stackTitle: string;
     journeyLabel: string;
     journeyTitle: string;
     hardwareLabel: string;

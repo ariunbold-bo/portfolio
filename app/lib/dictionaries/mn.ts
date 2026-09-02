@@ -60,29 +60,6 @@ const mn: Dictionary = {
       external: true,
     },
   ],
-  stack: [
-    {
-      no: "01",
-      title: "Full-Stack Архитектур",
-      tag: "Next.js & React",
-      body: "App Router, SSR болон өндөр хурдны вэб аппликейшн бүтээх туршлагатай.",
-      icon: "layers",
-    },
-    {
-      no: "02",
-      title: "Linux Системийн хөгжүүлэлт",
-      tag: "Arch / Hyprland",
-      body: "Arch Linux, Hyprland болон kernel/driver-ийн асуудал шийдвэрлэх.",
-      icon: "terminal",
-    },
-    {
-      no: "03",
-      title: "Техник хангамж & Электроник",
-      tag: "ESP32 / Гагнуур",
-      body: "ESP32 микроконтроллер, гагнуур мөн түүнчлэн бас бус юмнууд янзлах сонирхолтой.",
-      icon: "chip",
-    },
-  ],
   timeline: [
     {
       when: "2009",
@@ -94,7 +71,7 @@ const mn: Dictionary = {
       when: "2014",
       title: "Анхны золиос",
       body: "Цэцэрлэгт байхдаа удирдлагатай тоглоомон машин задалсан. Батерейны утас тасарсан тул гагнуургүй үедээ скочдож торгоов. Хэдэн цаг л ажилласан даа. Ингээд л бүх зүйл эхэлсэн.",
-      image: { type: "video", src: "/first-victim.webm", alt: "Анхны золиос", aspectRatio: "9/16" },
+      image: { type: "video", src: "/first-victim.webm", alt: "Анхны золиос", aspectRatio: "9/16", poster: "/first-victim-poster.webp" },
     },
     {
       when: "2017",
@@ -106,7 +83,7 @@ const mn: Dictionary = {
       when: "2017 – 2021",
       title: "Бие даан суралцсан үе",
       body: "HTML, CSS, JS-ийг бие даан сурсан. Хиймэл оюун ухаан гарахаас өмнө Stack Overflow ухаж, хөгжим тоглуулагч, вэб скрапер зэрэг Python аппууд хийж байв.",
-      image: { type: "video", src: "/self-taught-era.webm", alt: "Бие даан суралцсан үе", aspectRatio: "16/9" },
+      image: { type: "video", src: "/self-taught-era.webm", alt: "Бие даан суралцсан үе", aspectRatio: "16/9", poster: "/self-taught-era-poster.webp" },
     },
     {
       when: "2020",
@@ -130,7 +107,7 @@ const mn: Dictionary = {
       when: "2024 оны эхээр",
       title: "Linux VMs & Android Modding",
       body: "Анхны Linux VM (Kali)-г тохируулж, ADB, scrcpy, Android-ийн дотоод бүтцэд гүн гүнзгий нэвтэрч, утас форматлах тал дээр сургуульдаа нэртэй болсон.",
-      image: { type: "video", src: "/linux-android.webm", alt: "Linux VMs", aspectRatio: "3/4" },
+      image: { type: "video", src: "/linux-android.webm", alt: "Linux VMs", aspectRatio: "3/4", poster: "/linux-android-poster.webp" },
     },
     {
       when: "2024",
@@ -148,7 +125,7 @@ const mn: Dictionary = {
       when: "2025 – Одоог хүртэл",
       title: "TTS төсөл",
       body: "Хил хязгаарыг давсаар байна. Миний хамгийн том амжилт бол өөрийн TTS (Text-to-Speech) төслийг бүтээж, ашиглалтад оруулсан явдал юм.",
-      image: { type: "video", src: "/tts-era.webm", alt: "TTS төсөл", aspectRatio: "16/9" },
+      image: { type: "video", src: "/tts-era.webm", alt: "TTS төсөл", aspectRatio: "16/9", poster: "/tts-era-poster.webp" },
     },
   ],
   hardware: [
@@ -294,7 +271,7 @@ const mn: Dictionary = {
         { label: "Техник", value: "RGB Keyboard" },
       ],
       icon: "terminal",
-      media: [{ type: "video", src: "/arch_ricing.webm" }],
+      media: [{ type: "video", src: "/arch_ricing.webm", poster: "/arch-ricing-poster.webp" }],
     },
   ],
   projects: [
@@ -458,10 +435,6 @@ const mn: Dictionary = {
     personalDisciplines: "Хувь Хүний Сахилга Бат",
     growthTargets: "Одоогийн Өсөлтийн Зорилтууд",
     wip: "Хийгдэж буй",
-
-    // Stack
-    stackLabel: "Технологи",
-    stackTitle: "Инженерийн чадавхи.",
 
     // Journey
     journeyLabel: "Замнал",

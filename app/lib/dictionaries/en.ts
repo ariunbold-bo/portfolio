@@ -60,29 +60,6 @@ const en: Dictionary = {
       external: true,
     },
   ],
-  stack: [
-    {
-      no: "01",
-      title: "Full-Stack Architecture",
-      tag: "Next.js & React",
-      body: "Advanced experience with the App Router, SSR, and building high-performance web applications.",
-      icon: "layers",
-    },
-    {
-      no: "02",
-      title: "Linux System Customization",
-      tag: "Arch / Hyprland",
-      body: "Deep proficiency in Arch Linux, Hyprland ricing, and kernel/driver troubleshooting.",
-      icon: "terminal",
-    },
-    {
-      no: "03",
-      title: "Hardware Modding & Electronics",
-      tag: "ESP32 / Soldering",
-      body: "Working with ESP32 microcontrollers, soldering, and custom cooling system modifications.",
-      icon: "chip",
-    },
-  ],
   timeline: [
     {
       when: "2009",
@@ -94,7 +71,7 @@ const en: Dictionary = {
       when: "2014",
       title: "The First Victim",
       body: "Took apart an RC car in kindergarten. The battery wire broke, so I taped it back together since I didn't have a soldering iron. It worked for a few hours. The rest is history.",
-      image: { type: "video", src: "/first-victim.webm", alt: "First Victim", aspectRatio: "9/16" },
+      image: { type: "video", src: "/first-victim.webm", alt: "First Victim", aspectRatio: "9/16", poster: "/first-victim-poster.webp" },
     },
     {
       when: "2017",
@@ -106,7 +83,7 @@ const en: Dictionary = {
       when: "2017 – 2021",
       title: "The Self-Taught Era",
       body: "Self-taught HTML, CSS, and JS. Built early Python apps like music players and web scrapers — days spent digging through Stack Overflow before AI assistants existed.",
-      image: { type: "video", src: "/self-taught-era.webm", alt: "Self taught era", aspectRatio: "16/9" },
+      image: { type: "video", src: "/self-taught-era.webm", alt: "Self taught era", aspectRatio: "16/9", poster: "/self-taught-era-poster.webp" },
     },
     {
       when: "2020",
@@ -130,7 +107,7 @@ const en: Dictionary = {
       when: "Early 2024",
       title: "Linux VMs & Android Modding",
       body: "Set up his first Linux VM (Kali) and dove deep into ADB, scrcpy, and Android internals — building a reputation at school for formatting locked devices.",
-      image: { type: "video", src: "/linux-android.webm", alt: "Linux VMs", aspectRatio: "3/4" },
+      image: { type: "video", src: "/linux-android.webm", alt: "Linux VMs", aspectRatio: "3/4", poster: "/linux-android-poster.webp" },
     },
     {
       when: "2024",
@@ -148,7 +125,7 @@ const en: Dictionary = {
       when: "2025 – Present",
       title: "The TTS Era",
       body: "Continued pushing boundaries. My biggest achievement to date has been building and deploying my custom TTS (Text-to-Speech) project.",
-      image: { type: "video", src: "/tts-era.webm", alt: "TTS Era", aspectRatio: "16/9" },
+      image: { type: "video", src: "/tts-era.webm", alt: "TTS Era", aspectRatio: "16/9", poster: "/tts-era-poster.webp" },
     },
   ],
   hardware: [
@@ -290,7 +267,7 @@ const en: Dictionary = {
         { label: "Hardware", value: "RGB Keyboard" },
       ],
       icon: "terminal",
-      media: [{ type: "video", src: "/arch_ricing.webm" }],
+      media: [{ type: "video", src: "/arch_ricing.webm", poster: "/arch-ricing-poster.webp" }],
     },
   ],
   projects: [
@@ -454,10 +431,6 @@ const en: Dictionary = {
     personalDisciplines: "Personal Disciplines",
     growthTargets: "Current Growth Targets",
     wip: "WIP",
-
-    // Stack
-    stackLabel: "The Stack",
-    stackTitle: "Engineering capabilities.",
 
     // Journey
     journeyLabel: "Journey",

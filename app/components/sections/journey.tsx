@@ -148,10 +148,10 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
                           </p>
                           {/* Media rendering (Image or Video) */}
                           {/* i will be writing a migration to lightbox modal */}
-                          {entry.image && (
-                            <div className="mt-4 relative w-full overflow-hidden rounded-lg shadow-md" style={{ aspectRatio: entry.image.aspectRatio }}>
+                          {entry.image && (isMobileOpen || isDesktopOpen) && (
+                            <div className="mt-4 relative w-full overflow-hidden rounded-lg shadow-md bg-[var(--surface-solid)]" style={{ aspectRatio: entry.image.aspectRatio }}>
                               {entry.image.type === "video" ? (
-                                <div 
+                                <div
                                   className="absolute inset-0 w-full h-full cursor-pointer group"
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -163,10 +163,11 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
                                 >
                                   <video
                                     src={`${entry.image.src}#t=0.001`}
+                                    poster={entry.image.poster}
                                     loop
                                     muted
                                     playsInline
-                                    preload="metadata"
+                                    preload="none"
                                     className="w-full h-full object-cover"
                                   />
                                   <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-opacity">

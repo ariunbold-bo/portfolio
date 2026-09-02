@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
-import { Typewriter } from "../typewriter";
 import Image from "next/image";
 
 export function Hero({
@@ -91,7 +90,6 @@ export function Hero({
             </div>
           </Reveal>
 
-          {/* Typewriter will be removed in next update */}
           <div className="flex flex-col gap-2">
             <Reveal variant="up" delay={350} className="min-h-[3rem]">
               <p className="text-base leading-relaxed text-[var(--ink-strong)] max-w-md">
@@ -218,7 +216,7 @@ export function Hero({
 
             {/* Floating role badge — sits above the card, outside glass frame */}
             <div className="absolute top-0 right-2 flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-solid)]/90 backdrop-blur-sm px-3.5 py-2 shadow-lg">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] shrink-0" />
               <span className="text-[0.68rem] font-medium text-[var(--accent)]">
                 {dict.identity.role.split(" ")[0]}
               </span>

@@ -4,7 +4,7 @@
 
 ## Pages
 
-- [Home](https://ariunbold.dev/en): Introduction, tech stack, and career journey timeline.
+- [Home](https://ariunbold.dev/en): Introduction, about, software + hardware projects, and career journey timeline.
 - [About](https://ariunbold.dev/en/about): Background, core technologies, personal disciplines, and growth targets.
 - [Projects](https://ariunbold.dev/en/projects): Hardware and software project showcase.
 - [Contact](https://ariunbold.dev/en/contact): Ways to get in touch.
@@ -13,7 +13,6 @@
 
 - [ESP32 Animation](https://ariunbold.dev/en/work/esp32): C++ firmware decoding binary-encoded GIF frames onto a 128x64 OLED display.
 - [CryoCell](https://ariunbold.dev/en/work/cryocell): Samsung Galaxy S21 mod with a custom 10,000mAh battery and active cooling.
-- [Custom DIY Stereo Bluetooth Speaker](https://ariunbold.dev/en/work/bt-speaker): Dual-rail power isolation, boost regulation, and tuned acoustic damping.
 - [Pusda Speaker Gen 2](https://ariunbold.dev/en/work/pusda-speaker): Upgraded stereo BT system — XH-MX8 amp, MH-MX8 receiver, dual isolated power rails (3.7V + 8.4V 2S), two 4Ω 15W drivers. Enclosure: the amp's shipping box.
 - [Arch Linux Ricing & RGB Sync](https://ariunbold.dev/en/work/arch-ricing): Hyprland setup with wallpaper-reactive keyboard RGB.
 

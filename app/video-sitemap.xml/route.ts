@@ -24,22 +24,12 @@ const videos = [
     publicationDate: "2026-02-20",
   },
   {
-    src: "/ble_speaker_mono.webm",
-    title: "Custom DIY Stereo Bluetooth Speaker Build",
-    description:
-      "Custom-built portable Bluetooth speaker featuring isolated dual power rails, step-up voltage regulation, and tuned acoustic damping in a custom enclosure.",
-    page: `${identity.site}/en/work/bt-speaker`,
-    thumbnail: `${identity.site}/ble_speaker_final_poster.webp`,
-    durationSeconds: 51,
-    publicationDate: "2026-03-10",
-  },
-  {
     src: "/arch_ricing.webm",
     title: "Arch Linux Hyprland Ricing and RGB Sync",
     description:
       "Highly customized Arch Linux setup using Hyprland, featuring keyboard RGB syncing that reacts to live and static wallpapers in real time.",
     page: `${identity.site}/en/work/arch-ricing`,
-    thumbnail: `${identity.site}/hero.webp`,
+    thumbnail: `${identity.site}/arch-ricing-poster.webp`,
     durationSeconds: 24,
     publicationDate: "2026-04-05",
   },

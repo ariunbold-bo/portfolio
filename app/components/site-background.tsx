@@ -96,8 +96,6 @@ export function SiteBackground() {
         <>
           <Blob color="bg-[var(--accent)]/15" delay={0} />
           <Blob color="bg-[var(--accent-2)]/10" delay={200} />
-          <Blob color="bg-[var(--accent)]/10" delay={400} />
-          <Blob color="bg-[var(--accent-2)]/15" delay={600} />
         </>
       )}
 

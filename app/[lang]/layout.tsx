@@ -4,8 +4,7 @@ import en from "@/app/lib/dictionaries/en";
 import { buildAlternates, ogLocale } from "@/app/lib/seo";
 import SmoothScroll from "../components/smooth-scroll-provider";
 import { SiteBackground } from "../components/site-background";
-import { NavRail } from "../components/nav-rail";
-import { ScrollProgress } from "../components/scroll-progress";
+import { LayoutWidgets } from "../components/layout-widgets";
 
 const { identity, knowsAbout, contact } = en;
 
@@ -103,8 +102,7 @@ export default async function LangLayout(props: {
         by the page-transition transform animation in template.tsx.
       */}
       <SiteBackground />
-      <ScrollProgress />
-      <NavRail dict={en} />
+      <LayoutWidgets dict={en} />
 
       <SmoothScroll>{children}</SmoothScroll>
     </>
