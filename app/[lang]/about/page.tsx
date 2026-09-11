@@ -6,7 +6,7 @@ import { PageShell } from "@/app/components/page-shell";
 import en from "@/app/lib/dictionaries/en";
 import { buildAlternates, ogLocale } from "@/app/lib/seo";
 
-const { identity } = en;
+const { identity, knowsAbout, contact } = en;
 
 const description =
   "Learn about Ariunbold Bold — a self-taught systems developer from Mongolia building full-stack web apps, hardware mods, and everything in between.";
@@ -21,7 +21,7 @@ export async function generateMetadata(props: {
     description,
     alternates: buildAlternates(identity.site, lang, "/about"),
     openGraph: {
-      type: "website",
+      type: "profile",
       url: `${identity.site}/${lang}/about`,
       title: `About Me · ${identity.name}`,
       description,
@@ -47,8 +47,30 @@ export default async function AboutPage(props: {
   const dict = await getDictionary(resolveLocale(lang));
 
   return (
-    <PageShell lang={lang} backLabel={dict.ui.backToHome}>
-      <About dict={dict} />
-    </PageShell>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            mainEntity: {
+              "@type": "Person",
+              name: identity.name,
+              url: identity.site,
+              image: `${identity.site}/hero.webp`,
+              jobTitle: identity.seoTitle,
+              description,
+              address: { "@type": "PostalAddress", addressCountry: identity.location },
+              knowsAbout: [...knowsAbout],
+              sameAs: contact.filter((c) => c.external).map((c) => c.href),
+            },
+          }),
+        }}
+      />
+      <PageShell lang={lang} backLabel={dict.ui.backToHome}>
+        <About dict={dict} />
+      </PageShell>
+    </>
   );
 }

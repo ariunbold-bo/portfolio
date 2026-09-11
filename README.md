@@ -22,7 +22,7 @@ built because most templates feel like the same startup landing page copy-pasted
 
 ## the vibe
 
-- warm amber & slate palette — muted gold (`#c4a575`) on dark, bronze on light
+- night-steppe palette — gold (`#c9ab7f`) on near-black, bronze on golden dusk; the software projects section slowly fades its tokens into an open-sky blue as you scroll into it
 - glassmorphism cards with ambient animated blob background
 - circuit-dot grid overlay (hardware flavor)
 - hardware projects as alternating poster + spec-sheet rows

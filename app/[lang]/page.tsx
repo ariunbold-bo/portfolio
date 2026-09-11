@@ -5,21 +5,24 @@ import { Hero } from "../components/sections/hero";
 import { Hardware } from "../components/sections/hardware";
 import { Projects } from "../components/sections/projects";
 import { Journey } from "../components/sections/journey";
-import { About } from "../components/sections/about";
 
+/**
+ * Landing page — a curated showcase.
+ * Full "About Me" content (bio, disciplines, growth, gallery) lives on /about.
+ * This page stays lean: Hero → Projects → Hardware → Journey → Footer CTA.
+ */
 export default async function LandingZone(props: {
   params: Promise<{ lang: string }>;
 }) {
   const params = await props.params;
   const lang = params.lang;
   const dict = await getDictionary(resolveLocale(lang));
-  // easter egg for programers
+  // easter egg for programmers
   console.log(`%c${dict.ui.easterEgg}`, "font-weight: bold; color: #c4a575;");
   return (
     <main className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col px-4 pt-10 pb-28 sm:px-6 sm:pt-12 md:px-12 md:pt-24 lg:pl-32 lg:pr-12">
       <div className="flex w-full flex-col space-y-28 sm:space-y-36 md:space-y-56">
         <Hero dict={dict} lang={lang} />
-        <About dict={dict} />
         <Projects dict={dict} />
         <Hardware dict={dict} lang={lang} />
         <Journey dict={dict} lang={lang} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { PaletteMorph } from "../palette-morph";
 import Image from "next/image";
 import { Dictionary, GalleryItem } from "@/app/lib/types";
 import { Reveal } from "../reveal";
@@ -21,6 +22,7 @@ export function About({ dict }: { dict: Dictionary }) {
   }, []);
 
   return (
+    <PaletteMorph palette="forest">
     <section id="about" className="scroll-mt-32">
       <Reveal variant="up">
         <SectionHeading as="h1" label={dict.ui.aboutLabel} title={dict.ui.aboutTitle} />
@@ -156,7 +158,8 @@ export function About({ dict }: { dict: Dictionary }) {
                 {item.type === "video" ? (
                   <>
                     <video
-                      src={`${item.src}#t=0.1`}
+                      src={item.src}
+                      poster={item.poster}
                       muted
                       playsInline
                       preload="metadata"
@@ -211,5 +214,6 @@ export function About({ dict }: { dict: Dictionary }) {
         dict={dict}
       />
     </section>
+    </PaletteMorph>
   );
 }

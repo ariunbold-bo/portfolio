@@ -4,6 +4,7 @@ import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { Icon } from "../icons";
+import { PaletteMorph } from "../palette-morph";
 
 /**
  * Hardware projects as alternating "object + spec sheet" rows. Each project
@@ -12,6 +13,7 @@ import { Icon } from "../icons";
  */
 export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
   return (
+    <PaletteMorph palette="ember">
     <section id="hardware" className="scroll-mt-32">
       <Reveal variant="up">
         <SectionHeading
@@ -94,5 +96,6 @@ export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
         })}
       </div>
     </section>
+    </PaletteMorph>
   );
 }

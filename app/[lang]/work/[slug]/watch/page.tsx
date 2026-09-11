@@ -17,9 +17,9 @@ const poppinsExtrabold = Poppins({
 const { identity, hardware: hardwareContent } = en;
 
 const videoMeta: Record<string, { duration: number; uploadDate: string; thumbnail: string }> = {
-  esp32:         { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
-  cryocell:      { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
-  "arch-ricing": { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/arch-ricing-poster.webp` },
+  esp32:           { duration: 5,  uploadDate: "2026-01-15", thumbnail: `${identity.site}/esp32-poster.webp` },
+  cryocell:        { duration: 18, uploadDate: "2026-02-20", thumbnail: `${identity.site}/mobile-poster.webp` },
+  "arch-ricing":   { duration: 24, uploadDate: "2026-04-05", thumbnail: `${identity.site}/arch-ricing-poster.webp` },
   "pusda-speaker": { duration: 30, uploadDate: "2026-08-22", thumbnail: `${identity.site}/pusda_speaker1_poster.webp` },
 };
 
@@ -39,12 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = meta?.thumbnail ?? `${identity.site}/hero.webp`;
   return {
     title: `Watch ${proj.name}`,
-    description: `Watch the full video of ${proj.name}. ${proj.summary}`,
+    description: `Watch the video demonstration of ${proj.name}. ${proj.summary}`,
     alternates: buildAlternates(identity.site, lang, `/work/${slug}/watch`),
     openGraph: {
       url: `${identity.site}/${lang}/work/${slug}/watch`,
       title: `Watch ${proj.name}`,
-      description: `Watch the full video of ${proj.name}. ${proj.summary}`,
+      description: `Watch the video demonstration of ${proj.name}. ${proj.summary}`,
       siteName: identity.siteName,
       type: "video.other",
       images: [
@@ -66,41 +66,42 @@ export default async function WatchPage({ params }: Props) {
   if (!proj) notFound();
 
   const vMeta = videoMeta[slug];
-  const firstVideo = proj.media?.find((m) => m.type === "video");
+  const videoMedia = proj.media?.filter((m) => m.type === "video") ?? [];
 
-  if (!firstVideo) notFound(); // If project has no video, 404
+  if (videoMedia.length === 0) notFound();
 
   return (
     <>
-      {vMeta && (
-        // sanitize the JSON-LD to prevent XSS attacks
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "VideoObject",
-              name: proj.name,
-              description: proj.summary,
-              thumbnailUrl: vMeta.thumbnail,
-              contentUrl: `${identity.site}${firstVideo.src}`,
-              uploadDate: vMeta.uploadDate,
-              duration: `PT${vMeta.duration}S`,
-              author: {
-                "@type": "Person",
-                name: identity.name,
-                url: identity.site,
-              },
-              publisher: {
-                "@type": "Person",
-                name: identity.name,
-                url: identity.site,
-              },
-              embedUrl: `${identity.site}/${lang}/work/${slug}/watch`,
-            }),
-          }}
-        />
-      )}
+      {vMeta &&
+        videoMedia.map((vid, idx) => (
+          <script
+            key={vid.src}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                name: `${proj.name}${videoMedia.length > 1 ? ` — Video ${idx + 1}` : ""}`,
+                description: proj.summary,
+                thumbnailUrl: vid.poster ? `${identity.site}${vid.poster}` : vMeta.thumbnail,
+                contentUrl: `${identity.site}${vid.src}`,
+                uploadDate: vMeta.uploadDate,
+                duration: `PT${vMeta.duration}S`,
+                author: {
+                  "@type": "Person",
+                  name: identity.name,
+                  url: identity.site,
+                },
+                publisher: {
+                  "@type": "Person",
+                  name: identity.name,
+                  url: identity.site,
+                },
+                embedUrl: `${identity.site}/${lang}/work/${slug}/watch`,
+              }),
+            }}
+          />
+        ))}
       <SiteBackground />
 
       <main className="relative z-10 flex min-h-[90vh] flex-col items-center justify-center p-4 sm:p-8">
@@ -112,25 +113,39 @@ export default async function WatchPage({ params }: Props) {
             <Icon name="arrowLeft" className="h-3.5 w-3.5" />
             <span className="link-underline">Back to Project</span>
           </Link>
-          
+
           <div className="mb-8">
-            <h1 className={`${poppinsExtrabold.className} text-3xl font-extrabold tracking-tight text-ink-strong sm:text-4xl md:text-5xl`}>
-              {proj.name}
+            <h1
+              className={`${poppinsExtrabold.className} text-3xl font-extrabold tracking-tight text-ink-strong sm:text-4xl md:text-5xl`}
+            >
+              Watch {proj.name}
             </h1>
             <p className="mt-2 text-muted">{proj.summary}</p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-black shadow-[var(--shadow)]">
-            <video
-              src={firstVideo.src}
-              poster={firstVideo.poster}
-              controls
-              playsInline
-              preload="metadata"
-              className="h-auto w-full max-h-[75vh] object-contain"
-            >
-              Your browser does not support the video tag.
-            </video>
+          <div className="space-y-8">
+            {videoMedia.map((vid, i) => (
+              <div
+                key={vid.src}
+                className="overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-black shadow-[var(--shadow)]"
+              >
+                {videoMedia.length > 1 && (
+                  <div className="border-b border-white/10 bg-white/5 px-4 py-2 text-xs font-mono text-white/70">
+                    Video {i + 1} of {videoMedia.length}
+                  </div>
+                )}
+                <video
+                  src={vid.src}
+                  poster={vid.poster}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="h-auto w-full max-h-[75vh] object-contain"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ))}
           </div>
         </div>
       </main>

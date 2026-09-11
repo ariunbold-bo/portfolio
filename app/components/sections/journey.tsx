@@ -9,6 +9,7 @@ import { GlassCard } from "../glass-card";
 import { TimelineLine } from "../timeline-line";
 import Image from "next/image";
 import { LightboxModal } from "../lightbox";
+import { PaletteMorph } from "../palette-morph";
 
 export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
   const [toggledItems, setToggledItems] = useState<Record<number, boolean>>({});
@@ -19,6 +20,7 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
   } | null>(null);
 
   return (
+    <PaletteMorph palette="teal">
     <section id="journey" className="scroll-mt-32">
       <Reveal variant="up">
         <SectionHeading
@@ -162,7 +164,7 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
                                   }}
                                 >
                                   <video
-                                    src={`${entry.image.src}#t=0.001`}
+                                    src={entry.image.src}
                                     poster={entry.image.poster}
                                     loop
                                     muted
@@ -228,5 +230,6 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
         dict={dict}
       />
     </section>
+    </PaletteMorph>
   );
 }

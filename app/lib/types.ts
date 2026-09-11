@@ -51,6 +51,7 @@ export type GalleryItem = {
   type: "image" | "video";
   alt: string;
   aspectRatio: string;
+  poster?: string;
 };
 
 export type GrowthTarget = {
@@ -123,5 +124,7 @@ export type Dictionary = {
     readFullStory: string;
     galleryLabel: string;
     thingsIValue: string;
+    heroQuote: string;
+    heroQuoteAuthor: string;
   };
 };

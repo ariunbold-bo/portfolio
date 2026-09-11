@@ -70,6 +70,7 @@ const jsonLd = {
       "@id": `${identity.site}/#person`,
       name: identity.name,
       url: identity.site,
+      image: `${identity.site}/hero.webp`,
       jobTitle: identity.seoTitle,
       description: identity.tagline,
       address: { "@type": "PostalAddress", addressCountry: identity.location },

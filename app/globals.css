@@ -4,68 +4,278 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ------------------------------------------------------------------ *
- * COLOR SYSTEM — Warm Amber & Slate Premium
- *   Light: warm off-white · rich amber-gold
- *   Dark:  deep charcoal · electric amber
+ * COLOR SYSTEM — Night Steppe + Sky Zone
+ *   Light: golden dusk cream · deep bronze
+ *   Dark:  near-black night · gold
+ *   The projects section morphs to "open sky" blue when it scrolls
+ *   into view — `data-sky` is toggled by an IntersectionObserver in
+ *   projects.tsx, and the registered tokens below let the browser
+ *   interpolate the shift instead of snapping.
  * ------------------------------------------------------------------ */
+
+/* Only the tokens that carry the visible morph (page background + the two
+   accent colors used by blobs/text/links) are registered so they can be
+   interpolated. Everything else in the sky blocks snaps instantly — keeping
+   the animated set tiny is what keeps the transition smooth on low-end GPUs. */
+@property --accent    { syntax: "<color>"; inherits: true; initial-value: #c9ab7f; }
+@property --accent-2  { syntax: "<color>"; inherits: true; initial-value: #d8c09a; }
+@property --bg        { syntax: "<color>"; inherits: true; initial-value: #060504; }
+
 [data-theme="light"] {
-  --accent: #7d6749;          /* Muted bronze — was a bright Amber 700 */
-  --accent-2: #96805f;        /* Soft warm taupe */
-  --accent-rgb: 125, 103, 73;
-  --status-dot: #96805f;
- 
-  --bg: #fafaf8;               /* Warm neutral white */
-  --bg-grad-1: #fefefe;
-  --bg-grad-2: #f4f3ef;
- 
-  --ink: #44403c;              /* Stone 700 */
-  --ink-strong: #1c1917;       /* Stone 900 */
-  --muted: #6b655f;            /* Darkened from Stone 500 for WCAG AA contrast (~5.5:1 on bg) */
-  --faint: #e7e5e0;            /* Stone 200 */
- 
-  --surface: rgba(var(--accent-rgb), 0.025);
-  --surface-2: rgba(var(--accent-rgb), 0.045);
-  --surface-solid: #ffffff;
-  --border: rgba(var(--accent-rgb), 0.10);
-  --border-strong: rgba(var(--accent-rgb), 0.16);
- 
-  --on-accent: #ffffff;
-  --shadow-rgb: 28, 25, 23;
-  --shadow: 0 1px 2px rgba(28, 25, 23, 0.04), 0 8px 24px -8px rgba(28, 25, 23, 0.08);
- 
+  --accent: #83684a;          /* Deep bronze */
+  --accent-2: #99826a;        /* Warm taupe */
+  --accent-rgb: 131, 104, 74;
+  --status-dot: #99826a;
+
+  --bg: #ece7dc;              /* Golden dusk — dimmer than the old near-white */
+  --bg-grad-1: #f2eee6;
+  --bg-grad-2: #e0dacd;
+
+  --ink: #403a33;
+  --ink-strong: #191512;
+  --muted: #5e574c;           /* darkened to keep WCAG AA on the dusk bg */
+  --faint: #d8d1c3;
+
+  --surface: rgba(var(--accent-rgb), 0.03);
+  --surface-2: rgba(var(--accent-rgb), 0.055);
+  --surface-solid: #f6f2e9;
+  --border: rgba(var(--accent-rgb), 0.11);
+  --border-strong: rgba(var(--accent-rgb), 0.18);
+
+  --on-accent: #f7f3ea;
+  --shadow-rgb: 24, 20, 16;
+  --shadow: 0 1px 2px rgba(24, 20, 16, 0.06), 0 8px 24px -8px rgba(24, 20, 16, 0.12);
+
   --ring: var(--accent);
-  --glass-highlight: rgba(255, 255, 255, 0.92);
-  --grid-line: rgba(var(--accent-rgb), 0.03);
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --grid-line: rgba(var(--accent-rgb), 0.035);
 }
- 
+
 [data-theme="dark"] {
-  --accent: #c4a575;           /* Muted gold — was a bright Amber 400 */
-  --accent-2: #d6bd92;         /* Soft champagne */
-  --accent-rgb: 196, 165, 117;
-  --status-dot: #d6bd92;
- 
-  --bg: #0c0a09;                /* Warm near-black */
-  --bg-grad-1: #171412;
-  --bg-grad-2: #060504;
- 
-  --ink: #a8a29e;               /* Stone 400 */
-  --ink-strong: #f5f5f4;        /* Stone 100 */
-  --muted: #96908b;             /* Lightened from Stone 500 for WCAG AA contrast (~5.5:1 on surfaces) */
-  --faint: #292524;             /* Stone 800 */
- 
+  --accent: #c9ab7f;           /* Gold */
+  --accent-2: #d8c09a;         /* Soft champagne */
+  --accent-rgb: 201, 171, 127;
+  --status-dot: #d8c09a;
+
+  --bg: #060504;               /* Night — deeper than before */
+  --bg-grad-1: #0e0b08;
+  --bg-grad-2: #020100;
+
+  --ink: #a7a19b;
+  --ink-strong: #f4f2ef;
+  --muted: #918a83;            /* keeps WCAG AA on the night bg */
+  --faint: #23201c;
+
   --surface: rgba(var(--accent-rgb), 0.05);
   --surface-2: rgba(var(--accent-rgb), 0.09);
-  --surface-solid: #1c1917;
+  --surface-solid: #131009;
   --border: rgba(var(--accent-rgb), 0.10);
   --border-strong: rgba(var(--accent-rgb), 0.18);
- 
-  --on-accent: #1c1917;
+
+  --on-accent: #191410;
   --shadow-rgb: 0, 0, 0;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.5);
- 
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+
   --ring: var(--accent);
   --glass-highlight: rgba(var(--accent-rgb), 0.04);
   --grid-line: rgba(var(--accent-rgb), 0.03);
+}
+
+/* ── Sky Zone — projects section fades to open-sky blue ──────────────
+   Low-key on purpose: only accent/secondary/ink/surface tokens shift,
+   the page background itself stays put. */
+[data-theme="light"][data-sky="true"] {
+  --bg: #dce6f0;              /* open sky */
+  --bg-grad-1: #e6edf5;
+  --bg-grad-2: #d0dce9;
+
+  --accent: #4d7cb0;
+  --accent-2: #6d94bd;
+  --accent-rgb: 77, 124, 176;
+  --status-dot: #6d94bd;
+
+  --ink: #3d464f;
+  --ink-strong: #18222c;
+  --muted: #59646f;
+
+  --surface: rgba(77, 124, 176, 0.04);
+  --surface-2: rgba(77, 124, 176, 0.075);
+  --surface-solid: #edf1f5;
+  --border: rgba(77, 124, 176, 0.14);
+  --border-strong: rgba(77, 124, 176, 0.24);
+  --on-accent: #f2f6fa;
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --grid-line: rgba(77, 124, 176, 0.04);
+}
+
+[data-theme="dark"][data-sky="true"] {
+  --bg: #04060b;              /* night sky */
+  --bg-grad-1: #0a0e16;
+  --bg-grad-2: #020306;
+
+  --accent: #85aedb;
+  --accent-2: #a5c2e6;
+  --accent-rgb: 133, 174, 219;
+  --status-dot: #a5c2e6;
+
+  --ink: #a5b0ba;
+  --ink-strong: #e9edf3;
+  --muted: #8f9aa6;
+
+  --surface: rgba(133, 174, 219, 0.05);
+  --surface-2: rgba(133, 174, 219, 0.09);
+  --surface-solid: #10141a;
+  --border: rgba(133, 174, 219, 0.12);
+  --border-strong: rgba(133, 174, 219, 0.22);
+  --on-accent: #0a1524;
+  --glass-highlight: rgba(133, 174, 219, 0.04);
+  --grid-line: rgba(133, 174, 219, 0.04);
+}
+
+/* ── Forest Zone — about section: earthy sage / warm green ──────────
+   Personal, human, grounded. */
+[data-theme="light"][data-palette="forest"] {
+  --bg: #e4ebe0;
+  --bg-grad-1: #ecf0e9;
+  --bg-grad-2: #d8e2d4;
+  --accent: #4a7c59;
+  --accent-2: #6a9c79;
+  --accent-rgb: 74, 124, 89;
+  --status-dot: #6a9c79;
+  --ink: #2e3a30;
+  --ink-strong: #162018;
+  --muted: #546659;
+  --surface: rgba(74, 124, 89, 0.04);
+  --surface-2: rgba(74, 124, 89, 0.075);
+  --surface-solid: #edf2eb;
+  --border: rgba(74, 124, 89, 0.14);
+  --border-strong: rgba(74, 124, 89, 0.24);
+  --on-accent: #f0f7f2;
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --grid-line: rgba(74, 124, 89, 0.04);
+}
+[data-theme="dark"][data-palette="forest"] {
+  --bg: #040a05;
+  --bg-grad-1: #091009;
+  --bg-grad-2: #020602;
+  --accent: #7dba8e;
+  --accent-2: #9ecfad;
+  --accent-rgb: 125, 186, 142;
+  --status-dot: #9ecfad;
+  --ink: #a4b5a7;
+  --ink-strong: #e6f0e8;
+  --muted: #8fa894;
+  --surface: rgba(125, 186, 142, 0.05);
+  --surface-2: rgba(125, 186, 142, 0.09);
+  --surface-solid: #0e1810;
+  --border: rgba(125, 186, 142, 0.12);
+  --border-strong: rgba(125, 186, 142, 0.22);
+  --on-accent: #0a1e0d;
+  --glass-highlight: rgba(125, 186, 142, 0.04);
+  --grid-line: rgba(125, 186, 142, 0.04);
+}
+
+/* ── Ember Zone — hardware section: copper / industrial amber ─────────
+   Physical, tangible, warm metal energy. */
+[data-theme="light"][data-palette="ember"] {
+  --bg: #ede5d8;
+  --bg-grad-1: #f4ede2;
+  --bg-grad-2: #e2d8c9;
+  --accent: #a0622a;
+  --accent-2: #b87d48;
+  --accent-rgb: 160, 98, 42;
+  --status-dot: #b87d48;
+  --ink: #3d2e1c;
+  --ink-strong: #1e1508;
+  --muted: #6b5337;
+  --surface: rgba(160, 98, 42, 0.04);
+  --surface-2: rgba(160, 98, 42, 0.075);
+  --surface-solid: #f5ede2;
+  --border: rgba(160, 98, 42, 0.14);
+  --border-strong: rgba(160, 98, 42, 0.26);
+  --on-accent: #fdf6ee;
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --grid-line: rgba(160, 98, 42, 0.04);
+}
+[data-theme="dark"][data-palette="ember"] {
+  --bg: #0b0704;
+  --bg-grad-1: #130e08;
+  --bg-grad-2: #060401;
+  --accent: #cf8f52;
+  --accent-2: #e0aa76;
+  --accent-rgb: 207, 143, 82;
+  --status-dot: #e0aa76;
+  --ink: #b8a898;
+  --ink-strong: #f5ede3;
+  --muted: #9e8870;
+  --surface: rgba(207, 143, 82, 0.05);
+  --surface-2: rgba(207, 143, 82, 0.09);
+  --surface-solid: #1a1108;
+  --border: rgba(207, 143, 82, 0.12);
+  --border-strong: rgba(207, 143, 82, 0.22);
+  --on-accent: #1a0e03;
+  --glass-highlight: rgba(207, 143, 82, 0.04);
+  --grid-line: rgba(207, 143, 82, 0.04);
+}
+
+/* ── Teal Zone — journey section: deep teal / time and depth ──────────
+   Memory, depth, flowing time. */
+[data-theme="light"][data-palette="teal"] {
+  --bg: #dce8e8;
+  --bg-grad-1: #e5eeee;
+  --bg-grad-2: #d0dfdf;
+  --accent: #2e7b7b;
+  --accent-2: #4d9898;
+  --accent-rgb: 46, 123, 123;
+  --status-dot: #4d9898;
+  --ink: #1e3535;
+  --ink-strong: #0d1e1e;
+  --muted: #4a6464;
+  --surface: rgba(46, 123, 123, 0.04);
+  --surface-2: rgba(46, 123, 123, 0.075);
+  --surface-solid: #e9f2f2;
+  --border: rgba(46, 123, 123, 0.14);
+  --border-strong: rgba(46, 123, 123, 0.26);
+  --on-accent: #eaf4f4;
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --grid-line: rgba(46, 123, 123, 0.04);
+}
+[data-theme="dark"][data-palette="teal"] {
+  --bg: #030c0c;
+  --bg-grad-1: #081414;
+  --bg-grad-2: #010707;
+  --accent: #55b5b5;
+  --accent-2: #7acece;
+  --accent-rgb: 85, 181, 181;
+  --status-dot: #7acece;
+  --ink: #98b8b8;
+  --ink-strong: #e0f0f0;
+  --muted: #7aa0a0;
+  --surface: rgba(85, 181, 181, 0.05);
+  --surface-2: rgba(85, 181, 181, 0.09);
+  --surface-solid: #0c1a1a;
+  --border: rgba(85, 181, 181, 0.12);
+  --border-strong: rgba(85, 181, 181, 0.22);
+  --on-accent: #031414;
+  --glass-highlight: rgba(85, 181, 181, 0.04);
+  --grid-line: rgba(85, 181, 181, 0.04);
+}
+
+/* The <html> root ALWAYS carries the morph transition so the animation
+   fires in BOTH directions — entering AND leaving any palette zone.
+   1.1s reads as a fast pass of weather, not a long expensive fade.
+   Reduced-motion users get an instant swap via the global block below. */
+html {
+  transition:
+    --bg 1.1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    --accent 1.1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    --accent-2 1.1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+/* Suppress transitions during initial page load so @property initial-value
+   doesn't animate to the actual theme color on first paint (the visible flash).
+   The theme script adds this class synchronously and removes it after 2 rAFs. */
+html.no-palette-transition {
+  transition: none !important;
 }
 
 /* Expose the runtime tokens to Tailwind utilities (inline = no copy). */
@@ -114,9 +324,13 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     max-width: 100vw;
-    transition:
-      background-color 0.7s ease,
-      color 0.4s ease;
+    /* NOTE: do NOT transition background-color here — body inherits --bg
+       from html, and html already transitions --bg as a custom property.
+       Having a separate background-color transition on body causes a
+       double-transition race: the custom property animates on html while
+       body also tries to animate the resolved value independently,
+       producing the "washed-out flash" on enter and snap on exit. */
+    transition: color 0.4s ease;
   }
 
   ::selection {
@@ -877,4 +1091,26 @@ video:-ms-fullscreen,
 img:-ms-fullscreen {
   object-fit: contain !important;
   background-color: black !important;
+}
+
+/* Hide scrollbar visually but keep scroll functionality
+   (used by mobile bookshelf horizontal scroll container) */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Book detail popup portal animation */
+@keyframes book-popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

@@ -8,7 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/mn/"],   // prevent duplicate-content indexing of Mongolian locale
       },
     ],
     sitemap: [

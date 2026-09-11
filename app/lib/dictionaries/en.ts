@@ -321,12 +321,14 @@ const en: Dictionary = {
       type: "video",
       alt: "Mono Speaker Version",
       aspectRatio: "aspect-[9/16]",
+      poster: "/ble_speaker_final_poster.webp",
     },
     {
       src: "/playing_tts.webm",
       type: "video",
       alt: "Playing TTS",
       aspectRatio: "aspect-video",
+      poster: "/tts-era-poster.webp",
     },
     {
       src: "/tsetseg.webp",
@@ -370,7 +372,6 @@ const en: Dictionary = {
   ],
   nav: [
     { id: "home", label: "Home", icon: "home" },
-    { id: "about", label: "About", icon: "user" },
     { id: "projects", label: "Projects", icon: "grid" },
     { id: "journey", label: "Journey", icon: "route" },
   ],
@@ -466,9 +467,10 @@ const en: Dictionary = {
     downloadResume: "Download Résumé",
     viewResume: "View Résumé",
 
-    // Gallery for things that i value <3
     galleryLabel: "Gallery",
     thingsIValue: "Things i value.",
+    heroQuote: "Don't cry because it's over, smile because it happened.",
+    heroQuoteAuthor: "— Dr. Seuss",
   },
 };
 

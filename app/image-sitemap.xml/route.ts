@@ -6,8 +6,56 @@ const images = [
   {
     src: "/hero.webp",
     title: "Ariunbold Bold — Hero Portrait",
-    caption: "Ariunbold Bold, systems developer from Mongolia.",
+    caption: "Ariunbold Bold, systems and software developer from Mongolia.",
     page: `${identity.site}/en`,
+  },
+  {
+    src: "/first-code.webp",
+    title: "First Lines of Code — Journey",
+    caption: "Early C programming setup and first code written by Ariunbold.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/arch-linux.webp",
+    title: "Arch Linux Setup — Ricing & Workflow",
+    caption: "Customized Arch Linux environment and Hyprland ricing.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/first-victim-poster.webp",
+    title: "First Victim Mod — Hardware Journey",
+    caption: "First hardware modification project poster.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/self-taught-era-poster.webp",
+    title: "Self-Taught Developer Era — Poster",
+    caption: "Poster representing the self-taught software & systems journey.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/linux-android-poster.webp",
+    title: "Linux VMs on Android — Poster",
+    caption: "Running Linux distributions and virtual environments on Android.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/tts-era-poster.webp",
+    title: "Mongolian TTS Engine — Poster",
+    caption: "Poster for the Mongolian text-to-speech voice synthesis project.",
+    page: `${identity.site}/en`,
+  },
+  {
+    src: "/tsetseg.webp",
+    title: "Tsetseg — Flower Photo",
+    caption: "A flower photograph taken by Ariunbold Bold.",
+    page: `${identity.site}/en/about`,
+  },
+  {
+    src: "/ble_speaker_final_poster.webp",
+    title: "Bluetooth Speaker Build Poster",
+    caption: "Poster for the custom Bluetooth speaker build in the gallery.",
+    page: `${identity.site}/en/about`,
   },
   {
     src: "/esp32-poster.webp",
@@ -40,15 +88,9 @@ const images = [
     page: `${identity.site}/en/work/pusda-speaker`,
   },
   {
-    src: "/tsetseg.webp",
-    title: "Tsetseg — Flower Photo",
-    caption: "A flower photograph taken by Ariunbold Bold.",
-    page: `${identity.site}/en/about`,
-  },
-  {
     src: "/pusda_speaker.webp",
-    title: "Pusda Speaker— Build Photo",
-    caption: "Second-generation DIY Bluetooth stereo speaker using XH-MX8 amplifier, MH-MX8 BT receiver, and dual isolated power rails. Enclosure is the amp's original shipping box.",
+    title: "Pusda Speaker — Build Photo",
+    caption: "Second-generation DIY Bluetooth stereo speaker using XH-MX8 amplifier, MH-MX8 BT receiver, and dual isolated power rails.",
     page: `${identity.site}/en/work/pusda-speaker`,
   },
 ];

@@ -8,7 +8,7 @@ const videos = [
     title: "ESP32 OLED Animation",
     description:
       "C++ firmware that decodes binary-encoded GIF frames and drives a 128×64 OLED at smooth framerates on an ESP32 microcontroller.",
-    page: `${identity.site}/en/work/esp32`,
+    page: `${identity.site}/en/work/esp32/watch`,
     thumbnail: `${identity.site}/esp32-poster.webp`,
     durationSeconds: 5,
     publicationDate: "2026-01-15",
@@ -18,7 +18,7 @@ const videos = [
     title: "Samsung Galaxy S21 CryoCell Mod Demo",
     description:
       "Hardware mod pairing a custom 10,000mAh power solution with an active cooling module and dual Power Save / Performance modes on a Galaxy S21.",
-    page: `${identity.site}/en/work/cryocell`,
+    page: `${identity.site}/en/work/cryocell/watch`,
     thumbnail: `${identity.site}/mobile-poster.webp`,
     durationSeconds: 18,
     publicationDate: "2026-02-20",
@@ -28,7 +28,7 @@ const videos = [
     title: "Arch Linux Hyprland Ricing and RGB Sync",
     description:
       "Highly customized Arch Linux setup using Hyprland, featuring keyboard RGB syncing that reacts to live and static wallpapers in real time.",
-    page: `${identity.site}/en/work/arch-ricing`,
+    page: `${identity.site}/en/work/arch-ricing/watch`,
     thumbnail: `${identity.site}/arch-ricing-poster.webp`,
     durationSeconds: 24,
     publicationDate: "2026-04-05",
@@ -38,7 +38,7 @@ const videos = [
     title: "Pusda Speaker Gen 2 — Demo Video 1",
     description:
       "Second-generation DIY Bluetooth stereo speaker with dual isolated power rails, XH-MX8 amp, MH-MX8 BT receiver and two 4Ω 15W drivers. So loud you can't hear someone yelling beside you.",
-    page: `${identity.site}/en/work/pusda-speaker`,
+    page: `${identity.site}/en/work/pusda-speaker/watch`,
     thumbnail: `${identity.site}/pusda_speaker1_poster.webp`,
     durationSeconds: 30,
     publicationDate: "2026-08-22",
@@ -48,7 +48,7 @@ const videos = [
     title: "Pusda Speaker Gen 2 — Demo Video 2",
     description:
       "Additional footage of the Pusda Speaker Gen 2 build — stereo output, enclosure detail, and power system overview.",
-    page: `${identity.site}/en/work/pusda-speaker`,
+    page: `${identity.site}/en/work/pusda-speaker/watch`,
     thumbnail: `${identity.site}/pusda_speaker2_poster.webp`,
     durationSeconds: 30,
     publicationDate: "2026-08-22",

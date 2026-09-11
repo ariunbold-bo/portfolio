@@ -33,13 +33,16 @@ export const metadata: Metadata = {
 // site's actual background for each color scheme.
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafaf8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+    { media: "(prefers-color-scheme: light)", color: "#ece7dc" },
+    { media: "(prefers-color-scheme: dark)", color: "#060504" },
   ],
 };
 
 // Flash-free theme init — runs during HTML parse, before first paint.
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`;
+// Also adds `no-palette-transition` class which suppresses the @property
+// CSS transitions until after the first rAF — prevents the initial flash
+// where --bg animates from initial-value to the actual theme color.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.classList.add("no-palette-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-palette-transition");});});})();`;
 
 export default async function RootLayout({
   children,

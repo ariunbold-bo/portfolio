@@ -325,12 +325,14 @@ const mn: Dictionary = {
       type: "video",
       alt: "Mono Speaker Version",
       aspectRatio: "aspect-[9/16]",
+      poster: "/ble_speaker_final_poster.webp",
     },
     {
       src: "/playing_tts.webm",
       type: "video",
       alt: "Playing TTS",
       aspectRatio: "aspect-video",
+      poster: "/tts-era-poster.webp",
     },
     {
       src: "/tsetseg.webp",
@@ -475,6 +477,8 @@ const mn: Dictionary = {
     // Gallery for things that i value <3
     galleryLabel: "Gallery",
     thingsIValue: "Things i value.",
+    heroQuote: "Дууссандаа бүү уйл, болсондоо инээмсэгл.",
+    heroQuoteAuthor: "— Dr. Seuss",
   },
 };
 

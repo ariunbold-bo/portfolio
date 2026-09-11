@@ -28,5 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/projects", 0.8),
     entry("/contact", 0.7),
     ...hardware.map((h) => entry(`/work/${h.slug}`, 0.8)),
+    ...hardware.map((h) => entry(`/work/${h.slug}/watch`, 0.7)),
   ];
 }

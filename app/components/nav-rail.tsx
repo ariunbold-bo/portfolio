@@ -118,10 +118,8 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
   const lang = useLocale();
 
-  // Filter out standalone pages from the nav rail — keep only the in-page
-  // anchor sections (home, journey) that IntersectionObserver can track.
-  // Memoized so the IntersectionObserver effect below isn't torn down + recreated on
-  // every render (a fresh array reference each render was breaking scroll tracking).
+  // Nav items — all are in-page anchors now that about is a standalone page
+  // accessed via the footer CTA rather than the rail.
   const navItems = useMemo(
     () => dict.nav.filter((item) => !PAGE_IDS.has(item.id)),
     [dict.nav],
@@ -130,7 +128,6 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   // Detect active item: for page-level routes derive from pathname,
   // for anchor sections use IntersectionObserver.
   const getPageActive = () => {
-    // if (pathname.endsWith("/about")) return "about";
     if (pathname.endsWith("/contact")) return "contact";
     return null;
   };
@@ -177,9 +174,6 @@ export function NavRail({ dict }: { dict: Dictionary }) {
           if (entry.isIntersecting) setActive(entry.target.id);
         }
       },
-      // A thin band around the vertical center is the most reliable signal for
-      // "which section am I reading right now". A full-viewport root would keep
-      // the hero active for the whole first screen and cause false positives.
       { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
     );
     els.forEach((el) => io.observe(el));

@@ -93,12 +93,12 @@ export function Hero({
           <div className="flex flex-col gap-2">
             <Reveal variant="up" delay={350} className="min-h-[3rem]">
               <p className="text-base leading-relaxed text-[var(--ink-strong)] max-w-md">
-                Don't cry because it's over, smile because it happened
+                {dict.ui.heroQuote}
               </p>
             </Reveal>
             <Reveal variant="up" delay={350} className=" min-h-[3rem]">
               <p className="text-base leading-relaxed text-[var(--ink)] max-w-md">
-                -Dr. Seuss
+                {dict.ui.heroQuoteAuthor}
               </p>
             </Reveal>
           </div>
