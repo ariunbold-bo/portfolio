@@ -74,9 +74,7 @@ function BookPopup({
           left: `${left}px`,
           width: `${popupWidth}px`,
           zIndex: 9999,
-          backgroundColor: `${color.cover}f5`,
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
+          backgroundColor: color.cover,
           border: `1px solid ${color.accent}44`,
           borderBottom: `3px solid ${color.accent}88`,
           borderRadius: "14px",
@@ -476,8 +474,7 @@ function BookSpine({
       >
         <div
           style={{
-            backgroundColor: `${color.cover}ee`,
-            backdropFilter: "blur(12px)",
+            backgroundColor: color.cover,
             border: `1px solid ${color.accent}44`,
             borderTop: `2px solid ${color.accent}88`,
             borderRadius: "0 0 12px 12px",

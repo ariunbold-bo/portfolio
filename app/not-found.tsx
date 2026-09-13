@@ -51,7 +51,7 @@ export default function NotFound() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/" className="btn btn-primary hover-lift glow-hover">
+          <Link href="/" className="btn btn-primary hover-lift">
             <Icon name="home" className="h-4 w-4" />
             Back to Home
           </Link>

@@ -73,12 +73,12 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
                   <div
                     className={`h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full transition-all duration-300 ${
                       isMobileOpen
-                        ? "scale-150 bg-accent shadow-[0_0_10px_rgba(var(--accent-rgb),0.8)]"
-                        : "bg-[var(--muted)] group-hover:scale-150 group-hover:bg-accent group-hover:shadow-[0_0_10px_rgba(var(--accent-rgb),0.8)]"
+                        ? "scale-150 bg-accent"
+                        : "bg-[var(--muted)] group-hover:scale-150 group-hover:bg-accent"
                     } ${
                       isDesktopOpen
-                        ? "md:scale-150 md:bg-accent md:shadow-[0_0_10px_rgba(var(--accent-rgb),0.8)]"
-                        : "md:scale-100 md:bg-[var(--muted)] md:shadow-none md:group-hover:scale-150 md:group-hover:bg-accent md:group-hover:shadow-[0_0_10px_rgba(var(--accent-rgb),0.8)]"
+                        ? "md:scale-150 md:bg-accent"
+                        : "md:scale-100 md:bg-[var(--muted)] md:group-hover:scale-150 md:group-hover:bg-accent"
                     }`}
                   />
                 </div>
@@ -89,15 +89,7 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
                 >
                   <Reveal variant="up" delay={100} className="w-full">
                     <GlassCard
-                      className={`p-5 sm:p-6 md:p-8 glow-hover hover-lift relative cursor-pointer select-none ${
-                        isMobileOpen
-                          ? "shadow-[0_0_24px_rgba(var(--accent-rgb),0.18)]"
-                          : ""
-                      } ${
-                        isDesktopOpen
-                          ? "md:shadow-[0_0_24px_rgba(var(--accent-rgb),0.18)]"
-                          : "md:shadow-none"
-                      }`}
+                      className="p-5 sm:p-6 md:p-8 hover-lift relative cursor-pointer select-none"
                       onClick={handleClick}
                     >
                       {/* Header row */}
@@ -173,7 +165,7 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
                                     className="w-full h-full object-cover"
                                   />
                                   <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-opacity">
-                                    <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm group-hover:scale-110 transition-transform">
+                                    <div className="bg-black/80 rounded-full p-3 group-hover:scale-110 transition-transform">
                                       <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z" />
                                       </svg>
@@ -215,7 +207,7 @@ export function Journey({ dict, lang }: { dict: Dictionary; lang: string }) {
         </p>
         <Link
           href={`/${lang}/about`}
-          className="btn btn-primary hover-lift glow-hover px-6 py-3 text-sm mt-2 shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)]"
+          className="btn btn-primary hover-lift px-6 py-3 text-sm mt-2"
         >
           {dict.ui.readFullStory}{" "}
           <span aria-hidden="true" className="ml-1 font-bold">

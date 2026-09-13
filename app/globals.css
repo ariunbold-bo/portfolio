@@ -20,67 +20,153 @@
 @property --accent    { syntax: "<color>"; inherits: true; initial-value: #c9ab7f; }
 @property --accent-2  { syntax: "<color>"; inherits: true; initial-value: #d8c09a; }
 @property --bg        { syntax: "<color>"; inherits: true; initial-value: #060504; }
-
+/* ── Theme motion — cross-fading instead of snapping ─────────────────
+   Only these "source" tokens need registering. Everything built from
+   them with var() — surface, border, ring, grid-line, glass-highlight —
+   animates for free once these do, since they just re-resolve the
+   live value on every frame. */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #83684a;
+}
+@property --accent-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #99826a;
+}
+@property --accent-rgb {
+  syntax: '<number>#';
+  inherits: true;
+  initial-value: 131, 104, 74;
+}
+@property --status-dot {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #99826a;
+}
+@property --bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ece7dc;
+}
+@property --bg-grad-1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f2eee6;
+}
+@property --bg-grad-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e0dacd;
+}
+@property --ink {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #403a33;
+}
+@property --ink-strong {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #191512;
+}
+@property --muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #5e574c;
+}
+@property --faint {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d8d1c3;
+}
+@property --surface-solid {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f6f2e9;
+}
+@property --on-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f7f3ea;
+}
+ 
+:root {
+  transition-property: --accent, --accent-2, --accent-rgb, --status-dot,
+    --bg, --bg-grad-1, --bg-grad-2, --ink, --ink-strong, --muted, --faint,
+    --surface-solid, --on-accent;
+  transition-duration: 1.2s;
+  /* Quick off the mark, then a long, gentle settle — the shift keeps
+     moving gradually right up through the end instead of finishing early. */
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    transition-duration: 1ms;
+  }
+}
+ 
 [data-theme="light"] {
   --accent: #83684a;          /* Deep bronze */
   --accent-2: #99826a;        /* Warm taupe */
   --accent-rgb: 131, 104, 74;
   --status-dot: #99826a;
-
+ 
   --bg: #ece7dc;              /* Golden dusk — dimmer than the old near-white */
   --bg-grad-1: #f2eee6;
   --bg-grad-2: #e0dacd;
-
+ 
   --ink: #403a33;
   --ink-strong: #191512;
   --muted: #5e574c;           /* darkened to keep WCAG AA on the dusk bg */
   --faint: #d8d1c3;
-
+ 
   --surface: rgba(var(--accent-rgb), 0.03);
   --surface-2: rgba(var(--accent-rgb), 0.055);
   --surface-solid: #f6f2e9;
   --border: rgba(var(--accent-rgb), 0.11);
   --border-strong: rgba(var(--accent-rgb), 0.18);
-
+ 
   --on-accent: #f7f3ea;
   --shadow-rgb: 24, 20, 16;
   --shadow: 0 1px 2px rgba(24, 20, 16, 0.06), 0 8px 24px -8px rgba(24, 20, 16, 0.12);
-
+ 
   --ring: var(--accent);
   --glass-highlight: rgba(255, 255, 255, 0.55);
   --grid-line: rgba(var(--accent-rgb), 0.035);
 }
-
+ 
 [data-theme="dark"] {
   --accent: #c9ab7f;           /* Gold */
   --accent-2: #d8c09a;         /* Soft champagne */
   --accent-rgb: 201, 171, 127;
   --status-dot: #d8c09a;
-
+ 
   --bg: #060504;               /* Night — deeper than before */
   --bg-grad-1: #0e0b08;
   --bg-grad-2: #020100;
-
+ 
   --ink: #a7a19b;
   --ink-strong: #f4f2ef;
   --muted: #918a83;            /* keeps WCAG AA on the night bg */
   --faint: #23201c;
-
+ 
   --surface: rgba(var(--accent-rgb), 0.05);
   --surface-2: rgba(var(--accent-rgb), 0.09);
   --surface-solid: #131009;
   --border: rgba(var(--accent-rgb), 0.10);
   --border-strong: rgba(var(--accent-rgb), 0.18);
-
+ 
   --on-accent: #191410;
   --shadow-rgb: 0, 0, 0;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
-
+ 
   --ring: var(--accent);
   --glass-highlight: rgba(var(--accent-rgb), 0.04);
   --grid-line: rgba(var(--accent-rgb), 0.03);
 }
-
+ 
 /* ── Sky Zone — projects section fades to open-sky blue ──────────────
    Low-key on purpose: only accent/secondary/ink/surface tokens shift,
    the page background itself stays put. */
@@ -88,16 +174,16 @@
   --bg: #dce6f0;              /* open sky */
   --bg-grad-1: #e6edf5;
   --bg-grad-2: #d0dce9;
-
+ 
   --accent: #4d7cb0;
   --accent-2: #6d94bd;
   --accent-rgb: 77, 124, 176;
   --status-dot: #6d94bd;
-
+ 
   --ink: #3d464f;
   --ink-strong: #18222c;
   --muted: #59646f;
-
+ 
   --surface: rgba(77, 124, 176, 0.04);
   --surface-2: rgba(77, 124, 176, 0.075);
   --surface-solid: #edf1f5;
@@ -107,21 +193,21 @@
   --glass-highlight: rgba(255, 255, 255, 0.55);
   --grid-line: rgba(77, 124, 176, 0.04);
 }
-
+ 
 [data-theme="dark"][data-sky="true"] {
   --bg: #04060b;              /* night sky */
   --bg-grad-1: #0a0e16;
   --bg-grad-2: #020306;
-
+ 
   --accent: #85aedb;
   --accent-2: #a5c2e6;
   --accent-rgb: 133, 174, 219;
   --status-dot: #a5c2e6;
-
+ 
   --ink: #a5b0ba;
   --ink-strong: #e9edf3;
   --muted: #8f9aa6;
-
+ 
   --surface: rgba(133, 174, 219, 0.05);
   --surface-2: rgba(133, 174, 219, 0.09);
   --surface-solid: #10141a;
@@ -131,7 +217,7 @@
   --glass-highlight: rgba(133, 174, 219, 0.04);
   --grid-line: rgba(133, 174, 219, 0.04);
 }
-
+ 
 /* ── Forest Zone — about section: earthy sage / warm green ──────────
    Personal, human, grounded. */
 [data-theme="light"][data-palette="forest"] {
@@ -174,7 +260,7 @@
   --glass-highlight: rgba(125, 186, 142, 0.04);
   --grid-line: rgba(125, 186, 142, 0.04);
 }
-
+ 
 /* ── Ember Zone — hardware section: copper / industrial amber ─────────
    Physical, tangible, warm metal energy. */
 [data-theme="light"][data-palette="ember"] {
@@ -217,7 +303,7 @@
   --glass-highlight: rgba(207, 143, 82, 0.04);
   --grid-line: rgba(207, 143, 82, 0.04);
 }
-
+ 
 /* ── Teal Zone — journey section: deep teal / time and depth ──────────
    Memory, depth, flowing time. */
 [data-theme="light"][data-palette="teal"] {
@@ -260,6 +346,7 @@
   --glass-highlight: rgba(85, 181, 181, 0.04);
   --grid-line: rgba(85, 181, 181, 0.04);
 }
+
 
 /* The <html> root ALWAYS carries the morph transition so the animation
    fires in BOTH directions — entering AND leaving any palette zone.
@@ -413,18 +500,12 @@ html.no-palette-transition {
 @layer components {
   .glass {
     background: var(--surface);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
-    backdrop-filter: blur(22px) saturate(150%);
     border: 1px solid var(--border);
-    box-shadow:
-      var(--shadow),
-      inset 0 1px 0 var(--glass-highlight);
+    box-shadow: var(--shadow);
   }
 
   .glass-2 {
     background: var(--surface-2);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    backdrop-filter: blur(14px) saturate(140%);
     border: 1px solid var(--border);
   }
 
@@ -462,35 +543,6 @@ html.no-palette-transition {
     opacity: 1;
   }
 
-  /* soft rosewood glow that follows a card on hover */
-  .glow-hover {
-    position: relative;
-    isolation: isolate;
-  }
-  .glow-hover::before {
-    content: "";
-    position: absolute;
-    inset: -3px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--accent-rgb), 0.55),
-      transparent 45%
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: -1;
-  }
-  .glow-hover:hover::before {
-    opacity: 1;
-  }
-
   .btn {
     display: inline-flex;
     align-items: center;
@@ -520,12 +572,10 @@ html.no-palette-transition {
   .btn-primary {
     background: var(--accent);
     color: var(--on-accent);
-    /* shadowing difuses the button into bg */
-    /* box-shadow: 0 12px 28px -10px rgba(var(--accent-rgb), 0.6); */
   }
   .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 20px 40px -12px rgba(var(--accent-rgb), 0.2);
+    box-shadow: var(--shadow);
   }
 
   /* ── Ghost: outlined, transparent ── */
@@ -573,14 +623,10 @@ html.no-palette-transition {
     border: 1.5px solid var(--accent);
     color: var(--accent);
     background: rgba(var(--accent-rgb), 0.06);
-    box-shadow: inset 0 0 0 0 rgba(var(--accent-rgb), 0.15);
   }
   .btn-download:hover {
     transform: translateY(-3px);
     background: rgba(var(--accent-rgb), 0.12);
-    box-shadow:
-      inset 0 0 0 0 rgba(var(--accent-rgb), 0.15),
-      0 12px 28px -10px rgba(var(--accent-rgb), 0.35);
   }
 
   /* ── Pill: subtle surface tag-like button ── */

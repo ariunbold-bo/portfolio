@@ -186,14 +186,14 @@ export function NavRail({ dict }: { dict: Dictionary }) {
   const desktopItemCls = (isActive: boolean) =>
     `group relative grid h-11 w-11 place-items-center rounded-[28px] transition-all duration-[400ms] ${
       isActive
-        ? "bg-accent text-on-accent shadow-[0_10px_24px_-10px_rgba(var(--accent-rgb),0.8)]"
+        ? "bg-accent text-on-accent shadow-md"
         : "text-muted hover:text-ink hover:bg-surface"
     }`;
 
   const mobileItemCls = (isActive: boolean) =>
     `grid h-12 w-12 shrink-0 place-items-center rounded-[28px] transition-all duration-300 active:scale-90 touch-manipulation ${
       isActive
-        ? "bg-accent text-on-accent shadow-[0_6px_16px_-6px_rgba(var(--accent-rgb),0.6)]"
+        ? "bg-accent text-on-accent shadow-sm"
         : "text-muted hover:text-ink hover:bg-surface-2"
     }`;
 
@@ -222,7 +222,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
       {/* ── Mobile floating pill ── */}
       <nav
         aria-label="Section navigation"
-        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[9999] flex items-center justify-center gap-0 rounded-[28px] border border-[var(--border)] bg-[var(--surface-solid)]/85 px-2 py-1.5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:hidden"
+        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[9999] flex items-center justify-center gap-0 rounded-[28px] border border-[var(--border)] bg-[var(--surface-solid)] px-2 py-1.5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] lg:hidden"
       >
         {visible.map((item) => (
           <NavItem
@@ -262,7 +262,7 @@ export function NavRail({ dict }: { dict: Dictionary }) {
             </button>
 
             {moreOpen && (
-              <div className="absolute bottom-[calc(100%+8px)] right-0 z-50 flex flex-col gap-1 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-solid)]/90 p-2 shadow-[0_16px_48px_-12px_rgba(0,0,0,0.5)] backdrop-blur-2xl sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
+              <div className="absolute bottom-[calc(100%+8px)] right-0 z-50 flex flex-col gap-1 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-solid)] p-2 shadow-[0_16px_48px_-12px_rgba(0,0,0,0.5)] sm:right-auto sm:left-1/2 sm:-translate-x-1/2">
                 {overflow.map((item) => (
                   <NavItem
                     key={item.id}

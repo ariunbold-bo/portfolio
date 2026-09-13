@@ -124,7 +124,7 @@ const en: Dictionary = {
     {
       when: "2025 – Present",
       title: "The TTS Era",
-      body: "Continued pushing boundaries. My biggest achievement to date has been building and deploying my custom TTS (Text-to-Speech) project.",
+      body: "Continued pushing boundaries. Still playing table tennis and chess, but now with a focus on software and hardware engineering.",
       image: { type: "video", src: "/tts-era.webm", alt: "TTS Era", aspectRatio: "16/9", poster: "/tts-era-poster.webp" },
     },
   ],

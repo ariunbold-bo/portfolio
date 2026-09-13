@@ -57,7 +57,7 @@ export function LightboxModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-9999 flex items-center justify-center overscroll-contain bg-black/80 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-9999 flex items-center justify-center overscroll-contain bg-black/95 p-4"
       onClick={onClose}
     >
       <div className="relative flex flex-col items-center animate-pop w-full max-w-[95vw] sm:max-w-4xl">

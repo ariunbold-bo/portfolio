@@ -310,7 +310,7 @@ export default async function WorkPage({ params }: Props) {
                     <h2 className="text-2xl font-bold text-ink-strong sm:text-3xl lg:sticky lg:top-24 lg:text-4xl">
                       {section.title}
                     </h2>
-                    <div className="glass card glow-hover rounded-2xl p-6 sm:p-8 lg:p-10">
+                    <div className="glass card rounded-2xl p-6 sm:p-8 lg:p-10">
                       {paragraphs.map((p, pi) => (
                         <p
                           key={pi}
@@ -432,7 +432,7 @@ export default async function WorkPage({ params }: Props) {
                 {proj.specs.map((spec) => (
                   <div
                     key={spec.label}
-                    className="group rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 text-center transition-all hover:-translate-y-1 hover:border-[var(--accent)]/40 hover:shadow-[0_8px_24px_-8px_rgba(var(--accent-rgb),0.25)] sm:p-5"
+                    className="group rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 text-center transition-all hover:-translate-y-1 hover:border-[var(--accent)]/40 hover:shadow-md sm:p-5"
                   >
                     <span className="block text-[0.55rem] font-bold uppercase tracking-[0.15em] text-accent sm:text-xs">
                       {spec.label}

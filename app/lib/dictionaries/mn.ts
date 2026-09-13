@@ -461,7 +461,7 @@ const mn: Dictionary = {
     contactLabel: "Холбоо Барих",
     contactTitle: "Хамтдаа ирээдүйг бүтээе.",
     contactDesc:
-      "Программ хангамжийн төсөл эсвэл электроникийн санаа байсан ч, би шинэ боломжуудыг хэлэлцэхэд үргэлж нээлттэй.",
+      "Программ хангамжийн төсөл эсвэл электроникийн санаа байсан ч, шинэ боломжуудыг хэлэлцэхэд үргэлж нээлттэй.",
     footer:
       "© {year} Ariunbold Bold. React, Next.js, болон хөлс, нулимсаар бүтээгдэв.",
 
@@ -472,12 +472,11 @@ const mn: Dictionary = {
     downloadResume: "Анкет татаж авах",
     viewResume: "Анкет үзэх",
 
-    // will be translating soon
 
     // Gallery for things that i value <3
     galleryLabel: "Gallery",
     thingsIValue: "Things i value.",
-    heroQuote: "Дууссандаа бүү уйл, болсондоо инээмсэгл.",
+    heroQuote: "Дууссан гэж бүү уйл, харин болсон гэж инээмсэгл.",
     heroQuoteAuthor: "— Dr. Seuss",
   },
 };

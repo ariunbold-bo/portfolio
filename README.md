@@ -1,11 +1,5 @@
 <div align="center">
 
-```
-  ╔═╗┌─┐┬─┐┬┌─┐┬┌─┐┌┐┌┬┌─┐┌─┐  ╔╦╗┌─┐┌┬┐┌─┐┌┐ ┬─┐┌─┐
-  ╠═╣│  ├┬┘│├┤ ││ │││││└─┐├┤    ║ │ ││││├┤ ├┴┐├┬┘├┤
-  ╩ ╩└─┘┴└─┴└  ┴└─┘┘└┘┴└─┘└─┘   ╩ └─┘┴ ┴└─┘└─┘┴└─└─┘
-```
-
 ### Systems Developer · Hardware Tinkerer · Arch Linux Enjoyer
 
 [🌐 ariunbold.dev](https://ariunbold.dev) &nbsp;·&nbsp; [📧 ariunboldbold200@gmail.com](mailto:ariunboldbold200@gmail.com)

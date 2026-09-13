@@ -31,7 +31,7 @@ export function About({ dict }: { dict: Dictionary }) {
       {/* — Bio + Tech Stack — */}
       <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_400px]">
         <Reveal variant="left" delay={100}>
-          <GlassCard className="flex h-full flex-col justify-center p-8 glow-hover sm:p-10">
+          <GlassCard className="flex h-full flex-col justify-center p-8 sm:p-10">
             <h2 className="mb-3 text-xl font-semibold text-ink-strong sm:text-2xl">
               {dict.identity.role}
             </h2>
@@ -42,7 +42,7 @@ export function About({ dict }: { dict: Dictionary }) {
         </Reveal>
 
         <Reveal variant="right" delay={200}>
-          <GlassCard className="flex h-full flex-col p-6 bg-surface-2 glow-hover sm:p-8 lg:p-10">
+          <GlassCard className="flex h-full flex-col p-6 bg-surface-2 sm:p-8 lg:p-10">
             <h2 className="mb-4 text-xs font-bold tracking-widest text-accent uppercase sm:mb-6">
               {dict.ui.coreTechnologies}
             </h2>
@@ -74,7 +74,7 @@ export function About({ dict }: { dict: Dictionary }) {
           </Reveal>
           {dict.disciplines.map((item, i) => (
             <Reveal key={item.title} variant="up" delay={(i + 1) * 100}>
-              <GlassCard className="flex items-start gap-3 p-5 sm:gap-4 sm:p-6 lg:p-8 glow-hover hover-lift">
+              <GlassCard className="flex items-start gap-3 p-5 sm:gap-4 sm:p-6 lg:p-8 hover-lift">
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--surface-solid)] text-ink sm:h-12 sm:w-12">
                   <Icon name={item.icon} className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
@@ -149,7 +149,7 @@ export function About({ dict }: { dict: Dictionary }) {
         {dict.gallery.map((item, i) => (
           <Reveal key={item.src} variant="up" delay={i * 80}>
             <GlassCard
-              className="mb-6 overflow-hidden group relative cursor-pointer border border-[rgba(var(--accent-rgb),0.25)] shadow-[0_0_30px_rgba(var(--accent-rgb),0.2)]"
+              className="mb-6 overflow-hidden group relative cursor-pointer border border-[var(--border)] shadow-md"
               onClick={() => setActiveItem(item)}
             >
               <div
@@ -166,7 +166,7 @@ export function About({ dict }: { dict: Dictionary }) {
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="rounded-full bg-black/30 p-3 text-white backdrop-blur-sm shadow-xl transition-all group-hover:bg-black/50 group-hover:scale-110 ring-1 ring-white/20">
+                      <div className="rounded-full bg-black/75 p-3 text-white shadow-xl transition-all group-hover:bg-black/90 group-hover:scale-110 ring-1 ring-white/20">
                         <Icon
                           name="play"
                           className="h-6 w-6 translate-x-0.5"
@@ -185,7 +185,7 @@ export function About({ dict }: { dict: Dictionary }) {
                   />
                 )}
                 <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10 dark:group-hover:bg-white/5 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity rounded-full bg-black/50 p-3 text-white backdrop-blur-md shadow-xl scale-95 group-hover:scale-100">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity rounded-full bg-black/85 p-3 text-white shadow-xl scale-95 group-hover:scale-100">
                     <svg
                       className="h-6 w-6"
                       fill="none"

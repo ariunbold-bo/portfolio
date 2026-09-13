@@ -52,7 +52,7 @@ export function Hardware({ dict, lang }: { dict: Dictionary; lang: string }) {
                     </div>
                   )}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white backdrop-blur-sm">
+                  <span className="absolute left-4 top-4 rounded-full bg-black/80 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white">
                     {hw.kicker}
                   </span>
                 </div>
