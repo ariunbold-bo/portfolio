@@ -4,91 +4,75 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ------------------------------------------------------------------ *
- * COLOR SYSTEM — Night Steppe + Sky Zone
- *   Light: golden dusk cream · deep bronze
- *   Dark:  near-black night · gold
- *   The projects section morphs to "open sky" blue when it scrolls
- *   into view — `data-sky` is toggled by an IntersectionObserver in
- *   projects.tsx, and the registered tokens below let the browser
- *   interpolate the shift instead of snapping.
+ * COLOR SYSTEM — Chill Coffee Roast & Oat Milk Latte
+ *   Light: warm café au lait / oat milk · roasted caramel espresso
+ *   Dark:  rich dark mocha / espresso roast · warm caramel crema
  * ------------------------------------------------------------------ */
 
-/* Only the tokens that carry the visible morph (page background + the two
-   accent colors used by blobs/text/links) are registered so they can be
-   interpolated. Everything else in the sky blocks snaps instantly — keeping
-   the animated set tiny is what keeps the transition smooth on low-end GPUs. */
-@property --accent    { syntax: "<color>"; inherits: true; initial-value: #c9ab7f; }
-@property --accent-2  { syntax: "<color>"; inherits: true; initial-value: #d8c09a; }
-@property --bg        { syntax: "<color>"; inherits: true; initial-value: #060504; }
-/* ── Theme motion — cross-fading instead of snapping ─────────────────
-   Only these "source" tokens need registering. Everything built from
-   them with var() — surface, border, ring, grid-line, glass-highlight —
-   animates for free once these do, since they just re-resolve the
-   live value on every frame. */
 @property --accent {
   syntax: '<color>';
   inherits: true;
-  initial-value: #83684a;
+  initial-value: #8e542a;
 }
 @property --accent-2 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #99826a;
+  initial-value: #ab6e3e;
 }
 @property --accent-rgb {
   syntax: '<number>#';
   inherits: true;
-  initial-value: 131, 104, 74;
+  initial-value: 142, 84, 42;
 }
 @property --status-dot {
   syntax: '<color>';
   inherits: true;
-  initial-value: #99826a;
+  initial-value: #8e542a;
 }
 @property --bg {
   syntax: '<color>';
   inherits: true;
-  initial-value: #ece7dc;
+  initial-value: #f8f5f0;
 }
 @property --bg-grad-1 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #f2eee6;
+  initial-value: #fefdfa;
 }
 @property --bg-grad-2 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #e0dacd;
+  initial-value: #f0e9df;
 }
 @property --ink {
   syntax: '<color>';
   inherits: true;
-  initial-value: #403a33;
+  initial-value: #45362a;
 }
 @property --ink-strong {
   syntax: '<color>';
   inherits: true;
-  initial-value: #191512;
+  initial-value: #1a130e;
 }
 @property --muted {
   syntax: '<color>';
   inherits: true;
-  initial-value: #5e574c;
+  initial-value: #786453;
 }
 @property --faint {
   syntax: '<color>';
   inherits: true;
-  initial-value: #d8d1c3;
+  initial-value: #e4dacd;
 }
 @property --surface-solid {
   syntax: '<color>';
   inherits: true;
-  initial-value: #f6f2e9;
+  initial-value: #ffffff;
 }
 @property --on-accent {
   syntax: '<color>';
   inherits: true;
-  initial-value: #f7f3ea;
+  initial-value: #ffffff;
 }
  
 :root {
@@ -96,8 +80,7 @@
     --bg, --bg-grad-1, --bg-grad-2, --ink, --ink-strong, --muted, --faint,
     --surface-solid, --on-accent;
   transition-duration: 1.2s;
-  /* Quick off the mark, then a long, gentle settle — the shift keeps
-     moving gradually right up through the end instead of finishing early. */
+  /* Quick off the mark, then a long, gentle settle */
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
  
@@ -108,243 +91,240 @@
 }
  
 [data-theme="light"] {
-  --accent: #83684a;          /* Deep bronze */
-  --accent-2: #99826a;        /* Warm taupe */
-  --accent-rgb: 131, 104, 74;
-  --status-dot: #99826a;
+  --accent: #8e542a;          /* Rich roasted caramel espresso */
+  --accent-2: #ab6e3e;        /* Warm cinnamon roast */
+  --accent-rgb: 142, 84, 42;
+  --status-dot: #8e542a;
  
-  --bg: #ece7dc;              /* Golden dusk — dimmer than the old near-white */
-  --bg-grad-1: #f2eee6;
-  --bg-grad-2: #e0dacd;
+  --bg: #f8f5f0;              /* Clean, fresh warm café cream */
+  --bg-grad-1: #fefdfa;       /* Bright milk foam */
+  --bg-grad-2: #f0e9df;       /* Soft warm latte */
  
-  --ink: #403a33;
-  --ink-strong: #191512;
-  --muted: #5e574c;           /* darkened to keep WCAG AA on the dusk bg */
-  --faint: #d8d1c3;
+  --ink: #45362a;             /* Rich dark roast */
+  --ink-strong: #1a130e;      /* Deep roasted espresso bean (high contrast) */
+  --muted: #786453;           /* Warm hazelnut / milk chocolate */
+  --faint: #e4dacd;           /* Delicate foam border */
  
-  --surface: rgba(var(--accent-rgb), 0.03);
-  --surface-2: rgba(var(--accent-rgb), 0.055);
-  --surface-solid: #f6f2e9;
-  --border: rgba(var(--accent-rgb), 0.11);
-  --border-strong: rgba(var(--accent-rgb), 0.18);
+  --surface: rgba(var(--accent-rgb), 0.04);
+  --surface-2: rgba(var(--accent-rgb), 0.075);
+  --surface-solid: #ffffff;   /* Pure clean white cards */
+  --border: rgba(var(--accent-rgb), 0.12);
+  --border-strong: rgba(var(--accent-rgb), 0.22);
  
-  --on-accent: #f7f3ea;
-  --shadow-rgb: 24, 20, 16;
-  --shadow: 0 1px 2px rgba(24, 20, 16, 0.06), 0 8px 24px -8px rgba(24, 20, 16, 0.12);
+  --on-accent: #ffffff;
+  --shadow-rgb: 30, 20, 14;
+  --shadow: 0 1px 2px rgba(30, 20, 14, 0.06), 0 8px 24px -8px rgba(30, 20, 14, 0.12);
  
   --ring: var(--accent);
-  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.75);
   --grid-line: rgba(var(--accent-rgb), 0.035);
 }
  
 [data-theme="dark"] {
-  --accent: #c9ab7f;           /* Gold */
-  --accent-2: #d8c09a;         /* Soft champagne */
-  --accent-rgb: 201, 171, 127;
-  --status-dot: #d8c09a;
+  --accent: #d4a373;           /* Warm golden caramel crema */
+  --accent-2: #e4c29e;         /* Glowing froth champagne */
+  --accent-rgb: 212, 163, 115;
+  --status-dot: #d4a373;
  
-  --bg: #060504;               /* Night — deeper than before */
-  --bg-grad-1: #0e0b08;
-  --bg-grad-2: #020100;
+  --bg: #090706;               /* Deep dark roast espresso night (high contrast, not muddy) */
+  --bg-grad-1: #110d0a;        /* Warm dark mocha */
+  --bg-grad-2: #050403;        /* Pitch espresso */
  
-  --ink: #a7a19b;
-  --ink-strong: #f4f2ef;
-  --muted: #918a83;            /* keeps WCAG AA on the night bg */
-  --faint: #23201c;
+  --ink: #c2b5a8;              /* Warm oat milk */
+  --ink-strong: #faf6f0;       /* Crisp porcelain cream */
+  --muted: #948577;            /* Cocoa mocha dust */
+  --faint: #2a2019;            /* Roasted bean border */
  
-  --surface: rgba(var(--accent-rgb), 0.05);
-  --surface-2: rgba(var(--accent-rgb), 0.09);
-  --surface-solid: #131009;
-  --border: rgba(var(--accent-rgb), 0.10);
-  --border-strong: rgba(var(--accent-rgb), 0.18);
+  --surface: rgba(var(--accent-rgb), 0.055);
+  --surface-2: rgba(var(--accent-rgb), 0.095);
+  --surface-solid: #15100c;   /* Rich dark espresso solid cards */
+  --border: rgba(var(--accent-rgb), 0.12);
+  --border-strong: rgba(var(--accent-rgb), 0.22);
  
-  --on-accent: #191410;
-  --shadow-rgb: 0, 0, 0;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  --on-accent: #140d07;
+  --shadow-rgb: 6, 4, 3;
+  --shadow: 0 1px 2px rgba(6, 4, 3, 0.45), 0 12px 32px -8px rgba(6, 4, 3, 0.65);
  
   --ring: var(--accent);
-  --glass-highlight: rgba(var(--accent-rgb), 0.04);
-  --grid-line: rgba(var(--accent-rgb), 0.03);
+  --glass-highlight: rgba(var(--accent-rgb), 0.05);
+  --grid-line: rgba(var(--accent-rgb), 0.035);
 }
  
-/* ── Sky Zone — projects section fades to open-sky blue ──────────────
-   Low-key on purpose: only accent/secondary/ink/surface tokens shift,
-   the page background itself stays put. */
+/* ── Sky Zone — projects section fades to open-sky blue ────────────── */
 [data-theme="light"][data-sky="true"] {
-  --bg: #dce6f0;              /* open sky */
-  --bg-grad-1: #e6edf5;
-  --bg-grad-2: #d0dce9;
+  --bg: #eaf0f6;
+  --bg-grad-1: #f3f7fb;
+  --bg-grad-2: #dfebf4;
  
-  --accent: #4d7cb0;
-  --accent-2: #6d94bd;
-  --accent-rgb: 77, 124, 176;
-  --status-dot: #6d94bd;
+  --accent: #4a75a0;
+  --accent-2: #6b93ba;
+  --accent-rgb: 74, 117, 160;
+  --status-dot: #6b93ba;
  
-  --ink: #3d464f;
-  --ink-strong: #18222c;
-  --muted: #59646f;
+  --ink: #3a4754;
+  --ink-strong: #172430;
+  --muted: #5b6a78;
  
-  --surface: rgba(77, 124, 176, 0.04);
-  --surface-2: rgba(77, 124, 176, 0.075);
-  --surface-solid: #edf1f5;
-  --border: rgba(77, 124, 176, 0.14);
-  --border-strong: rgba(77, 124, 176, 0.24);
-  --on-accent: #f2f6fa;
-  --glass-highlight: rgba(255, 255, 255, 0.55);
-  --grid-line: rgba(77, 124, 176, 0.04);
+  --surface: rgba(74, 117, 160, 0.04);
+  --surface-2: rgba(74, 117, 160, 0.075);
+  --surface-solid: #f6f9fc;
+  --border: rgba(74, 117, 160, 0.14);
+  --border-strong: rgba(74, 117, 160, 0.24);
+  --on-accent: #f4f8fc;
+  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --grid-line: rgba(74, 117, 160, 0.04);
 }
  
 [data-theme="dark"][data-sky="true"] {
-  --bg: #04060b;              /* night sky */
-  --bg-grad-1: #0a0e16;
-  --bg-grad-2: #020306;
+  --bg: #0d1218;
+  --bg-grad-1: #121922;
+  --bg-grad-2: #080c10;
  
-  --accent: #85aedb;
-  --accent-2: #a5c2e6;
-  --accent-rgb: 133, 174, 219;
-  --status-dot: #a5c2e6;
+  --accent: #7ea7cf;
+  --accent-2: #9fbfe0;
+  --accent-rgb: 126, 167, 207;
+  --status-dot: #9fbfe0;
  
-  --ink: #a5b0ba;
-  --ink-strong: #e9edf3;
-  --muted: #8f9aa6;
+  --ink: #a7b4c2;
+  --ink-strong: #edf2f7;
+  --muted: #8493a3;
  
-  --surface: rgba(133, 174, 219, 0.05);
-  --surface-2: rgba(133, 174, 219, 0.09);
-  --surface-solid: #10141a;
-  --border: rgba(133, 174, 219, 0.12);
-  --border-strong: rgba(133, 174, 219, 0.22);
-  --on-accent: #0a1524;
-  --glass-highlight: rgba(133, 174, 219, 0.04);
-  --grid-line: rgba(133, 174, 219, 0.04);
+  --surface: rgba(126, 167, 207, 0.05);
+  --surface-2: rgba(126, 167, 207, 0.09);
+  --surface-solid: #131b24;
+  --border: rgba(126, 167, 207, 0.12);
+  --border-strong: rgba(126, 167, 207, 0.22);
+  --on-accent: #0c1520;
+  --glass-highlight: rgba(126, 167, 207, 0.04);
+  --grid-line: rgba(126, 167, 207, 0.04);
 }
  
-/* ── Forest Zone — about section: earthy sage / warm green ──────────
-   Personal, human, grounded. */
+/* ── Forest Zone — matcha latte / calm herbal tea ──────────────────── */
 [data-theme="light"][data-palette="forest"] {
-  --bg: #e4ebe0;
-  --bg-grad-1: #ecf0e9;
-  --bg-grad-2: #d8e2d4;
-  --accent: #4a7c59;
-  --accent-2: #6a9c79;
-  --accent-rgb: 74, 124, 89;
-  --status-dot: #6a9c79;
-  --ink: #2e3a30;
-  --ink-strong: #162018;
-  --muted: #546659;
-  --surface: rgba(74, 124, 89, 0.04);
-  --surface-2: rgba(74, 124, 89, 0.075);
-  --surface-solid: #edf2eb;
-  --border: rgba(74, 124, 89, 0.14);
-  --border-strong: rgba(74, 124, 89, 0.24);
-  --on-accent: #f0f7f2;
-  --glass-highlight: rgba(255, 255, 255, 0.55);
-  --grid-line: rgba(74, 124, 89, 0.04);
+  --bg: #eff3ea;
+  --bg-grad-1: #f6f9f3;
+  --bg-grad-2: #e3ebd9;
+  --accent: #4a6b51;
+  --accent-2: #6a8c71;
+  --accent-rgb: 74, 107, 81;
+  --status-dot: #6a8c71;
+  --ink: #323d34;
+  --ink-strong: #18241a;
+  --muted: #596b5c;
+  --surface: rgba(74, 107, 81, 0.04);
+  --surface-2: rgba(74, 107, 81, 0.075);
+  --surface-solid: #f7faf5;
+  --border: rgba(74, 107, 81, 0.14);
+  --border-strong: rgba(74, 107, 81, 0.24);
+  --on-accent: #f2f7f3;
+  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --grid-line: rgba(74, 107, 81, 0.04);
 }
 [data-theme="dark"][data-palette="forest"] {
-  --bg: #040a05;
-  --bg-grad-1: #091009;
-  --bg-grad-2: #020602;
-  --accent: #7dba8e;
-  --accent-2: #9ecfad;
-  --accent-rgb: 125, 186, 142;
-  --status-dot: #9ecfad;
-  --ink: #a4b5a7;
-  --ink-strong: #e6f0e8;
-  --muted: #8fa894;
-  --surface: rgba(125, 186, 142, 0.05);
-  --surface-2: rgba(125, 186, 142, 0.09);
-  --surface-solid: #0e1810;
-  --border: rgba(125, 186, 142, 0.12);
-  --border-strong: rgba(125, 186, 142, 0.22);
-  --on-accent: #0a1e0d;
-  --glass-highlight: rgba(125, 186, 142, 0.04);
-  --grid-line: rgba(125, 186, 142, 0.04);
+  --bg: #0e1410;
+  --bg-grad-1: #141c16;
+  --bg-grad-2: #080c09;
+  --accent: #7fae88;
+  --accent-2: #9ec2a5;
+  --accent-rgb: 127, 174, 136;
+  --status-dot: #9ec2a5;
+  --ink: #a5b8a9;
+  --ink-strong: #eaf2eb;
+  --muted: #829686;
+  --surface: rgba(127, 174, 136, 0.05);
+  --surface-2: rgba(127, 174, 136, 0.09);
+  --surface-solid: #141d16;
+  --border: rgba(127, 174, 136, 0.12);
+  --border-strong: rgba(127, 174, 136, 0.22);
+  --on-accent: #0c1a10;
+  --glass-highlight: rgba(127, 174, 136, 0.04);
+  --grid-line: rgba(127, 174, 136, 0.04);
 }
  
-/* ── Ember Zone — hardware section: copper / industrial amber ─────────
-   Physical, tangible, warm metal energy. */
+/* ── Ember Zone — cinnamon roast / warm copper amber ───────────────── */
 [data-theme="light"][data-palette="ember"] {
-  --bg: #ede5d8;
-  --bg-grad-1: #f4ede2;
-  --bg-grad-2: #e2d8c9;
-  --accent: #a0622a;
-  --accent-2: #b87d48;
-  --accent-rgb: 160, 98, 42;
-  --status-dot: #b87d48;
-  --ink: #3d2e1c;
-  --ink-strong: #1e1508;
-  --muted: #6b5337;
-  --surface: rgba(160, 98, 42, 0.04);
-  --surface-2: rgba(160, 98, 42, 0.075);
-  --surface-solid: #f5ede2;
-  --border: rgba(160, 98, 42, 0.14);
-  --border-strong: rgba(160, 98, 42, 0.26);
-  --on-accent: #fdf6ee;
-  --glass-highlight: rgba(255, 255, 255, 0.55);
-  --grid-line: rgba(160, 98, 42, 0.04);
+  --bg: #f4ede4;
+  --bg-grad-1: #fbf5ee;
+  --bg-grad-2: #ede0d2;
+  --accent: #9c5e2d;
+  --accent-2: #b57643;
+  --accent-rgb: 156, 94, 45;
+  --status-dot: #b57643;
+  --ink: #423223;
+  --ink-strong: #23160a;
+  --muted: #735a43;
+  --surface: rgba(156, 94, 45, 0.04);
+  --surface-2: rgba(156, 94, 45, 0.075);
+  --surface-solid: #fcf8f3;
+  --border: rgba(156, 94, 45, 0.14);
+  --border-strong: rgba(156, 94, 45, 0.26);
+  --on-accent: #fdf7f0;
+  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --grid-line: rgba(156, 94, 45, 0.04);
 }
 [data-theme="dark"][data-palette="ember"] {
-  --bg: #0b0704;
-  --bg-grad-1: #130e08;
-  --bg-grad-2: #060401;
-  --accent: #cf8f52;
-  --accent-2: #e0aa76;
-  --accent-rgb: 207, 143, 82;
-  --status-dot: #e0aa76;
-  --ink: #b8a898;
-  --ink-strong: #f5ede3;
-  --muted: #9e8870;
-  --surface: rgba(207, 143, 82, 0.05);
-  --surface-2: rgba(207, 143, 82, 0.09);
-  --surface-solid: #1a1108;
-  --border: rgba(207, 143, 82, 0.12);
-  --border-strong: rgba(207, 143, 82, 0.22);
-  --on-accent: #1a0e03;
-  --glass-highlight: rgba(207, 143, 82, 0.04);
-  --grid-line: rgba(207, 143, 82, 0.04);
+  --bg: #140e0a;
+  --bg-grad-1: #1c140e;
+  --bg-grad-2: #0b0704;
+  --accent: #db9357;
+  --accent-2: #e6ab79;
+  --accent-rgb: 219, 147, 87;
+  --status-dot: #e6ab79;
+  --ink: #c2b1a1;
+  --ink-strong: #f7efe6;
+  --muted: #998370;
+  --surface: rgba(219, 147, 87, 0.05);
+  --surface-2: rgba(219, 147, 87, 0.09);
+  --surface-solid: #1c140e;
+  --border: rgba(219, 147, 87, 0.12);
+  --border-strong: rgba(219, 147, 87, 0.22);
+  --on-accent: #1c1005;
+  --glass-highlight: rgba(219, 147, 87, 0.04);
+  --grid-line: rgba(219, 147, 87, 0.04);
 }
  
-/* ── Teal Zone — journey section: deep teal / time and depth ──────────
-   Memory, depth, flowing time. */
+/* ── Teal Zone — fallback to warm coffee ──────────────────────────── */
 [data-theme="light"][data-palette="teal"] {
-  --bg: #dce8e8;
-  --bg-grad-1: #e5eeee;
-  --bg-grad-2: #d0dfdf;
-  --accent: #2e7b7b;
-  --accent-2: #4d9898;
-  --accent-rgb: 46, 123, 123;
-  --status-dot: #4d9898;
-  --ink: #1e3535;
-  --ink-strong: #0d1e1e;
-  --muted: #4a6464;
-  --surface: rgba(46, 123, 123, 0.04);
-  --surface-2: rgba(46, 123, 123, 0.075);
-  --surface-solid: #e9f2f2;
-  --border: rgba(46, 123, 123, 0.14);
-  --border-strong: rgba(46, 123, 123, 0.26);
-  --on-accent: #eaf4f4;
-  --glass-highlight: rgba(255, 255, 255, 0.55);
-  --grid-line: rgba(46, 123, 123, 0.04);
+  --bg: #f8f5f0;
+  --bg-grad-1: #fefdfa;
+  --bg-grad-2: #f0e9df;
+  --accent: #8e542a;
+  --accent-2: #ab6e3e;
+  --accent-rgb: 142, 84, 42;
+  --status-dot: #8e542a;
+  --ink: #45362a;
+  --ink-strong: #1a130e;
+  --muted: #786453;
+  --surface: rgba(142, 84, 42, 0.04);
+  --surface-2: rgba(142, 84, 42, 0.075);
+  --surface-solid: #ffffff;
+  --border: rgba(142, 84, 42, 0.12);
+  --border-strong: rgba(142, 84, 42, 0.22);
+  --on-accent: #ffffff;
+  --shadow-rgb: 30, 20, 14;
+  --glass-highlight: rgba(255, 255, 255, 0.75);
+  --grid-line: rgba(142, 84, 42, 0.035);
 }
 [data-theme="dark"][data-palette="teal"] {
-  --bg: #030c0c;
-  --bg-grad-1: #081414;
-  --bg-grad-2: #010707;
-  --accent: #55b5b5;
-  --accent-2: #7acece;
-  --accent-rgb: 85, 181, 181;
-  --status-dot: #7acece;
-  --ink: #98b8b8;
-  --ink-strong: #e0f0f0;
-  --muted: #7aa0a0;
-  --surface: rgba(85, 181, 181, 0.05);
-  --surface-2: rgba(85, 181, 181, 0.09);
-  --surface-solid: #0c1a1a;
-  --border: rgba(85, 181, 181, 0.12);
-  --border-strong: rgba(85, 181, 181, 0.22);
-  --on-accent: #031414;
-  --glass-highlight: rgba(85, 181, 181, 0.04);
-  --grid-line: rgba(85, 181, 181, 0.04);
+  --bg: #090706;
+  --bg-grad-1: #110d0a;
+  --bg-grad-2: #050403;
+  --accent: #d4a373;
+  --accent-2: #e4c29e;
+  --accent-rgb: 212, 163, 115;
+  --status-dot: #d4a373;
+  --ink: #c2b5a8;
+  --ink-strong: #faf6f0;
+  --muted: #948577;
+  --surface: rgba(212, 163, 115, 0.055);
+  --surface-2: rgba(212, 163, 115, 0.095);
+  --surface-solid: #15100c;
+  --border: rgba(212, 163, 115, 0.12);
+  --border-strong: rgba(212, 163, 115, 0.22);
+  --on-accent: #140d07;
+  --shadow-rgb: 6, 4, 3;
+  --glass-highlight: rgba(212, 163, 115, 0.05);
+  --grid-line: rgba(212, 163, 115, 0.035);
 }
 
 
@@ -1158,5 +1138,258 @@ img:-ms-fullscreen {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================================================== *
+ * PROJECT CARDS — micro-interactions                                  *
+ * ================================================================== */
+
+/* ── Mouse-tracking spotlight ─────────────────────────────────────── */
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+/* Spotlight layer lives on ::before so it never conflicts with        *
+ * hover-lift's ::after shadow pseudo-element.                         */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    480px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(var(--accent-rgb), 0.11),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.project-card.is-hovered::before {
+  opacity: 1;
+}
+
+/* ── Arrow spring animation ───────────────────────────────────────── */
+.arrow-spring {
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+}
+.group:hover .arrow-spring {
+  transform: translate(4px, -4px);
+}
+
+/* ── Project card action buttons ─────────────────────────────────── */
+.proj-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    opacity 0.22s ease;
+}
+.proj-btn:hover {
+  transform: translateY(-2px);
+}
+.proj-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Filled accent */
+.proj-btn-primary {
+  background: rgba(var(--accent-rgb), 0.14);
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  color: var(--accent);
+}
+.proj-btn-primary:hover {
+  background: rgba(var(--accent-rgb), 0.22);
+  border-color: rgba(var(--accent-rgb), 0.45);
+  box-shadow: 0 0 18px -6px rgba(var(--accent-rgb), 0.35);
+}
+
+/* Ghost muted */
+.proj-btn-ghost {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.proj-btn-ghost:hover {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--ink);
+}
+
+
+/* ================================================================== *
+ * TERMINAL HEADER — Photo Sharing Platform                           *
+ * ================================================================== */
+
+/* CRT scanline sweep — a narrow bright band that drifts down */
+@keyframes crt-scan {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 0.18; }
+  90%  { opacity: 0.18; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+.crt-scan {
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(var(--accent-rgb), 0.22) 50%,
+    transparent 60%
+  );
+  height: 30%;
+  animation: crt-scan 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Typewriter wipe for the cycling status word */
+@keyframes terminal-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+.terminal-status {
+  display: inline-block;
+  animation: terminal-wipe 0.38s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* CSS-only glitch on project-card hover ─────────────────────────── */
+@keyframes glitch {
+  0%   { transform: translate(0); color: inherit; }
+  20%  { transform: translate(-2px, 0); filter: hue-rotate(80deg); }
+  40%  { transform: translate(2px, 0); filter: hue-rotate(-60deg); }
+  60%  { transform: translate(-1px, 1px); }
+  80%  { transform: translate(1px, -1px); filter: hue-rotate(30deg); }
+  100% { transform: translate(0); filter: none; }
+}
+.project-card:hover .terminal-header {
+  animation: glitch 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ================================================================== *
+ * CARD FLIP — Magalang (Memory Game)                                 *
+ * ================================================================== */
+.card-flip-root {
+  width: 80px;
+  height: 108px;
+  perspective: 700px;
+}
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+/* Flip when the parent project-card is hovered */
+.project-card:hover .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1.5px solid var(--border-strong);
+}
+
+/* ── Back face (face-down, initially visible) ── */
+.card-face-back {
+  background: var(--surface-2);
+  flex-direction: column;
+  gap: 0;
+}
+.card-pattern {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 8px;
+  opacity: 0.35;
+}
+.card-pattern-cell {
+  font-size: 0.65rem;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1;
+}
+.card-hover-hint {
+  position: absolute;
+  bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.65;
+  animation: card-hint-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes card-hint-pulse {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.85; }
+}
+
+/* ── Front face (revealed after flip) ── */
+.card-face-front {
+  transform: rotateY(180deg);
+  background: var(--surface);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px -4px rgba(var(--accent-rgb), 0.35);
+}
+.card-symbol {
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--accent);
+}
+.card-match-badge {
+  font-size: 0.45rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ================================================================== *
+ * REDUCED MOTION & TOUCH GUARDS                                       *
+ * ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .crt-scan,
+  .terminal-status,
+  .card-hint-pulse,
+  .card-flip-inner {
+    animation: none !important;
+    transition: none !important;
+  }
+  .project-card::before {
+    display: none;
+  }
+}
+
+/* Strip spotlight JS-driven glow on touch devices (no hover pointer) */
+@media (hover: none) and (pointer: coarse) {
+  .project-card::before {
+    display: none;
   }
 }

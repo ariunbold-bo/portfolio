@@ -20,7 +20,7 @@ built because most templates feel like the same startup landing page copy-pasted
 - glassmorphism cards with ambient animated blob background
 - circuit-dot grid overlay (hardware flavor)
 - hardware projects as alternating poster + spec-sheet rows
-- software projects as an editorial numbered index
+- software projects with a demo version on top
 - smooth light/dark mode toggle — no flash-white at 3am
 - fully bilingual: english & mongolian via a single dict swap
 - responsive — mobile is a first-class citizen

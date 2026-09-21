@@ -277,6 +277,7 @@ const en: Dictionary = {
       live: "https://canu.vercel.app",
       source: "https://github.com/ariunbold-bo/canu.git",
       tags: ["Realtime", "Canvas"],
+      visualHook: { kind: "canvas-scribble" } as const,
     },
     {
       name: "Photo Sharing Platform",
@@ -285,6 +286,7 @@ const en: Dictionary = {
       live: "https://psp-ten-zeta.vercel.app/",
       source: "https://github.com/ariunbold-bo/psp.git",
       tags: ["Security", "Full-Stack"],
+      visualHook: { kind: "terminal-header" } as const,
     },
     {
       name: "Magalang",
@@ -292,6 +294,7 @@ const en: Dictionary = {
       live: "https://magalang.vercel.app",
       source: "https://github.com/ariunbold-bo/magalang.git",
       tags: ["Game", "React"],
+      visualHook: { kind: "card-flip" } as const,
     },
   ],
   disciplines: [

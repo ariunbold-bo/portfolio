@@ -30,12 +30,18 @@ export type HardwareProject = {
   media?: { type: "video" | "image"; src: string; poster?: string }[];
 };
 
+export type VisualHook =
+  | { kind: "canvas-scribble" }
+  | { kind: "terminal-header" }
+  | { kind: "card-flip" };
+
 export type SoftwareProject = {
   name: string;
   blurb: string;
   live: string;
   source: string;
   tags: string[];
+  visualHook?: VisualHook;
 };
 
 export type Discipline = {

@@ -9,8 +9,36 @@ export function SiteBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
+      {/* Primary ambient blob — floats with aurora keyframes */}
       <div
-        className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
+        className="blob -top-24 -left-16 h-[520px] w-[520px] sm:h-[680px] sm:w-[680px] opacity-[0.16] dark:opacity-[0.22]"
+        style={{
+          background: "radial-gradient(circle, var(--accent) 0%, transparent 68%)",
+        }}
+      />
+
+      {/* Secondary ambient blob — opposite side */}
+      <div
+        className="blob top-1/3 -right-24 h-[460px] w-[460px] sm:h-[620px] sm:w-[620px] opacity-[0.12] dark:opacity-[0.18]"
+        style={{
+          background: "radial-gradient(circle, var(--accent-2) 0%, transparent 68%)",
+          animationDuration: "28s",
+          animationDirection: "reverse",
+        }}
+      />
+
+      {/* Lower subtle warm glow */}
+      <div
+        className="blob -bottom-20 left-1/3 h-[420px] w-[420px] sm:h-[580px] sm:w-[580px] opacity-[0.10] dark:opacity-[0.15]"
+        style={{
+          background: "radial-gradient(circle, var(--accent) 0%, transparent 68%)",
+          animationDuration: "24s",
+        }}
+      />
+
+      {/* Fine texture overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.035] mix-blend-overlay"
         style={{ backgroundImage: `url("${noise}")`, backgroundSize: "140px" }}
       />
     </div>
