@@ -2,8 +2,9 @@ import { Dictionary } from "@/app/lib/types";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
 import { Icon } from "../icons";
+import { ContactForm } from "../contact-form";
 
-export function Contact({ dict }: { dict: Dictionary }) {
+export function Contact({ dict, lang = "en" }: { dict: Dictionary; lang?: string }) {
   return (
     <section id="contact" className="scroll-mt-32 pb-32">
       <Reveal variant="up">
@@ -80,6 +81,11 @@ export function Contact({ dict }: { dict: Dictionary }) {
             </a>
           </div>
         </div>
+      </Reveal>
+
+      {/* ── Direct Message Form ── */}
+      <Reveal variant="up" delay={250} className="mt-12 sm:mt-16">
+        <ContactForm locale={lang} />
       </Reveal>
 
       <footer>

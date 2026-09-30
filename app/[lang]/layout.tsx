@@ -5,6 +5,7 @@ import { buildAlternates, ogLocale } from "@/app/lib/seo";
 import SmoothScroll from "../components/smooth-scroll-provider";
 import { SiteBackground } from "../components/site-background";
 import { LayoutWidgets } from "../components/layout-widgets";
+import { TelemetryProvider } from "../components/telemetry-provider";
 
 const { identity, knowsAbout, contact } = en;
 
@@ -102,6 +103,7 @@ export default async function LangLayout(props: {
         outside the Template wrapper — so position:fixed is never broken
         by the page-transition transform animation in template.tsx.
       */}
+      <TelemetryProvider />
       <SiteBackground />
       <LayoutWidgets dict={en} />
 

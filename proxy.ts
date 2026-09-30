@@ -42,10 +42,11 @@ export function proxy(request: NextRequest) {
 
   if (matchedLocale) return withLocaleHeader(request, matchedLocale);
 
-  // Avoid processing static files or images
+  // Avoid processing static files, images, api, or admin routes
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/admin') ||
     pathname.includes('.')
   ) {
     return;
@@ -59,7 +60,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!_next|api|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Skip all internal paths (_next), api, and admin
+    '/((?!_next|api|admin|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
   ],
 };

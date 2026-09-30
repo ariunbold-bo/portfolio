@@ -48,7 +48,7 @@ export default async function ContactPage(props: {
 
   return (
     <PageShell lang={lang} backLabel={dict.ui.backToHome}>
-      <Contact dict={dict} />
+      <Contact dict={dict} lang={lang} />
     </PageShell>
   );
 }
