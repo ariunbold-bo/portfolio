@@ -1,10 +1,12 @@
 import { Header } from "@/components/Header";
 import { HeroPage } from "@/components/hero_page";
+import { AppSidebar } from "@/components/ui/app-sidebar";
 
 export default function LandingPage() {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-full ">
       <Header />
+      <AppSidebar />
       <HeroPage />
     </div>
   );

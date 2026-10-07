@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import "lenis/dist/lenis.css";
 import { Blob } from "@/components/blob";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -39,9 +40,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             enableSystem
             disableTransitionOnChange={false}
           >
-            <LenisProvider>{children}</LenisProvider>
+            <SidebarProvider defaultOpen={false}>
+              <LenisProvider>{children}</LenisProvider>
+            </SidebarProvider>
           </ThemeProvider>
-          <Blob />
+          {/* gpu heavy prolly migrating to idk static bg? */}
+          {/* <Blob /> */}
         </body>
       </html>
     </>
