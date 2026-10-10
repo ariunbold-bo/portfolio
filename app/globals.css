@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,6 +7,7 @@ html {
   font-family: var(--font-poppins);
   font-weight: normal;
   user-select: none;
+  -webkit-user-drag: none;
 }
 @theme inline {
   --font-heading: var(--font-sans);
@@ -101,9 +101,8 @@ html {
   --popover-foreground: oklch(0.95 0.01 80);
   --primary: oklch(0.6 0.15 35);
   --primary-foreground: oklch(0.18 0.01 80);
-
   /* Brightened slightly to pop against the dark roasted background */
-  --secondary: oklch(0.32 0.03 50);
+  --secondary: oklch(28.419% 0.02602 46.125);
   --secondary-foreground: oklch(0.95 0.01 80);
   --muted: oklch(0.32 0.03 50);
   --muted-foreground: oklch(0.75 0.01 80);
@@ -141,7 +140,6 @@ html {
 
 /* lenis provider */
 
-/* Add to your global CSS */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -207,4 +205,8 @@ h3 {
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.3s;
+}
+
+p {
+  font-weight: 600;
 }

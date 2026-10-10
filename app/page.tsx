@@ -4,7 +4,7 @@ import { AppSidebar } from "@/components/ui/app-sidebar";
 
 export default function LandingPage() {
   return (
-    <div className="w-full ">
+    <div className="min-h-[calc(100dvh-header-height)] min-w-dvw">
       <Header />
       <AppSidebar />
       <HeroPage />
