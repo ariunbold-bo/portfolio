@@ -2,28 +2,32 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import { ImageModal } from "./ui/image-modal";
-import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { Button } from "./ui/button";
+import { useEffect, useRef, useState } from "react";
 
 export function HeroPage() {
-  const [ref, entry] = useIntersectionObserver({
-    threshold: 0.1,
-    root: null,
-    rootMargin: "0px",
-  });
+  const [observing, setObserving] = useState({ observer: false, ratio: 0.0 });
+  const ref = useRef(null);
+  useEffect(() => {
+    const heroPageObserver = new IntersectionObserver((e) => {
+      const entry = e[0];
+    });
+    heroPageObserver.observe(ref.current);
+  }, []);
+  console.log(observing);
   return (
     <div
       ref={ref}
-      className="w-full h-full flex justify-center items-center gap-20"
+      className="w-full h-dvh flex justify-center items-center gap-20"
     >
       <div
         className={
-          entry?.isIntersecting
+          observing
             ? "translate-x-0 duration-700 opacity-100 "
             : " -translate-x-125 duration-700 opacity-0"
         }
       >
-        <h1 className="text-[foreground] !text-[60px] text-primary !font-extrabold">
+        <h1 className="text-[60px]! text-primary font-extrabold!">
           Ariunbold Bold
         </h1>
         <p className="text-muted-foreground">
